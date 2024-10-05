@@ -14,7 +14,6 @@ $db = new Database();
 </head>
 <body>
     <h2>Automarket</h2>
-    <p>pozdrav</p>
 
     <script src="./js/index.js"></script>
 </body>
