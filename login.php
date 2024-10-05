@@ -16,6 +16,7 @@ $db = new Database();
     <form action="login.php">
         <input type="email" name="email" placeholder="email@example.com" />
         <input type="password" name="pass" placeholder="Password" />
+        <button>Log in</button>
     </form>
 </body>
 </html>
