@@ -1,0 +1,1 @@
+document.write("Pozdrav iz JS-a")
