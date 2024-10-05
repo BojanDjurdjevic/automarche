@@ -5,15 +5,10 @@ class Database {
     public function __construct() {
         $this->db = new mysqli("localhost", "root", "", "automarket");
         if(!$this->db) {
-            echo "Greška prikonekciji na bazu";
+            echo "Greška pri konekciji na bazu";
             exit();
-        } else
-        echo "Pozdrav iz baze";
+        }
 
-    }
-
-    public function query($query) {
-        $this->db->query($query);
     }
 }
 ?>
