@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+main a {
+    text-decoration: none;
+}
 .car_div {
     display: grid; 
     grid-template-columns: 1fr 1fr;
