@@ -1,14 +1,22 @@
 * {
     box-sizing: border-box;
 }
-main a {
+main {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+#link {
     text-decoration: none;
+    color: black;
+    display: flex;
+    width: 95vw;
 }
 .car_div {
     display: grid; 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 1rem; 
-    height: 33vh;
+    height: 30%;
     width: 95vw;
     padding: 0.3rem;
 }
