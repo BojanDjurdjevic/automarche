@@ -24,7 +24,8 @@ header {
     margin: 0;
     width: 100vw;
     height: 9vh;
-    background-color: rgb(31, 28, 32);
+    /*background-color: rgb(31, 28, 32); #231F20*/
+    background-image: linear-gradient(to right, #020202, #231F20);
     overflow: hidden;
 }
 .barcont {
@@ -42,11 +43,12 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 66vw;
-    height: 6vh;
+    min-height: 6.6vh;
     background-color: #D7D7D7;
     border-bottom: 0.0625rem solid rgb(31, 28, 32);
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    padding: 0.6rem;
 }
 .bar a {
     text-decoration: none;
@@ -58,7 +60,7 @@ header {
 /*-------------------------MAIN-------------------------*/
 main {
     width: 100vw;
-    min-height: 69vh;
+    min-height: 72vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
