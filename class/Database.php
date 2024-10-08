@@ -24,6 +24,13 @@ class Database {
                         <p>Fuel: {$row->fuel}</p>
                         <p>{$row->price} EUR</p>
                     </div>
+                    <div class='txt_div'>
+                        <h4>Saler: {$row->name}</h4>
+                        <p>Country: {$row->country}</p>
+                        <p>Address: {$row->address}, {$row->city}</p>
+                        <p>Tel: {$row->usr_tel}</p>
+
+                    </div>
                 </div></a>";
         }
     }
@@ -32,7 +39,19 @@ class Database {
         $res = $this->db->query($query);
         if($res->num_rows == 1)
         while($row = $res->fetch_object()) {
-            echo $row->make. " ". $row->model;
+            //echo $row->make. " ". $row->model;
+            echo "<div class='carprofile'>
+                    <h1>{$row->make} {$row->model}</h1>
+                    <div class='galery'>
+                        <img src='images/car-place.jpg' alt='CarImage'>
+                    </div>
+                    <div class='properties'>
+
+                    </div>
+                    <div class='desc'>
+                        
+                    </div>
+                </div>";
         }
         else header("location: index.php");
     }

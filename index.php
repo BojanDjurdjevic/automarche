@@ -19,9 +19,11 @@ require_once "required/_required.php";
 <body>
     <?php require_once "components/_header.php" ?>
     <main>
-    <?php
-    $db->all();
-    ?>
+        <div class="main">
+            <?php
+            $db->all();
+            ?>
+        </div>
     </main>
     <?php  require_once "components/_footer.php"; ?>
     <script src="./js/index.js"></script>

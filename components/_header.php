@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="header">
-            <img src="images/logo.svg" alt="logo" class="logo">
+            <img src="images/left-logo.jpg" alt="logo" class="logo">
             <h2>AUTOMARKET</h2>
             <img src="images/auto_car-14.jpg" alt="logo" class="logo">
         </div>
