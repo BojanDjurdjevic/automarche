@@ -11,7 +11,7 @@ class Database {
 
     }
     public function all() {
-        $query = "SELECT * FROM cars WHERE deleted = 0";
+        $query = "SELECT * FROM viewcars WHERE deleted = 0";
         $result = $this->db->query($query);    
         while($row = $result->fetch_object()) {
             echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
@@ -28,7 +28,7 @@ class Database {
         }
     }
     public function oneCar($id) {
-        $query = "SELECT * FROM cars WHERE car_id = {$id} and deleted = 0";
+        $query = "SELECT * FROM viewcars WHERE car_id = {$id} and deleted = 0";
         $res = $this->db->query($query);
         if($res->num_rows == 1)
         while($row = $res->fetch_object()) {
@@ -37,7 +37,7 @@ class Database {
         else header("location: index.php");
     }
     public function usrCar($id) {
-        $query = "SELECT * FROM cars WHERE users_usr_id = {$id} and deleted = 0";
+        $query = "SELECT * FROM viewcars WHERE users_usr_id = {$id} and deleted = 0";
         $res = $this->db->query($query);
         if($res->num_rows > 0)
         while($row = $res->fetch_object()) {
