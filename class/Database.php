@@ -27,7 +27,8 @@ class Database {
                     <div class='txt_div'>
                         <h4>Saler: {$row->name}</h4>
                         <p>Country: {$row->country}</p>
-                        <p>Address: {$row->address}, {$row->city}</p>
+                        <p>City: {$row->city}</p>
+                        <p>Address: {$row->address} </p>
                         <p>Tel: {$row->usr_tel}</p>
 
                     </div>
@@ -40,16 +41,55 @@ class Database {
         if($res->num_rows == 1)
         while($row = $res->fetch_object()) {
             //echo $row->make. " ". $row->model;
+            //$date = date("Y.m.d H:i:s", intval($row->created));
             echo "<div class='carprofile'>
-                    <h1>{$row->make} {$row->model}</h1>
+                    <div class='car_title'>
+                        <h2>{$row->make} {$row->model}</h2>
+                        <h3>{$row->price} EUR</h3>
+                    </div>
                     <div class='galery'>
                         <img src='images/car-place.jpg' alt='CarImage'>
                     </div>
                     <div class='properties'>
-
+                        <h6>Make:</h6>
+                        <h6>{$row->make}</h6>
+                        <h6>Model:</h6>
+                        <h6>{$row->model}</h6>
+                        <h6>Year:</h6>
+                        <h6>{$row->year}</h6>
+                        <h6>Kilometers:</h6>
+                        <h6>{$row->km}km</h6>
+                        <h6>Engine size:</h6>
+                        <h6>{$row->engine}cm3</h6>
+                        <h6>Power:</h6>
+                        <h6>{$row->power}ks</h6>
+                        <h6>Fuel:</h6>
+                        <h6>{$row->fuel}</h6>
+                        <h6>Body type:</h6>
+                        <h6>{$row->body}</h6>
+                        <h6>Gear:</h6>
+                        <h6>{$row->gear}</h6>
+                        <h6>Number of seats:</h6>
+                        <h6>{$row->seats}</h6>
+                        <h6>Number of doors:</h6>
+                        <h6>{$row->doors}</h6>
+                        <h6>Color:</h6>
+                        <h6>{$row->color}</h6>
+                        <h6>Wheel:</h6>
+                        <h6>{$row->wheel}</h6>
+                        <h6>Registration expiry:</h6>
+                        <h6>{$row->regdate}</h6>
+                        <h6>Posted on:</h6>
+                        <h6>{$row->created}</h6>
                     </div>
                     <div class='desc'>
-                        
+                        <p>{$row->description}</p>
+                        <div>
+                            <h6>Owner: {$row->name}</h6>
+                            <h6>City: {$row->city}</h6>
+                            <h6>Tel: {$row->usr_tel}</h6>
+                            <a href='usrprofile.php?id={$row->users_usr_id}'>See the owners profile</a>
+                        </div>
                     </div>
                 </div>";
         }

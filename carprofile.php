@@ -11,6 +11,7 @@ require_once "required/_required.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="bckDiv"></div>
     <?php require_once "components/_header.php"; ?>
     <main>
         <div class="main">
@@ -27,5 +28,7 @@ require_once "required/_required.php";
         </div>
     </main>
     <?php require_once "components/_footer.php"; ?>
+    
+    <script src="./js/index.js"></script>
 </body>
 </html>

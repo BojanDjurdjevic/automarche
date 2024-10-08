@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
     margin: 0;
@@ -14,7 +15,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100vw;
 }
 .header {
     display: flex;
@@ -102,6 +103,50 @@ main {
     justify-content: center;
     align-items: center;
 }
+.carprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0.6rem;
+}
+.car_title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.galery {
+    width: 100%;
+}
+.galery img {
+    width: 100%;
+    max-height: 78vh;
+}
+.galery:hover {
+    cursor: pointer;
+}
+.properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    width: 100%;
+}
+.properties h6 {
+    text-align: center;
+}
+.desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3rem;
+}
+.desc p {
+    text-align: start;
+}
+.desc h6, a {
+    text-align: end;
+}
 /*--------------------------FOOTER----------------------*/
 footer {
     display: flex;
@@ -110,4 +155,16 @@ footer {
     background-color: rgb(31, 28, 32);
     height: 12vh;
     color: rgb(203, 7, 7);
+    width: 100vw;
+}
+.bckDiv {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #231F20;
+    opacity: 0.85;
+}
+.visible {
+    display: block;
 }
