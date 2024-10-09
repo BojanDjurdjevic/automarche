@@ -11,7 +11,9 @@ require_once "required/_required.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="bckDiv"></div>
+    <div class="bckDiv">
+        <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
+    </div>
     <?php require_once "components/_header.php"; ?>
     <main>
         <div class="main">

@@ -116,8 +116,37 @@ main {
     align-items: center;
     width: 100%;
 }
+/*Background DIV - galery Divs*/
+.bckDiv {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #020202;
+    opacity: 0.85;
+}
+.visible {
+    display: block;
+}
+#xmark {
+    color: white;
+    position: fixed;
+    right: 3rem;
+    top: 3rem;
+}
+#xmark:hover {
+    cursor: pointer;
+}
 .galery {
     width: 100%;
+}
+.zoom {
+    position: fixed;
+    top: 10vh;
+    left: 20vw;
+    height: 60vh;
+    width: 60vw;
+    z-index: 3;
 }
 .galery img {
     width: 100%;
@@ -156,15 +185,4 @@ footer {
     height: 12vh;
     color: rgb(203, 7, 7);
     width: 100vw;
-}
-.bckDiv {
-    display: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #231F20;
-    opacity: 0.85;
-}
-.visible {
-    display: block;
 }
