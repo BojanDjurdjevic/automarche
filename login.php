@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "required/_required.php";
-$db = new Database();
 ?>
 
 <!DOCTYPE html>
