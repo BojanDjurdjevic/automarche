@@ -7,10 +7,10 @@ function validateString($str) {
     return true;
 }
 function login() {
-    if(isset($_SESSION['id']) && isset($_SESSION['podaci'])) return true;
-    else if(isset($_COOKIE['id']) && isset($_COOKIE['podaci'])) {
+    if(isset($_SESSION['id']) && isset($_SESSION['name'])) return true;
+    else if(isset($_COOKIE['id']) && isset($_COOKIE['name'])) {
         $_SESSION['id'] = $_COOKIE['id'];
-        $_SESSION['podaci'] = $_COOKIE['podaci'];
+        $_SESSION['name'] = $_COOKIE['name'];
         $_SESSION['email'] = $_COOKIE['email'];
         $_SESSION['status'] = $_COOKIE['status'];
         return true;

@@ -181,8 +181,6 @@ class Database {
         $query = "INSERT INTO users (usr_name, usr_mail, usr_pas, usr_tel, usr_status, country, city, address)
         VALUES ('{$name}', '{$mail}', '{$pass}', '{$tel}', '{$status}', '{$country}', '{$city}', '{$address}')";
         $this->db->query($query);
-        
-        /*if($this->db && $this->db->query($query)) {*/
             echo Msg::success("The new user {$name} is succesfully created");
             if(isset($_FILES['avatar']) && $_FILES['avatar']['name']!="") {
                 $name = mysqli_insert_id($this->db) .".jpg";
@@ -191,8 +189,6 @@ class Database {
                 }
                 else echo Msg::err("Avatar upload FAILED!");
             }
-        /*} else
-        echo Msg::err("The creating of user is FAILED!");*/
     }
     
     public function updateUser($id, $name, $mail, $pass, $tel, $status) {

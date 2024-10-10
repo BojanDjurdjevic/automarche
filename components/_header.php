@@ -21,7 +21,13 @@
                 <a href="index.php"><i class="fa-duotone fa-solid fa-house fa-2xl"></i></a>
                 <a href="">Search</a>
                 <a href="addcar.php">Add a car</a>
-                <a href="login.php">Log in</a>
+                <?php
+                if(login()) {
+                    echo "<a href='logout.php'>{$_SESSION['name']}</a>";
+                } else
+                echo "<a href='login.php'>Log in</a>"
+                ?>
+                
             </div>
         </div>
         
