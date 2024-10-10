@@ -100,7 +100,25 @@ class Database {
         $res = $this->db->query($query);
         if($res->num_rows > 0)
         while($row = $res->fetch_object()) {
-            echo $row->make. " ". $row->model;
+            echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
+                    <div class='img_div'>
+                        <img src='images/sport-car.jpg' width='300'>
+                    </div>
+                    <div class='txt_div'>
+                        <h4>{$row->make} {$row->model}</h4>
+                        <p>Year: {$row->year}</p>
+                        <p>Fuel: {$row->fuel}</p>
+                        <p>{$row->price} EUR</p>
+                    </div>
+                    <div class='txt_div'>
+                        <h4>Saler: {$row->name}</h4>
+                        <p>Country: {$row->country}</p>
+                        <p>City: {$row->city}</p>
+                        <p>Address: {$row->address} </p>
+                        <p>Tel: {$row->usr_tel}</p>
+
+                    </div>
+                </div></a>";
         }
         else echo Msg::success("There is no cars posted by user with ID: {$id}");
     }

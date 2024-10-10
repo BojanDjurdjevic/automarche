@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/92df62f187.js" crossorigin="anonymous"></script>
-    <style>
-        
-    </style>
+    <script src="https://kit.fontawesome.com/92df62f187.js" crossorigin="anonymous"></script>  
 </head>
 <body>
     <header>
@@ -23,7 +20,12 @@
                 <a href="addcar.php">Add a car</a>
                 <?php
                 if(login()) {
-                    echo "<a href='logout.php'>{$_SESSION['name']}</a>";
+                    $avatar= (file_exists("avatars/".$_SESSION['id'].".jpg"))? $_SESSION['id'].".jpg" : "noavatar.jpg";
+                    echo "<a href='logout.php'>
+                            <div class='small'>
+                            <p>{$_SESSION['name']}</p>
+                            <img src='avatars/{$avatar}' id='av_page' />
+                            </div> </a>";
                 } else
                 echo "<a href='login.php'>Log in</a>"
                 ?>

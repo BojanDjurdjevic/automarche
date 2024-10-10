@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "required/_required.php";
 ?>
 <!DOCTYPE html>

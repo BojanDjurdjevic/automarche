@@ -38,10 +38,10 @@ require_once "required/_required.php";
                                 $_SESSION['email'] = $row->usr_mail;
                                 $_SESSION['status'] = $row->usr_status;
                                 if(isset($check)) {
-                                    setcookie("id", $_SESSION['id'], time()+86400, "/");
-                                    setcookie("name", $_SESSION['podaci'], time()+86400, "/");
-                                    setcookie("email", $_SESSION['email'], time()+86400, "/");
-                                    setcookie("status", $_SESSION['status'], time()+86400, "/");
+                                    setcookie("id", $_SESSION['id'], time()+10800, "/");
+                                    setcookie("name", $_SESSION['podaci'], time()+10800, "/");
+                                    setcookie("email", $_SESSION['email'], time()+10800, "/");
+                                    setcookie("status", $_SESSION['status'], time()+10800, "/");
                                 }
                                 header("location: index.php");
                             } else

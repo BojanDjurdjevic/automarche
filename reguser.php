@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "required/_required.php";
 ?>
 
@@ -20,10 +21,18 @@ require_once "required/_required.php";
                 <input type="email" name="email" placeholder="email@example.com">
                 <input type="password" name="pass" placeholder="Password">
                 <input type="text" name="tel" placeholder="Phone number">
-                <select name="status" id="status">
-                    <option value="0">--Chose the user's role--</option>
-                    <option value="User">User</option>
-                </select>
+                <?php
+                    if(login() && $_SESSION['status'] == "Admin")
+                    echo "<select name='status' id='status'>
+                            <option value='0'>--Chose the user's role--</option>
+                            <option value='User'>User</option>
+                            <option value='Editor'>Editor</option>
+                            <option value='Admin'>Admin</option>
+                         </select>";
+                    else
+                    echo "<input type='hidden' name='status' value='User'>";
+                ?>
+                
                 <input type="text" name="country" placeholder="Country">
                 <input type="text" name="city" placeholder="City">
                 <input type="text" name="address" placeholder="Address">
