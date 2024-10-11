@@ -15,9 +15,19 @@ class Database {
         $result = $this->db->query($query);    
         while($row = $result->fetch_object()) {
             echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
-                    <div class='img_div'>
-                        <img src='images/sport-car.jpg' width='300'>
-                    </div>
+                    <div class='img_div'>";
+                        $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
+                        $res = $this->db->query($query2);
+                        if(mysqli_num_rows($res) > 0) {
+                            $r = $res->fetch_assoc();
+                            //var_dump($r);
+                            //while($r = $res->fetch_object()) {
+                                echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>";
+                            //}  
+                        } else
+                        echo "<img src='images/nocar.jpg' width='360'>";
+                        echo
+                    "</div>
                     <div class='txt_div'>
                         <h4>{$row->make} {$row->model}</h4>
                         <p>Year: {$row->year}</p>
@@ -55,7 +65,7 @@ class Database {
                             echo "<img src='images/{$r->pic_name}' alt='CarImage' id='carImg'>";
                         }  
                     } else
-                    echo "<img src='images/sport-car2.jpg' alt='CarImage'>";
+                    echo "<img src='images/nocar.jpg' alt='CarImage'>";
                     echo    
                     "</div>
                     <div class='properties'>

@@ -1,6 +1,6 @@
 @keyframes fadeIn {
     from {
-        top: 0;
+        top: 6vh;
     } to {
         top: 15.5vh;
     }
@@ -104,10 +104,12 @@ header {
     min-height: 9vh;
     padding: 0.1rem;
     background-color: #D7D7D7;
-    border: 0.0625rem solid black;
+    border: 0.0625rem solid #D7D7D7;
     position: absolute;
     right: 18vw;
     z-index: 1;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 .manage a {
     text-decoration: none;
@@ -116,16 +118,16 @@ header {
 }
 .manIn {
     animation-name: fadeIn;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: inherit;
     animation-fill-mode: forwards;
 }
 .manOut {
     animation-name: fadeOut;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: inherit;
     animation-fill-mode: forwards;
 }
 /*----------------------SEARCH FORM----------------------*/
@@ -138,17 +140,19 @@ header {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
 }
 .show {
     animation-name: searchIn;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 .hide {
     animation-name: searchOut;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-fill-mode: forwards;

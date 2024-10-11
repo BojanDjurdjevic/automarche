@@ -1,7 +1,54 @@
+//HEADER
+
+let goDiv = document.querySelector(".small")
+let manage = document.querySelector(".manage")
+
+goDiv.addEventListener("click", () => {
+    console.log("radi")
+    console.log(manage.classList)
+    if(manage.classList.contains("manIn")) {
+        manage.classList.remove("manIn")
+        manage.classList.add("manOut")
+    } else if(manage.classList.contains("manOut")) {
+        manage.classList.remove("manOut")
+        manage.classList.add("manIn")
+    } else {
+        manage.classList.add("manIn")
+    }
+})
+
+//SEARCH
+
+let search = document.querySelector("#find")
+let searchDiv = document.querySelector(".searchForm")
+let searchBtn = document.querySelector(".searchForm form button")
+
+search.addEventListener("click", () => {
+    console.log("searchListen")
+    if(!searchDiv.classList.contains("show")) {
+        if(searchDiv.classList.contains("hide")) {
+            searchDiv.classList.remove("hide")
+        }
+        searchDiv.classList.add("show")
+    } else {
+        searchDiv.classList.remove("show")
+        searchDiv.classList.add("hide")
+    }
+})
+
+searchBtn.addEventListener("click", () => {
+    console.log("btnListen")
+    searchDiv.classList.remove("show")
+    searchDiv.classList.add("hide")
+})
+
+//PICTURE SLIDER
 let imgDiv = document.querySelector(".galery")
 let images = document.querySelectorAll(".galery img")
-displayNone()
-images[0].style.display = "block"
+if(images !== undefined) {
+    displayNone()
+    images[0].style.display = "block"
+}
 //images[0].classList.add("visible")
 let numPics = images.length
 let imgNum = 0
@@ -44,48 +91,4 @@ left.addEventListener("click", () => {
         imgNum = numPics -1
     }
     images[imgNum].style.display = "block"
-})
-
-//HEADER
-
-let goDiv = document.querySelector(".small")
-let manage = document.querySelector(".manage")
-
-goDiv.addEventListener("click", () => {
-    console.log("radi")
-    console.log(manage.classList)
-    if(manage.classList.contains("manIn")) {
-        manage.classList.remove("manIn")
-        manage.classList.add("manOut")
-    } else if(manage.classList.contains("manOut")) {
-        manage.classList.remove("manOut")
-        manage.classList.add("manIn")
-    } else {
-        manage.classList.add("manIn")
-    }
-})
-
-//search
-
-let search = document.querySelector("#find")
-let searchDiv = document.querySelector(".searchForm")
-let searchBtn = document.querySelector(".searchForm form button")
-
-search.addEventListener("click", () => {
-    console.log("searchListen")
-    if(!searchDiv.classList.contains("show")) {
-        if(searchDiv.classList.contains("hide")) {
-            searchDiv.classList.remove("hide")
-        }
-        searchDiv.classList.add("show")
-    } else {
-        searchDiv.classList.remove("show")
-        searchDiv.classList.add("hide")
-    }
-})
-
-searchBtn.addEventListener("click", () => {
-    console.log("btnListen")
-    searchDiv.classList.remove("show")
-    searchDiv.classList.add("hide")
 })
