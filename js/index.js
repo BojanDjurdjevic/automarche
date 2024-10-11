@@ -64,3 +64,26 @@ goDiv.addEventListener("click", () => {
         manage.classList.add("manIn")
     }
 })
+
+//search
+
+let search = document.querySelector("#find")
+let searchDiv = document.querySelector(".searchForm")
+let searchBtn = document.querySelector(".searchForm form button")
+
+search.addEventListener("click", () => {
+    if(!searchDiv.classList.contains("show")) {
+        if(searchDiv.classList.contains("hide")) {
+            searchDiv.classList.remove("hide")
+        }
+        searchDiv.classList.add("show")
+    } else {
+        searchDiv.classList.remove("show")
+        searchDiv.classList.add("hide")
+    }
+})
+
+searchBtn.addEventListener("click", () => {
+    searchDiv.classList.remove("show")
+    searchDiv.classList.add("hide")
+})

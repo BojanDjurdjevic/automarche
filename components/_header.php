@@ -20,7 +20,7 @@
         <div class="barcont">
             <div class="bar">
                 <a href="index.php"><i class="fa-duotone fa-solid fa-house fa-2xl"></i></a>
-                <a href="">Search</a>
+                <a id="find">Search</a>
                 <a href="addcar.php">Add a car</a>
                 <?php
                 if(login()) {

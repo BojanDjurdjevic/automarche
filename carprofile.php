@@ -19,6 +19,7 @@ require_once "required/_required.php";
     </div>
     <?php require_once "components/_header.php"; ?>
     <main>
+        <?php require_once "components/_searchcar.php" ?>
         <div class="main">
             <?php
             if(isset($_GET['id'])) {

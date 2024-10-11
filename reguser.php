@@ -14,6 +14,7 @@ require_once "required/_required.php";
 <body>
 <?php require_once "components/_header.php" ?>
     <main>
+        <?php require_once "components/_searchcar.php" ?>
         <div class="main">
             <h2>Sign Up</h2>
             <form action="reguser.php" method="post" enctype="multipart/form-data">

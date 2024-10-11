@@ -1,15 +1,29 @@
 @keyframes fadeIn {
-    form {
+    from {
         top: 0;
     } to {
         top: 15.5vh;
     }
 }
 @keyframes fadeOut {
-    form {
+    from {
         top: 15.5vh;
     } to {
         top: 0;
+    }
+}
+@keyframes searchIn {
+    from {
+        height: 0;
+    } to {
+        height: 60vh;
+    }
+}
+@keyframes searchOut {
+    from {
+        height: 60vh;
+    } to {
+        height: 0;
     }
 }
 
@@ -78,6 +92,9 @@ header {
 .logo {
     width: 4.5rem;
 }
+#find {
+    cursor: pointer;
+}
 .manage {
     display: flex;
     flex-direction: column;
@@ -98,16 +115,63 @@ header {
     margin: 0.9rem;
 }
 .manIn {
-    animation: fadeIn 2s ease-in-out 0 1;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 .manOut {
-    animation: fadeOut 2s ease-in-out 0 1;
+    animation-name: fadeOut;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+/*----------------------SEARCH FORM----------------------*/
+.searchForm {
+    border: 0.12rem solid #D7D7D7;
+    background-color: #D7D7D7;
+    width: 66vw;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.show {
+    animation-name: searchIn;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+.hide {
+    animation-name: searchOut;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+.searchForm form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.searchForm form button {
+    justify-self: center;
+    background-color: rgb(203, 7, 7);
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    min-width: 9rem;
 }
 /*-------------------------MAIN-------------------------*/
 main {
     width: 100vw;
     min-height: 72vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     background-image: url("../images/bck.jpg");
@@ -244,7 +308,7 @@ form {
     justify-content: space-around;
     align-items: center;
 }
-input {
+input, select, button {
     font-size: 1.2rem;
     border-radius: 0.5rem;
     margin: 0.9rem;
