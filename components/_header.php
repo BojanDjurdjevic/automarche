@@ -25,11 +25,10 @@
                 <?php
                 if(login()) {
                     $avatar= (file_exists("avatars/".$_SESSION['id'].".jpg"))? $_SESSION['id'].".jpg" : "noavatar.jpg";
-                    echo "<a href='logout.php'>
-                            <div class='small'>
+                    echo "  <div class='small'>
                             <p>{$_SESSION['name']}</p>
                             <img src='avatars/{$avatar}' id='av_page' />
-                            </div> </a>";
+                            </div>";
                 } else
                 echo "<a href='login.php'>Log in</a>"
                 ?>

@@ -13,8 +13,12 @@ function zoomIn() {
     imgDiv.classList.add("zoom")
 }
 function zoomOut() {
-    bckDiv.classList.remove("visible")
-    imgDiv.classList.remove("zoom")
+    if(bckDiv.classList.contains("visible")) {
+       bckDiv.classList.remove("visible") 
+    }
+    if(imgDiv.classList.contains("zoom")) {
+       imgDiv.classList.remove("zoom") 
+    }  
 }
 function displayNone() {
     images.forEach((img) => {
