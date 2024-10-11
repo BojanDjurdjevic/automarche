@@ -12,9 +12,6 @@ require_once "required/_required.php";
     <title>Automarket</title>
     <script src="https://kit.fontawesome.com/92df62f187.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-
-    </style>
 </head>
 <body>
     <?php require_once "components/_header.php" ?>

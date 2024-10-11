@@ -72,6 +72,7 @@ let searchDiv = document.querySelector(".searchForm")
 let searchBtn = document.querySelector(".searchForm form button")
 
 search.addEventListener("click", () => {
+    console.log("searchListen")
     if(!searchDiv.classList.contains("show")) {
         if(searchDiv.classList.contains("hide")) {
             searchDiv.classList.remove("hide")
@@ -84,6 +85,7 @@ search.addEventListener("click", () => {
 })
 
 searchBtn.addEventListener("click", () => {
+    console.log("btnListen")
     searchDiv.classList.remove("show")
     searchDiv.classList.add("hide")
 })

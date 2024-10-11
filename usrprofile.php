@@ -13,7 +13,6 @@ require_once "required/_required.php";
 <body>
     <?php require_once "components/_header.php" ?>
     <main>
-        <?php require_once "components/_searchcar.php" ?>
         <div class="main">
         <?php
         $avatar= (file_exists("avatars/".$_GET['id'].".jpg"))? $_GET['id'].".jpg" : "noavatar.jpg";
