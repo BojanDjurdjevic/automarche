@@ -8,6 +8,10 @@
 </head>
 <body>
     <header>
+        <div class="manage">
+            <a href="myprofile.php">My profile</a>
+            <a href="logout.php">Log out</a>
+        </div>
         <div class="header">
             <img src="images/left-logo.jpg" alt="logo" class="logo">
             <h2>AUTOMARKET</h2>

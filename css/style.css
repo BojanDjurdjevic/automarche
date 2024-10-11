@@ -1,3 +1,18 @@
+@keyframes fadeIn {
+    form {
+        top: 0;
+    } to {
+        top: 15.5vh;
+    }
+}
+@keyframes fadeOut {
+    form {
+        top: 15.5vh;
+    } to {
+        top: 0;
+    }
+}
+
 * {
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,6 +43,7 @@ header {
     /*background-color: rgb(31, 28, 32); #231F20*/
     background-image: linear-gradient(to right, #020202, #231F20);
     overflow: hidden;
+    z-index: 2;
 }
 .barcont {
     display: flex;
@@ -38,6 +54,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 2;
 }
 .bar {
     display: flex;
@@ -50,6 +67,7 @@ header {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 0.6rem;
+    z-index: 2;
 }
 .bar a {
     text-decoration: none;
@@ -59,6 +77,31 @@ header {
 }
 .logo {
     width: 4.5rem;
+}
+.manage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 12vw;
+    min-height: 9vh;
+    padding: 0.1rem;
+    background-color: #D7D7D7;
+    border: 0.0625rem solid black;
+    position: absolute;
+    right: 18vw;
+    z-index: 1;
+}
+.manage a {
+    text-decoration: none;
+    color: black;
+    margin: 0.9rem;
+}
+.manIn {
+    animation: fadeIn 2s ease-in-out delay iteration-count direction fill-mode;
+}
+.manOut {
+    animation: fadeOut 2s ease-in-out delay iteration-count direction fill-mode;
 }
 /*-------------------------MAIN-------------------------*/
 main {

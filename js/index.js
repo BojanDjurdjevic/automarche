@@ -24,6 +24,7 @@ function displayNone() {
 imgDiv.addEventListener("click", zoomIn)
 xmark.addEventListener("click", zoomOut)
 right.addEventListener("click", () => {
+    console.log("radi")
     displayNone()
     imgNum++
     if(imgNum == numPics) {
@@ -32,10 +33,26 @@ right.addEventListener("click", () => {
     images[imgNum].style.display = "block"
 })
 left.addEventListener("click", () => {
+    console.log("radi")
     displayNone()
     imgNum--
     if(imgNum == -1) {
         imgNum = numPics -1
     }
     images[imgNum].style.display = "block"
+})
+
+//HEADER
+
+let goDiv = document.querySelector(".small")
+let manage = document.querySelector(".manage")
+
+goDiv.addEventListener("click", () => {
+    if(manage.classList.contains("manIn")) {
+        manage.classList.remove("manIn")
+        manage.classList.add("manOut")
+    } else if(manage.classList.contains("manOut")) {
+        manage.classList.remove("manOut")
+        manage.classList.add("manIn")
+    }
 })
