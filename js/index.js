@@ -1,6 +1,8 @@
 let imgDiv = document.querySelector(".galery")
 let images = document.querySelectorAll(".galery img")
-images[0].classList.add("visible")
+displayNone()
+images[0].style.display = "block"
+//images[0].classList.add("visible")
 let numPics = images.length
 let imgNum = 0
 let bckDiv = document.querySelector(".bckDiv")
@@ -28,7 +30,6 @@ function displayNone() {
 imgDiv.addEventListener("click", zoomIn)
 xmark.addEventListener("click", zoomOut)
 right.addEventListener("click", () => {
-    console.log("radi")
     displayNone()
     imgNum++
     if(imgNum == numPics) {
@@ -37,7 +38,6 @@ right.addEventListener("click", () => {
     images[imgNum].style.display = "block"
 })
 left.addEventListener("click", () => {
-    console.log("radi")
     displayNone()
     imgNum--
     if(imgNum == -1) {
@@ -52,11 +52,15 @@ let goDiv = document.querySelector(".small")
 let manage = document.querySelector(".manage")
 
 goDiv.addEventListener("click", () => {
+    console.log("radi")
+    console.log(manage.classList)
     if(manage.classList.contains("manIn")) {
         manage.classList.remove("manIn")
         manage.classList.add("manOut")
     } else if(manage.classList.contains("manOut")) {
         manage.classList.remove("manOut")
+        manage.classList.add("manIn")
+    } else {
         manage.classList.add("manIn")
     }
 })

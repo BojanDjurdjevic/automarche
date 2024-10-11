@@ -208,10 +208,10 @@ main {
     width: 60vw;
     z-index: 4;
 }
-.galery img {
+#carImg {
     width: 100%;
     max-height: 78vh;
-    
+    display: none;
 }
 .galery:hover {
     cursor: pointer;
