@@ -25,8 +25,8 @@
                 <option value="Hybrid">Hybrid</option>
                 <option value="Electric">Electric</option>
             </select>
-            <button>Search</button>
-            
+            <button><a href="search.php">Search</a></button>
+
         </form>
     </div>
 </body>
