@@ -14,6 +14,8 @@ require_once "required/_required.php";
 <body>
     <div class="bckDiv">
         <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
+        <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
+        <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
     </div>
     <?php require_once "components/_header.php"; ?>
     <main>

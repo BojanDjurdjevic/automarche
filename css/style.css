@@ -137,11 +137,24 @@ main {
     right: 3rem;
     top: 3rem;
 }
-#xmark:hover {
+#left {
+    color: white;
+    position: fixed;
+    left: 10%;
+    top: 50%;
+}
+#right {
+    color: white;
+    position: fixed;
+    right: 10%;
+    top: 50%;
+}
+#xmark:hover, #left:hover, #right:hover {
     cursor: pointer;
 }
 .galery {
     width: 75%;
+    max-height: 50%;
 }
 .zoom {
     position: fixed;
@@ -154,6 +167,7 @@ main {
 .galery img {
     width: 100%;
     max-height: 78vh;
+    
 }
 .galery:hover {
     cursor: pointer;
