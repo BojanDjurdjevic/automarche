@@ -141,7 +141,7 @@ main {
     cursor: pointer;
 }
 .galery {
-    width: 100%;
+    width: 75%;
 }
 .zoom {
     position: fixed;

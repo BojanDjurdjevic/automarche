@@ -47,9 +47,17 @@ class Database {
                         <h2>{$row->make} {$row->model}</h2>
                         <h3>{$row->price} EUR</h3>
                     </div>
-                    <div class='galery'>
-                        <img src='images/car-place.jpg' alt='CarImage'>
-                    </div>
+                    <div class='galery'>";
+                    $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
+                    $result = $this->db->query($query2);
+                    if(mysqli_num_rows($result) > 0) {
+                        while($r = $result->fetch_object()) {
+                            echo "<img src='images/{$r->pic_name}' alt='CarImage'>";
+                        }  
+                    } else
+                    echo "<img src='images/sport-car2.jpg' alt='CarImage'>";
+                    echo    
+                    "</div>
                     <div class='properties'>
                         <h6>Make:</h6>
                         <h6>{$row->make}</h6>
@@ -131,11 +139,17 @@ class Database {
         '{$fuel}', {$power}, {$engine}, {$km}, '{$gear}', {$doors}, {$seats}, '{$color}', 
         '{$wheel}', '{$desc}', {$reg})";
         $this->db->query($query);
-        if(!$this->db && $this->db->query($query)) {
-            echo Msg::success("The new car {$make} {$model} is succesfully added in database");
-        } else
-        echo Msg::err("The car adding is FAILED!");
-
+        echo Msg::success("The new car {$make} {$model} is succesfully added in database");
+        $carID = mysqli_insert_id($this->db);
+        if($_FILES['photos']['name'][0] != "") {
+            for($i = 0; $i < count($_FILES['photos']['name']); $i++) {
+                $name = microtime(true)."_".$_FILES['photos']['name'][$i];
+                if(@move_uploaded_file($_FILES['photos']['tmp_name'][$i], "images/".$name)) {
+                    $query = "INSERT INTO pics (car_id, pic_name) VALUES ({$carID}, '{$name}')";
+                    $this->db->query($query);
+                }
+            }
+        }
     }
     public function updateCar($id, $usrID, $make, $model, $price, $year, $body,
         $fuel, $power, $engine, $km, $gear, $doors, $seats, $color, $wheel,

@@ -19,6 +19,23 @@ require_once "required/_required.php";
                     echo Msg::err("You must be loged in!");
                 } else
                 require_once "components/_addcarform.php"; 
+                if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['price']) && isset($_POST['year']) && isset($_POST['body'])
+                && isset($_POST['fuel']) && isset($_POST['power']) && isset($_POST['engine']) && isset($_POST['km'])) {
+                    extract($_POST);
+                    $usr_id = $_SESSION['id'];
+                    if(validateString($make) && validateString($model) && filter_var((int)$price, FILTER_VALIDATE_INT) && validateString($year)
+                    && validateString($body) && validateString($fuel) && filter_var((int)$power, FILTER_VALIDATE_INT) && filter_var((int)$engine, FILTER_VALIDATE_INT)
+                    && filter_var((int)$km, FILTER_VALIDATE_INT) && validateString($gear) && filter_var((int)$doors, FILTER_VALIDATE_INT)
+                    && filter_var((int)$seats, FILTER_VALIDATE_INT) && validateString($color) && validateString($wheel)
+                    && validateString($description)) {
+                        /* var_dump((int)$usr_id, $make, $model, (int)$price, $year, $body, $fuel, (int)$power, (int)$engine, (int)$km, 
+                        $gear, (int)$doors, (int)$seats, $color, $wheel, $description, date_create($regdate));
+                        exit(); */
+                        $db->insertCar((int)$usr_id, $make, $model, (int)$price, $year, $body, $fuel, (int)$power, (int)$engine, (int)$km, 
+                        $gear, (int)$doors, (int)$seats, $color, $wheel, $description, $regdate);
+                    } else
+                    echo Msg::err("All car data should be correctly set!");
+                }
             ?>
             
         </div>
