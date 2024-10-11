@@ -45,7 +45,7 @@ searchBtn.addEventListener("click", () => {
 //PICTURE SLIDER
 let imgDiv = document.querySelector(".galery")
 let images = document.querySelectorAll(".galery img")
-if(images !== undefined) {
+if(images[0] !== undefined) {
     displayNone()
     images[0].style.display = "block"
 }

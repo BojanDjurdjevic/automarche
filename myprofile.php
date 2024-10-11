@@ -13,6 +13,7 @@ require_once "required/_required.php";
 <body>
     <?php require_once "components/_header.php" ?>
     <main>
+        <?php require_once "components/_searchcar.php" ?>
         <div class="main">
         <?php
         if(!login()) {

@@ -42,6 +42,6 @@ require_once "required/_required.php";
     </main>
 
     <?php require_once "components/_footer.php"; ?>
-    
+    <script src="./js/index.js"></script>
 </body>
 </html>
