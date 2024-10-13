@@ -121,7 +121,7 @@ class Database {
                     $res2 = $this->db->query($query2);
                     if(mysqli_num_rows($res2) > 0) {
                         $r = $res2->fetch_assoc();
-                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                        echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
                     } else
                     echo "<img src='images/nocar.jpg' width='360'>";
                     echo
@@ -149,9 +149,9 @@ class Database {
         $res = $this->db->query($query);
         if($res->num_rows > 0)
         while($row = $res->fetch_object()) {
-            echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='card'>
+            echo "<a href='carprofile.php?id={$row->car_id}' class='card'>
                     <div class='title_div'>
-                       <h5>{$row->make} {$row->model}</h5> 
+                       <h4>{$row->make} {$row->model}</h4> 
                        <p>{$row->price} EUR</p>
                     </div>
                     <div class='img_div'>";
@@ -170,7 +170,8 @@ class Database {
                         <p> {$row->year} |</p>
                         <p> {$row->city}</p>
                     </div>
-                </div></a>";
+                </a>";
+
         }
         else echo Msg::success("There is no cars posted by you!");
     }
@@ -267,12 +268,12 @@ class Database {
             }
     }
     
-    public function updateUser($id, $name, $mail, $pass, $tel, $status) {
-        $query = "UPDATE cars SET (usr_name, usr_mail, usr_pas, usr_tel, usr_status) 
-        VALUES ('{$name}', '{$mail}', '{$pass}', '{$tel}', '{$status}') 
+    public function updateUser($id, $name, $mail, $tel, $country, $city, $address) {
+        $query = "UPDATE users SET usr_name = '{$name}', usr_mail = '{$mail}', usr_tel = '{$tel}', 
+        country ='{$country}', city = '{$city}', address = '{$address}'
         WHERE usr_id = {$id}";
         $this->db->query($query);
-        if(!$this->db && $this->db->query($query)) {
+        if(!$this->db->error && $this->db->query($query)) {
             echo Msg::success("The user {$name} is succesfully updated");
         } else
         echo Msg::err("The editing of user {$name} is FAILED!");

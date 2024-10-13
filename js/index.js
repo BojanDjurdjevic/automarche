@@ -23,6 +23,50 @@ searchBtn.addEventListener("click", () => {
     searchDiv.classList.add("hide")
 })
 
+//HEADER
+
+let goDiv = document.querySelector(".small")
+let manage = document.querySelector(".manage")
+
+//if(goDiv != null && goDiv != undefined) {
+    goDiv.addEventListener("click", () => {
+    console.log("radi")
+    console.log(manage.classList)
+    if(manage.classList.contains("manIn")) {
+        manage.classList.remove("manIn")
+        manage.classList.add("manOut")
+        } else if(manage.classList.contains("manOut")) {
+            manage.classList.remove("manOut")
+            manage.classList.add("manIn")
+        } else {
+            manage.classList.add("manIn")
+        }
+    })
+//}
+// EDIT USER Profile
+let editBtn = document.querySelector(".editBtn")
+let editForm = document.querySelector(".edit_form")
+let noEdit = document.querySelector(".edit_form i")
+let subBtn = document.querySelector(".edit_form button")
+if(editBtn) {
+    editBtn.addEventListener("click", () => {
+    editBtn.style.display = 'none'
+    editForm.style.display = 'flex'
+})
+}
+if(noEdit) {
+    noEdit.addEventListener("click", () => {
+    editBtn.style.display = 'flex'
+    editForm.style.display = 'none'
+})
+}
+if(subBtn) {
+    subBtn.addEventListener("click", () => {
+    editBtn.style.display = 'flex'
+    editForm.style.display = 'none'
+})  
+}
+
 //PICTURE SLIDER
 let imgDiv = document.querySelector(".galery")
 let images = document.querySelectorAll(".galery img")
@@ -73,24 +117,3 @@ left.addEventListener("click", () => {
     }
     images[imgNum].style.display = "block"
 })
-
-//HEADER
-
-let goDiv = document.querySelector(".small")
-let manage = document.querySelector(".manage")
-
-if(goDiv != null && goDiv != undefined) {
-    goDiv.addEventListener("click", () => {
-    console.log("radi")
-    console.log(manage.classList)
-    if(manage.classList.contains("manIn")) {
-        manage.classList.remove("manIn")
-        manage.classList.add("manOut")
-        } else if(manage.classList.contains("manOut")) {
-            manage.classList.remove("manOut")
-            manage.classList.add("manIn")
-        } else {
-            manage.classList.add("manIn")
-        }
-    })
-}

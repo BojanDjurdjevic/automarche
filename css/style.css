@@ -2,12 +2,12 @@
     from {
         top: 6vh;
     } to {
-        top: 15.5vh;
+        top: 15.8vh;
     }
 }
 @keyframes fadeOut {
     from {
-        top: 15.5vh;
+        top: 15.8vh;
     } to {
         top: 0;
     }
@@ -230,13 +230,67 @@ main {
     align-items: center;
     width: 100%;
 }
+/*--------------------USER PROFILE----------------*/
+.usr_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1.6rem;
+} /*
+.usr_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.usr_data h4, p {
+    margin: 1rem;
+} */
+.edit_usr {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.editBtn p {
+    margin: 1rem;
+}
+.editBtn:hover {
+    cursor: pointer;
+}
+.edit_form {
+   display: none;
+   flex-direction: column;
+   align-items: center; 
+   justify-content: space-evenly;
+}
+.edit_form i {
+    margin-bottom: 1rem;
+}
+.edit_form i:hover {
+    cursor: pointer;
+}
 .card_view {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
 }
 .card {
     display: flex;
     flex-direction: column;
+    padding: 0.3rem;
+    margin: 0.9rem;
+    border: 0.1325rem solid #D7D7D7;
+    background-color: white;
+    border-radius: 2rem;
+    text-decoration: none;
+    color: black;
 }
 .title_div {
     display: flex;
@@ -248,7 +302,7 @@ main {
     justify-content: space-evenly;
     align-items: center;
 }
-/*Background DIV - galery Divs*/
+/*-----------Background DIV - galery Divs------------------*/
 .bckDiv {
     display: none;
     position: fixed;
