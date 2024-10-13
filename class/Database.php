@@ -144,6 +144,36 @@ class Database {
         }
         else echo Msg::success("There is no cars posted by user with ID: {$id}");
     }
+    public function myCarsView($id) {
+        $query = "SELECT * FROM viewcars WHERE users_usr_id = {$id} and deleted = 0";
+        $res = $this->db->query($query);
+        if($res->num_rows > 0)
+        while($row = $res->fetch_object()) {
+            echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='card'>
+                    <div class='title_div'>
+                       <h5>{$row->make} {$row->model}</h5> 
+                       <p>{$row->price} EUR</p>
+                    </div>
+                    <div class='img_div'>";
+                    $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
+                    $res2 = $this->db->query($query2);
+                    if(mysqli_num_rows($res2) > 0) {
+                        $r = $res2->fetch_assoc();
+                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                    } else
+                    echo "<img src='images/nocar.jpg' width='360'>";
+                    echo
+                    "</div>
+                    <div class='text_div'>
+                        <p> {$row->fuel} |</p>
+                        <p> {$row->km} |</p>
+                        <p> {$row->year} |</p>
+                        <p> {$row->city}</p>
+                    </div>
+                </div></a>";
+        }
+        else echo Msg::success("There is no cars posted by you!");
+    }
     public function insertCar($usrID, $make, $model, $price, $year, $body,
     $fuel, $power, $engine, $km, $gear, $doors, $seats, $color, $wheel,
     $desc, $reg) {

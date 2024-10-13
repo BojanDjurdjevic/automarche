@@ -230,6 +230,24 @@ main {
     align-items: center;
     width: 100%;
 }
+.card_view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+.title_div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.text_div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 /*Background DIV - galery Divs*/
 .bckDiv {
     display: none;

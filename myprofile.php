@@ -21,15 +21,19 @@ require_once "required/_required.php";
         } else {
             $avatar= (file_exists("avatars/".$_SESSION['id'].".jpg"))? $_SESSION['id'].".jpg" : "noavatar.jpg";
             echo "<div class='avatarDiv'><img src='avatars/{$avatar}' id='av'/></div>";
+            ?>
+            <div class="card_view">
+            <?php
             if(isset($_SESSION['id'])) {
                 if(filter_var($_SESSION['id'], FILTER_VALIDATE_INT)!==false)
-                $db->usrCar($_SESSION['id']);
+                $db->myCarsView($_SESSION['id']);
                 else echo Msg::err("Nevalidan ID");
             }
             else echo Msg::info("Setuj ID");
         }
-        
         ?>
+            </div>
+        
         </div>
     </main>
     <?php  require_once "components/_footer.php"; ?>

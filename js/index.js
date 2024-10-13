@@ -1,22 +1,3 @@
-//HEADER
-
-let goDiv = document.querySelector(".small")
-let manage = document.querySelector(".manage")
-
-goDiv.addEventListener("click", () => {
-    console.log("radi")
-    console.log(manage.classList)
-    if(manage.classList.contains("manIn")) {
-        manage.classList.remove("manIn")
-        manage.classList.add("manOut")
-    } else if(manage.classList.contains("manOut")) {
-        manage.classList.remove("manOut")
-        manage.classList.add("manIn")
-    } else {
-        manage.classList.add("manIn")
-    }
-})
-
 //SEARCH
 
 let search = document.querySelector("#find")
@@ -92,3 +73,24 @@ left.addEventListener("click", () => {
     }
     images[imgNum].style.display = "block"
 })
+
+//HEADER
+
+let goDiv = document.querySelector(".small")
+let manage = document.querySelector(".manage")
+
+if(goDiv != null && goDiv != undefined) {
+    goDiv.addEventListener("click", () => {
+    console.log("radi")
+    console.log(manage.classList)
+    if(manage.classList.contains("manIn")) {
+        manage.classList.remove("manIn")
+        manage.classList.add("manOut")
+        } else if(manage.classList.contains("manOut")) {
+            manage.classList.remove("manOut")
+            manage.classList.add("manIn")
+        } else {
+            manage.classList.add("manIn")
+        }
+    })
+}
