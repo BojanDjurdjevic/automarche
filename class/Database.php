@@ -53,6 +53,7 @@ class Database {
                     <div class='car_title'>
                         <h2>{$row->make} {$row->model}</h2>
                         <h3>{$row->price} EUR</h3>
+                        <i class='fa-solid fa-user-pen fa-2xl'></i>
                     </div>
                     <div class='galery'>";
                     $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
@@ -66,37 +67,39 @@ class Database {
                     echo    
                     "</div>
                     <div class='properties'>
-                        <h6>Make:</h6>
-                        <h6>{$row->make}</h6>
-                        <h6>Model:</h6>
-                        <h6>{$row->model}</h6>
-                        <h6>Year:</h6>
-                        <h6>{$row->year}</h6>
-                        <h6>Kilometers:</h6>
-                        <h6>{$row->km}km</h6>
-                        <h6>Engine size:</h6>
-                        <h6>{$row->engine}cm3</h6>
-                        <h6>Power:</h6>
-                        <h6>{$row->power}ks</h6>
-                        <h6>Fuel:</h6>
-                        <h6>{$row->fuel}</h6>
-                        <h6>Body type:</h6>
-                        <h6>{$row->body}</h6>
-                        <h6>Gear:</h6>
-                        <h6>{$row->gear}</h6>
-                        <h6>Number of seats:</h6>
-                        <h6>{$row->seats}</h6>
-                        <h6>Number of doors:</h6>
-                        <h6>{$row->doors}</h6>
-                        <h6>Color:</h6>
-                        <h6>{$row->color}</h6>
-                        <h6>Wheel:</h6>
-                        <h6>{$row->wheel}</h6>
-                        <h6>Registration expiry:</h6>
-                        <h6>{$row->regdate}</h6>
-                        <h6>Posted on:</h6>
-                        <h6>{$row->created}</h6>
+                        <h4>Make:</h4>
+                        <h4>{$row->make}</h4>
+                        <h4>Model:</h4>
+                        <h4>{$row->model}</h4>
+                        <h4>Year:</h4>
+                        <h4>{$row->year}</h4>
+                        <h4>Kilometers:</h4>
+                        <h4>{$row->km}km</h4>
+                        <h4>Engine size:</h4>
+                        <h4>{$row->engine}cm3</h4>
+                        <h4>Power:</h4>
+                        <h4>{$row->power}ks</h4>
+                        <h4>Fuel:</h4>
+                        <h4>{$row->fuel}</h4>
+                        <h4>Body type:</h4>
+                        <h4>{$row->body}</h4>
+
+                        <h4>Gear:</h6>
+                        <h4>{$row->gear}</h4>
+                        <h4>Number of seats:</h4>
+                        <h4>{$row->seats}</h4>
+                        <h4>Number of doors:</h4>
+                        <h4>{$row->doors}</h4>
+                        <h4>Color:</h4>
+                        <h4>{$row->color}</h4>
+                        <h4>Wheel:</h4>
+                        <h4>{$row->wheel}</h4>
+                        <h4>Registration expiry:</h4>
+                        <h4>{$row->regdate}</h4>
+                        <h4>Posted on:</h4>
+                        <h4>{$row->created}</h4>
                     </div>
+                    <hr/>
                     <div class='desc'>
                         <p>{$row->description}</p>
                         <div>
