@@ -52,9 +52,11 @@ class Database {
             echo "<div class='carprofile'>
                     <div class='car_title'>
                         <h2>{$row->make} {$row->model}</h2>
-                        <h3>{$row->price} EUR</h3>
-                        <i class='fa-solid fa-user-pen fa-2xl'></i>
-                    </div>
+                        <h3>{$row->price} EUR</h3>";
+                        if(isset($_SESSION['id']) && $row->users_usr_id == $_SESSION['id'])
+                        echo "<i class='fa-solid fa-user-pen fa-2xl'></i>";
+                    echo
+                    "</div>
                     <div class='galery'>";
                     $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
                     $result = $this->db->query($query2);

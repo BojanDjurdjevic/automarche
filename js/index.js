@@ -28,7 +28,7 @@ searchBtn.addEventListener("click", () => {
 let goDiv = document.querySelector(".small")
 let manage = document.querySelector(".manage")
 
-//if(goDiv != null && goDiv != undefined) {
+if(goDiv != null && goDiv != undefined) {
     goDiv.addEventListener("click", () => {
     console.log("radi")
     console.log(manage.classList)
@@ -42,7 +42,7 @@ let manage = document.querySelector(".manage")
             manage.classList.add("manIn")
         }
     })
-//}
+}
 // EDIT USER Profile
 let editBtn = document.querySelector(".editBtn")
 let editForm = document.querySelector(".edit_form")
@@ -99,21 +99,49 @@ function displayNone() {
         img.style.display = "none"
     })
 }
-imgDiv.addEventListener("click", zoomIn)
-xmark.addEventListener("click", zoomOut)
-right.addEventListener("click", () => {
-    displayNone()
-    imgNum++
-    if(imgNum == numPics) {
-        imgNum = 0
-    }
-    images[imgNum].style.display = "block"
-})
-left.addEventListener("click", () => {
-    displayNone()
-    imgNum--
-    if(imgNum == -1) {
-        imgNum = numPics -1
-    }
-    images[imgNum].style.display = "block"
-})
+if(imgDiv) {
+   imgDiv.addEventListener("click", zoomIn) 
+}
+if(xmark) {
+   xmark.addEventListener("click", zoomOut) 
+}
+if(right) {
+    right.addEventListener("click", () => {
+        displayNone()
+        imgNum++
+        if(imgNum == numPics) {
+            imgNum = 0
+        }
+        images[imgNum].style.display = "block"
+    })
+}
+if(left) {
+    left.addEventListener("click", () => {
+        displayNone()
+        imgNum--
+        if(imgNum == -1) {
+            imgNum = numPics -1
+        }
+        images[imgNum].style.display = "block"
+    }) 
+}
+// EDIT CAR Button and Form
+let carBtn = document.querySelector(".car_title i")
+let editCarForm = document.querySelector(".edit_car_form")
+let cancelForm = document.querySelector(".edit_car_form i")
+let submitForm = document.querySelector(".edit_car_form button")
+if(carBtn) {
+    carBtn.addEventListener("click", () => {
+        editCarForm.style.display = 'flex'
+    })
+}
+if(cancelForm) {
+    cancelForm.addEventListener("click", () => {
+        editCarForm.style.display = 'none'
+    })
+}
+if(submitForm) {
+    submitForm.addEventListener("click", () => {
+        editCarForm.style.display = 'none'
+    })
+}

@@ -312,6 +312,19 @@ main {
     justify-content: space-around;
     align-items: center;
 }
+.edit_car_form {
+    position: absolute;
+    right: 1vw;
+    top: 21vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.edit_car_form i:hover {
+    cursor: pointer;
+    margin-bottom: 1.3rem;
+}
 /*-----------Background DIV - galery Divs------------------*/
 .bckDiv {
     display: none;
