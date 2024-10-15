@@ -126,10 +126,12 @@ if(left) {
     }) 
 }
 // EDIT CAR Button and Form
-let carBtn = document.querySelector(".car_title i")
+let carBtn = document.querySelector(".car_title i:last-of-type")
 let editCarForm = document.querySelector(".edit_car_form")
 let cancelForm = document.querySelector(".edit_car_form i")
 let submitForm = document.querySelector(".edit_car_form button")
+let resDiv = document.querySelector(".res_form")
+let resBtn = document.querySelector("#res_btn")
 if(carBtn) {
     carBtn.addEventListener("click", () => {
         editCarForm.style.display = 'flex'
@@ -142,6 +144,14 @@ if(cancelForm) {
 }
 if(submitForm) {
     submitForm.addEventListener("click", () => {
+        console.log("form dugme radi")
         editCarForm.style.display = 'none'
+        resDiv.style.display = 'flex'
+    })
+}
+if(resBtn) {
+    resBtn.addEventListener("click", () => {
+        console.log("OK dugme radi")
+        resDiv.style.display = 'none'
     })
 }

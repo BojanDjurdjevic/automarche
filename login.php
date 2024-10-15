@@ -39,7 +39,7 @@ require_once "required/_required.php";
                                 $_SESSION['status'] = $row->usr_status;
                                 if(isset($check)) {
                                     setcookie("id", $_SESSION['id'], time()+10800, "/");
-                                    setcookie("name", $_SESSION['podaci'], time()+10800, "/");
+                                    setcookie("name", $_SESSION['name'], time()+10800, "/");
                                     setcookie("email", $_SESSION['email'], time()+10800, "/");
                                     setcookie("status", $_SESSION['status'], time()+10800, "/");
                                 }

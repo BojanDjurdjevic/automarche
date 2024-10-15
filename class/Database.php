@@ -54,7 +54,10 @@ class Database {
                         <h2>{$row->make} {$row->model}</h2>
                         <h3>{$row->price} EUR</h3>";
                         if(isset($_SESSION['id']) && $row->users_usr_id == $_SESSION['id'])
-                        echo "<i class='fa-solid fa-user-pen fa-2xl'></i>";
+                        echo "<div class='manage_car'>
+                              <i class='fa-solid fa-trash-can fa-2xl'></i>
+                              <i class='fa-solid fa-user-pen fa-2xl'></i>
+                              </div>";
                     echo
                     "</div>
                     <div class='galery'>";
@@ -160,7 +163,7 @@ class Database {
                        <p>{$row->price} EUR</p>
                     </div>
                     <div class='img_div'>";
-                    $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
+                    $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND deleted = 0";
                     $res2 = $this->db->query($query2);
                     if(mysqli_num_rows($res2) > 0) {
                         $r = $res2->fetch_assoc();
@@ -204,17 +207,15 @@ class Database {
     public function updateCar($id, $usrID, $make, $model, $price, $year, $body,
         $fuel, $power, $engine, $km, $gear, $doors, $seats, $color, $wheel,
         $desc, $reg) {
-        $query = "UPDATE cars SET (users_usr_id, make, model, price, year, body,
-        fuel, power, engine, km, gear, doors, seats, color, wheel, description,
-        regdate) VALUES ({$usrID}, '{$make}', '{$model}', {$price}, {$year}, '{$body}',
-        '{$fuel}', {$power}, {$engine}, {$km}, '{$gear}', {$doors}, {$seats}, '{$color}', 
-        '{$wheel}', '{$desc}', {$reg}) 
-        WHERE car_id = {$id}";
+        $query = "UPDATE cars SET users_usr_id = {$usrID}, make = '{$make}', model = '{$model}', 
+        price = {$price}, year = {$year}, body = '{$body}', fuel = '{$fuel}', power = {$power}, engine = {$engine}, 
+        km = {$km}, gear = '{$gear}', doors = {$doors}, seats = {$seats}, color = '{$color}', 
+        wheel = '{$wheel}', description = '{$desc}', regdate = {$reg} WHERE car_id = {$id}";
         $this->db->query($query);
-        if(!$this->db && $this->db->query($query)) {
+        if($this->db && $this->db->query($query)) {
             echo Msg::success("The car {$make} {$model} is succesfully updated");
         } else
-        echo Msg::err("The car removing is FAILED!");
+        echo Msg::err("The car updating is FAILED!");
     }
     public function deleteCar($id) {
         $query = "UPDATE cars SET deleted = 1 WHERE car_id = {$id}";
