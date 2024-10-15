@@ -48,25 +48,56 @@ let editBtn = document.querySelector(".editBtn")
 let editForm = document.querySelector(".edit_form")
 let noEdit = document.querySelector(".edit_form i")
 let subBtn = document.querySelector(".edit_form button")
+let cslBtn = document.querySelector(".clsBtn")
 if(editBtn) {
     editBtn.addEventListener("click", () => {
     editBtn.style.display = 'none'
+    cslBtn.style.display = 'none'
     editForm.style.display = 'flex'
 })
 }
 if(noEdit) {
     noEdit.addEventListener("click", () => {
     editBtn.style.display = 'flex'
+    cslBtn.style.display = 'flex'
     editForm.style.display = 'none'
 })
 }
 if(subBtn) {
     subBtn.addEventListener("click", () => {
     editBtn.style.display = 'flex'
+    cslBtn.style.display = 'flex'
     editForm.style.display = 'none'
 })  
 }
+let msgBtn = document.querySelector(".msg_btn")
+let msgDiv = document.querySelector(".cardel_msg")
+if(msgBtn) {
+    msgBtn.addEventListener("click", () => {
+        msgDiv.style.display = 'none'
+    })
+}
+//Cancel USER
+let cancelUsr = document.querySelector(".clsBtn")
+let yesDelUsr = document.querySelector("#yes_del_usr")
+let noDelUsr = document.querySelector("#no_del_usr")
+let popupUsr = document.querySelector(".user_popup")
 
+if(cancelUsr) {
+    cancelUsr.addEventListener("click", () => {
+        popupUsr.style.display = 'flex'
+    })
+}
+if(yesDelUsr) {
+    yesDelUsr.addEventListener("click", () => {
+        popupUsr.style.display = 'none'
+    })
+}
+if(noDelUsr) {
+    noDelUsr.addEventListener("click", () => {
+        popupUsr.style.display = 'none'
+    })
+}
 //PICTURE SLIDER
 let imgDiv = document.querySelector(".galery")
 let images = document.querySelectorAll(".galery img")
@@ -153,5 +184,26 @@ if(resBtn) {
     resBtn.addEventListener("click", () => {
         console.log("OK dugme radi")
         resDiv.style.display = 'none'
+    })
+}
+//Cancel CAR
+let cancelCar = document.querySelector(".manage_car i:first-of-type")
+let yesDel = document.querySelector("#yes_del")
+let noDel = document.querySelector("#no_del")
+let popup = document.querySelector(".popup")
+
+if(cancelCar) {
+    cancelCar.addEventListener("click", () => {
+        popup.style.display = 'flex'
+    })
+}
+if(yesDel) {
+    yesDel.addEventListener("click", () => {
+        popup.style.display = 'none'
+    })
+}
+if(noDel) {
+    noDel.addEventListener("click", () => {
+        popup.style.display = 'none'
     })
 }

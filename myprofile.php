@@ -30,9 +30,10 @@ require_once "required/_required.php";
                         $row = $res->fetch_object();
                         echo "  <div class='edit_usr'>
                                     <div class='editBtn'>
-                                        <p>Edit your data</p>
-                                        <br/>
                                         <i class='fa-solid fa-user-pen fa-2xl'></i>
+                                    </div>
+                                    <div class='clsBtn'>
+                                        <i class='fa-solid fa-trash-can fa-2xl'></i>
                                     </div>
                                     <div class='edit_form'>
                                         <i class='fa-solid fa-circle-xmark fa-2xl'></i>
@@ -60,6 +61,14 @@ require_once "required/_required.php";
                 ?>
                 
             </div>
+            <div class="user_popup">
+                <h2>Are you sure you want to cancel your profile?</h2>
+                <form action="deleteusr.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" />
+                    <button id="yes_del_usr">YES</button>
+                </form>
+                <button id="no_del_usr">NO</button>
+            </div>
             <div class="err_div">
                 <?php
                 if(isset($_POST['name'])) {
@@ -71,6 +80,26 @@ require_once "required/_required.php";
                 }
                 ?>
             </div>
+            <?php
+                if(isset($_SESSION['deleted']) && $_SESSION['deleted'] != "") {
+                    echo
+                    "<div class='cardel_msg'>";
+                        echo Msg::success("{$_SESSION['deleted']}");
+                    echo "
+                        <button class='msg_btn'>OK</button>
+                    </div>";
+                    $_SESSION['deleted'] = "";
+                }
+                if(isset($_SESSION['deletedUser']) && $_SESSION['deletedUser'] != "") {
+                    echo
+                    "<div class='cardel_msg'>";
+                        echo Msg::success("{$_SESSION['deletedUser']}");
+                    echo "
+                        <button class='msg_btn'>OK</button>
+                    </div>";
+                    $_SESSION['deletedUser'] = "";
+                }
+            ?>
             <hr>
             <div class="card_view">
                 <?php

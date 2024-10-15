@@ -121,6 +121,14 @@ require_once "required/_required.php";
                 ?>
                 <button id="res-btn">OK</button>
         </div>
+        <div class="popup">
+            <h2>Are you sure you want to cancel this car?</h2>
+            <form action="deletecar.php" method="POST">
+                <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+                <button id="yes_del">YES</button>
+            </form>
+            <button id="no_del">NO</button>
+        </div>
     </main>
     <?php require_once "components/_footer.php"; ?>
     

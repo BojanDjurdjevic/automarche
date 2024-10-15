@@ -19,6 +19,15 @@ require_once "required/_required.php";
         <?php require_once "components/_searchcar.php" ?>
         <div class="main">
             <?php
+            if(isset($_SESSION['deletedUser']) && $_SESSION['deletedUser'] != "") {
+                echo
+                "<div class='cardel_msg'>";
+                    echo Msg::success("{$_SESSION['deletedUser']}");
+                echo "
+                    <button class='msg_btn'>OK</button>
+                </div>";
+                $_SESSION['deletedUser'] = "";
+            }
             $db->all();
             ?>
         </div>

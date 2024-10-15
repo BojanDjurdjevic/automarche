@@ -130,9 +130,16 @@ require_once "required/_required.php";
                 if($res->num_rows > 0) {
                     while($row = $res->fetch_object()) {
                         echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
-                                <div class='img_div'>
-                                    <img src='images/sport-car.jpg' width='300'>
-                                </div>
+                                <div class='img_div'>";
+                                $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
+                                $result2 = $db->db->query($query2);
+                                if(mysqli_num_rows($result2) > 0) {
+                                    $r = $result2->fetch_assoc();
+                                        echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                                } else
+                                echo "<img src='images/nocar.jpg' width='360'>";
+                                echo
+                                "</div>
                                 <div class='txt_div'>
                                     <h4>{$row->make} {$row->model}</h4>
                                     <p>Year: {$row->year}</p>
