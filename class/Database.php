@@ -261,6 +261,9 @@ class Database {
         }
     }
     public function createUser($name, $mail, $pass, $tel, $status, $country, $city, $address) {
+        $qr = "SELECT usr_name as name, usr_mail as email FROM users WHERE usr_name = '{$name}' OR usr_mail = '{$mail}'";
+        $res = $this->db->query($qr);
+        if(mysqli_num_rows($res) == 0) {
         $query = "INSERT INTO users (usr_name, usr_mail, usr_pas, usr_tel, usr_status, country, city, address)
         VALUES ('{$name}', '{$mail}', '{$pass}', '{$tel}', '{$status}', '{$country}', '{$city}', '{$address}')";
         $this->db->query($query);
@@ -272,6 +275,17 @@ class Database {
                 }
                 else echo Msg::err("Avatar upload FAILED!");
             }
+            header("location: login.php");
+        } else {
+            while($row = $res->fetch_object()) {
+                if($row->name == $name) {
+                    echo Msg::err("The user with name: {$name} already exists!");
+                } elseif($row->email == $mail) {
+                    echo Msg::err("The user with email: {$mail} already exists!");
+                }
+            }
+        }
+        
     }
     
     public function updateUser($id, $name, $mail, $tel, $country, $city, $address) {

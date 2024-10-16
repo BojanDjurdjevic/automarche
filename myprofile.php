@@ -69,6 +69,13 @@ require_once "required/_required.php";
                 </form>
                 <button id="no_del_usr">NO</button>
             </div>
+            <div class="avatarPopup">
+                <i class='fa-solid fa-circle-xmark fa-2xl'></i>
+                <form action="myprofile.php" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="avatar" accept="image/*">
+                    <button>Change your avatar</button>
+                </form>
+            </div>
             <div class="err_div">
                 <?php
                 if(isset($_POST['name'])) {

@@ -23,6 +23,10 @@ require_once "required/_required.php";
                 <label for="check">Remember me</label>
                 <button>Log in</button>
             </form>
+            <div class="gotoreg">
+                <p>You don't have any account with us?</p>
+                <p>Please go to <a href="reguser.php">Sign up</a></p>
+            </div>
             <?php
             if(isset($_POST['email']) && isset($_POST['pass'])) {
                 extract($_POST);
