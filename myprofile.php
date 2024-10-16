@@ -73,7 +73,7 @@ require_once "required/_required.php";
                 <i class='fa-solid fa-circle-xmark fa-2xl'></i>
                 <form action="myprofile.php" method="POST" enctype="multipart/form-data">
                     <input type="file" name="avatar" accept="image/*">
-                    <button>Change your avatar</button>
+                    <button id="chgAvatar">Change your avatar</button>
                 </form>
             </div>
             <div class="err_div">
@@ -84,6 +84,16 @@ require_once "required/_required.php";
                         $db->updateUser($_SESSION['id'], trim($name), trim($mail), trim($tel), trim($country), (trim($city)), trim($address));
                     } else
                     echo Msg::err("All fields must be filled!");
+                    echo "<button class='errmsg_btn'><a href='myprofile.php'>OK</a></button>";
+                }
+
+                if(isset($_FILES['avatar']) && $_FILES['avatar']['name']!="") {
+                    $name = $_SESSION['id'].".jpg";
+                    if(@move_uploaded_file($_FILES['avatar']['tmp_name'], "avatars/".$name)) {
+                        echo Msg::success("Succesfully uploaded avatar!");
+                    }
+                    else echo Msg::err("Avatar upload FAILED!");
+                    echo "<button class='errmsg_btn'><a href='myprofile.php'>OK</a></button>";
                 }
                 ?>
             </div>

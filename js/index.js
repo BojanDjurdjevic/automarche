@@ -49,6 +49,14 @@ let editForm = document.querySelector(".edit_form")
 let noEdit = document.querySelector(".edit_form i")
 let subBtn = document.querySelector(".edit_form button")
 let cslBtn = document.querySelector(".clsBtn")
+
+let avatarDiv = document.querySelector(".avatarDiv")
+let avatarPop = document.querySelector(".avatarPopup")
+let noAvatarBtn = document.querySelector(".avatarPopup i")
+let addAvatarBtn = document.querySelector("#chgAvatar")
+let errMsgDiv = document.querySelector(".err_div")
+let errMsgBtn = document.querySelector(".errmsg_btn") 
+
 if(editBtn) {
     editBtn.addEventListener("click", () => {
     editBtn.style.display = 'none'
@@ -76,6 +84,26 @@ if(msgBtn) {
     msgBtn.addEventListener("click", () => {
         msgDiv.style.display = 'none'
     })
+}
+if(avatarDiv) {
+    avatarDiv.addEventListener("click", () => {
+        avatarPop.style.display = 'flex'
+    })
+}
+if(noAvatarBtn) {
+    noAvatarBtn.addEventListener("click", () => {
+        avatarPop.style.display = 'none'
+    })
+}
+if(addAvatarBtn) {
+    addAvatarBtn.addEventListener("click", () => {
+        avatarPop.style.display = 'none'
+    })
+}
+if(errMsgBtn) {
+    errMsgBtn.addEventListener("click", () => {
+        errMsgDiv.style.display = 'none';
+    }) 
 }
 //Cancel USER
 let cancelUsr = document.querySelector(".clsBtn")
