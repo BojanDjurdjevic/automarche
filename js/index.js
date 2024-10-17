@@ -127,8 +127,8 @@ if(noDelUsr) {
     })
 }
 //PICTURE SLIDER
-let imgDiv = document.querySelector(".galery")
-let images = document.querySelectorAll(".galery img")
+let imgDiv = document.querySelector(".galery_in")
+let images = document.querySelectorAll(".galery_in img")
 if(images[0] !== undefined) {
     displayNone()
     images[0].style.display = "block"
@@ -139,7 +139,9 @@ let imgNum = 0
 let bckDiv = document.querySelector(".bckDiv")
 let xmark = document.querySelector("#xmark")
 let left = document.querySelector("#left")
+let smallLeft = document.querySelector("#smallLeft")
 let right = document.querySelector("#right")
+let smallRight = document.querySelector("#smallRight")
 function zoomIn() {
     console.log(images)
     bckDiv.classList.add("visible")
@@ -174,8 +176,28 @@ if(right) {
         images[imgNum].style.display = "block"
     })
 }
+if(smallRight) {
+    smallRight.addEventListener("click", () => {
+        displayNone()
+        imgNum++
+        if(imgNum == numPics) {
+            imgNum = 0
+        }
+        images[imgNum].style.display = "block"
+    })
+}
 if(left) {
     left.addEventListener("click", () => {
+        displayNone()
+        imgNum--
+        if(imgNum == -1) {
+            imgNum = numPics -1
+        }
+        images[imgNum].style.display = "block"
+    }) 
+}
+if(smallLeft) {
+    smallLeft.addEventListener("click", () => {
         displayNone()
         imgNum--
         if(imgNum == -1) {

@@ -60,7 +60,10 @@ class Database {
                               </div>";
                     echo
                     "</div>
-                    <div class='galery'>";
+                    <div class='galery'>
+                    <i class='fa-solid fa-angles-left fa-2xl' id='smallLeft'></i>
+                    <div class='galery_in'>
+                    <i class='fa-solid fa-magnifying-glass fa-2xl' id='magnify'></i>";
                     $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
                     $result = $this->db->query($query2);
                     if(mysqli_num_rows($result) > 0) {
@@ -69,8 +72,9 @@ class Database {
                         }  
                     } else
                     echo "<img src='images/nocar.jpg' alt='CarImage'>";
-                    echo    
-                    "</div>
+                    echo "</div>  
+                    <i class='fa-solid fa-angles-right fa-2xl' id='smallRight' ></i>
+                    </div>
                     <div class='properties'>
                         <h4>Make:</h4>
                         <h4>{$row->make}</h4>

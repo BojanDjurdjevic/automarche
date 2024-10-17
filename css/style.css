@@ -407,10 +407,31 @@ main {
     animation-timing-function: inherit;
     animation-fill-mode: forwards;
 }
+.drop_img_popup {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 33vw;
+    height: 24vh;
+    border-radius: 2rem;
+    position: fixed;
+    top: 18vh;
+    left: 33.5vw;
+    z-index: 10;
+    background-color: #D7D7D7;
+    animation-name: popupIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: inherit;
+    animation-fill-mode: forwards;
+}
 /*-----------Background DIV - galery Divs------------------*/
 .bckDiv {
     display: none;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background-color: #020202;
@@ -438,11 +459,24 @@ main {
     right: 10%;
     top: 50%;
 }
-#xmark:hover, #left:hover, #right:hover {
+#dropImg {
+    color: white;
+    position: fixed;
+    right: 50%;
+    top: 10%;
+}
+#xmark:hover, #left:hover, #right:hover, #dropImg:hover {
     cursor: pointer;
 }
 .galery {
-    width: 75%;
+    width: 85%;
+    max-height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.galery_in {
+    max-width: 75%;
     max-height: 50%;
 }
 .zoom {
@@ -461,6 +495,15 @@ main {
 }
 .galery:hover {
     cursor: pointer;
+}
+.magnify {
+    color: lightgray;
+    position: absolute;
+    left: 48vw;
+    top: 55vh;
+}
+.magnify:hover {
+    display: block;
 }
 /*----------------- CAR PROPERTIES and DESCRIPTION-----------------*/
 .properties {

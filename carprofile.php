@@ -12,11 +12,7 @@ require_once "required/_required.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="bckDiv">
-        <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
-        <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
-        <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
-    </div>
+    
     <?php require_once "components/_header.php"; ?>
     <main>
         <?php require_once "components/_searchcar.php" ?>
@@ -40,6 +36,24 @@ require_once "required/_required.php";
                 $row = $res->fetch_object();
             }
         ?>
+        <div class="bckDiv">
+            <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
+            <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
+            <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
+            <?php
+            if(login() && $_SESSION['id'] == $row->users_usr_id) {
+                echo "<i class='fa-solid fa-trash-can fa-2xl' id='dropImg'>";
+            }
+            ?>
+        </div>
+        <div class="drop_img_popup">
+            <h2>Are you sure you want to cancel this picture?</h2>
+            <form action="deleteimg.php" method="POST">
+                <input type="hidden" name="id" value="" />
+                <button id="yes_img">YES</button>
+            </form>
+            <button id="no_img">NO</button>
+        </div>
         <div class="edit_car_form">
             <i class='fa-solid fa-circle-xmark fa-2xl'></i>
             <form action="carprofile.php?id=<?= $row->car_id ?>" method="post" id="form" enctype="multipart/form-data">
