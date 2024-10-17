@@ -20,7 +20,7 @@ class Database {
                         $res = $this->db->query($query2);
                         if(mysqli_num_rows($res) > 0) {
                             $r = $res->fetch_assoc();
-                                echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                                echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='420px' height='280px'>"; 
                         } else
                         echo "<img src='images/nocar.jpg' width='360'>";
                         echo
@@ -167,7 +167,7 @@ class Database {
                     $res2 = $this->db->query($query2);
                     if(mysqli_num_rows($res2) > 0) {
                         $r = $res2->fetch_assoc();
-                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='350px' height='210px'>"; 
                     } else
                     echo "<img src='images/nocar.jpg' width='360'>";
                     echo

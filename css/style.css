@@ -455,7 +455,8 @@ main {
 }
 #carImg {
     width: 100%;
-    max-height: 78vh;
+    /*max-height: 78vh;*/
+    max-height: 100%;
     display: none;
 }
 .galery:hover {

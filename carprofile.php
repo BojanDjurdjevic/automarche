@@ -33,10 +33,12 @@ require_once "required/_required.php";
             
         </div>
         <?php 
-            $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
-            $res = $db->db->query($query);
-            if($res->num_rows == 1)
-            $row = $res->fetch_object();
+            if(login()) {
+                $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
+                $res = $db->db->query($query);
+                if($res->num_rows == 1)
+                $row = $res->fetch_object();
+            }
         ?>
         <div class="edit_car_form">
             <i class='fa-solid fa-circle-xmark fa-2xl'></i>
