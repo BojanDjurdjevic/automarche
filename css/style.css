@@ -462,37 +462,43 @@ main {
 #smallRight, #smallLeft {
     height: 3rem;
     width: 3rem;
+    color: lightgray;
 }
 #dropImg {
     color: white;
     position: fixed;
     right: 50%;
     top: 10%;
+    z-index: 25;
 }
 #xmark:hover, #left:hover, #right:hover, #dropImg:hover {
     cursor: pointer;
 }
 .galery {
     width: 85%;
-    max-height: 50%;
+    height: 60%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #231F20;
 }
 .galery_in {
-    max-width: 75%;
-    max-height: 100%;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #imgDivLeft, #imgDivRight {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 40vh;
     min-width: 10%;
 }
 .zoom {
     position: fixed;
-    top: 12vh;
+    top: 15vh;
     left: 20vw;
     height: 60vh;
     width: 60vw;
@@ -500,8 +506,9 @@ main {
 }
 #carImg {
     width: 100%;
+    
     max-height: 78vh;
-    /*max-height: 100%; */
+    /*max-height: 100%; height: 18rem;*/
     display: none;
 }
 .galery:hover {

@@ -15,7 +15,11 @@ require_once "required/_required.php";
     <?php require_once "components/_header.php"; ?>
     <main>
         <?php require_once "components/_searchcar.php" ?>
-    
+        <div class="bckDiv">
+            <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
+            <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
+            <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
+        </div>
         <div class="main">
             <?php
             if(isset($_GET['id'])) {
@@ -36,16 +40,7 @@ require_once "required/_required.php";
         $row = $res->fetch_object();
     }
     ?>
-    <div class="bckDiv">
-        <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
-        <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
-        <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
-        <?php /*
-        if(login() && $_SESSION['id'] == $row->users_usr_id) {
-            echo "<i class='fa-solid fa-trash-can fa-2xl' id='dropImg'>"; 
-        } */
-        ?>
-    </div>
+    
         <div class="drop_img_popup">
             <h2>Are you sure you want to cancel this picture?</h2>
             <form action="deleteimg.php" method="POST">
@@ -147,7 +142,7 @@ require_once "required/_required.php";
         </div>
     </main>
     <?php require_once "components/_footer.php"; ?>
-    
+
     <script src="./js/index.js"></script>
 </body>
 </html>
