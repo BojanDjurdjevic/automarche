@@ -61,7 +61,9 @@ class Database {
                     echo
                     "</div>
                     <div class='galery'>
+                    <div id='imgDivLeft'>
                     <i class='fa-solid fa-angles-left fa-2xl' id='smallLeft'></i>
+                    </div>
                     <div class='galery_in'>
                     <i class='fa-solid fa-magnifying-glass fa-2xl' id='magnify'></i>";
                     $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
@@ -72,8 +74,10 @@ class Database {
                         }  
                     } else
                     echo "<img src='images/nocar.jpg' alt='CarImage'>";
-                    echo "</div>  
+                    echo "</div>
+                    <div id='imgDivRight'>  
                     <i class='fa-solid fa-angles-right fa-2xl' id='smallRight' ></i>
+                    </div>
                     </div>
                     <div class='properties'>
                         <h4>Make:</h4>

@@ -139,9 +139,9 @@ let imgNum = 0
 let bckDiv = document.querySelector(".bckDiv")
 let xmark = document.querySelector("#xmark")
 let left = document.querySelector("#left")
-let smallLeft = document.querySelector("#smallLeft")
+let smallLeft = document.querySelector("#imgDivLeft")
 let right = document.querySelector("#right")
-let smallRight = document.querySelector("#smallRight")
+let smallRight = document.querySelector("#imgDivRight")
 function zoomIn() {
     console.log(images)
     bckDiv.classList.add("visible")

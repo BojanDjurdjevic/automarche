@@ -453,11 +453,19 @@ main {
     left: 10%;
     top: 50%;
 }
+#smallLeft {
+    height: 3rem;
+    width: 3rem;
+}
 #right {
     color: white;
     position: fixed;
     right: 10%;
     top: 50%;
+}
+#smallRight {
+    height: 3rem;
+    width: 3rem;
 }
 #dropImg {
     color: white;
@@ -478,6 +486,13 @@ main {
 .galery_in {
     max-width: 75%;
     max-height: 50%;
+}
+#imgDivLeft, #imgDivRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 10%;
 }
 .zoom {
     position: fixed;
