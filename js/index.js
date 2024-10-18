@@ -132,6 +132,7 @@ let images = document.querySelectorAll(".galery_in img")
 if(images[0] !== undefined) {
     displayNone()
     images[0].style.display = "block"
+    images[0].setAttribute("id", "carImg")
 }
 //images[0].classList.add("visible")
 let numPics = images.length
@@ -143,7 +144,6 @@ let smallLeft = document.querySelector("#imgDivLeft")
 let right = document.querySelector("#right")
 let smallRight = document.querySelector("#imgDivRight")
 function zoomIn() {
-    console.log(images)
     bckDiv.classList.add("visible")
     imgDiv.classList.add("zoom")
 }
@@ -158,6 +158,7 @@ function zoomOut() {
 function displayNone() {
     images.forEach((img) => {
         img.style.display = "none"
+        img.removeAttribute("id")
     })
 }
 if(imgDiv) {
@@ -174,6 +175,7 @@ if(right) {
             imgNum = 0
         }
         images[imgNum].style.display = "block"
+        images[imgNum].setAttribute("id", "carImg")
     })
 }
 if(smallRight) {
@@ -184,6 +186,7 @@ if(smallRight) {
             imgNum = 0
         }
         images[imgNum].style.display = "block"
+        images[imgNum].setAttribute("id", "carImg")
     })
 }
 if(left) {
@@ -194,6 +197,7 @@ if(left) {
             imgNum = numPics -1
         }
         images[imgNum].style.display = "block"
+        images[imgNum].setAttribute("id", "carImg")
     }) 
 }
 if(smallLeft) {
@@ -204,6 +208,7 @@ if(smallLeft) {
             imgNum = numPics -1
         }
         images[imgNum].style.display = "block"
+        images[imgNum].setAttribute("id", "carImg")
     }) 
 }
 // EDIT CAR Button and Form
@@ -257,3 +262,5 @@ if(noDel) {
         popup.style.display = 'none'
     })
 }
+//Cancel car img
+let dropImg = document.querySelector("#dropImg")

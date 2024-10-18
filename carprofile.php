@@ -12,10 +12,10 @@ require_once "required/_required.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
     <?php require_once "components/_header.php"; ?>
     <main>
         <?php require_once "components/_searchcar.php" ?>
+    
         <div class="main">
             <?php
             if(isset($_GET['id'])) {
@@ -29,23 +29,23 @@ require_once "required/_required.php";
             
         </div>
         <?php 
-            if(login()) {
-                $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
-                $res = $db->db->query($query);
-                if($res->num_rows == 1)
-                $row = $res->fetch_object();
-            }
+    if(login()) {
+        $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
+        $res = $db->db->query($query);
+        if($res->num_rows == 1)
+        $row = $res->fetch_object();
+    }
+    ?>
+    <div class="bckDiv">
+        <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
+        <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
+        <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
+        <?php /*
+        if(login() && $_SESSION['id'] == $row->users_usr_id) {
+            echo "<i class='fa-solid fa-trash-can fa-2xl' id='dropImg'>"; 
+        } */
         ?>
-        <div class="bckDiv">
-            <i class="fa-regular fa-circle-xmark fa-2xl" id="xmark"></i>
-            <i class="fa-solid fa-circle-chevron-left fa-2xl" id="left"></i>
-            <i class="fa-solid fa-circle-chevron-right fa-2xl" id="right"></i>
-            <?php
-            if(login() && $_SESSION['id'] == $row->users_usr_id) {
-                echo "<i class='fa-solid fa-trash-can fa-2xl' id='dropImg'>";
-            }
-            ?>
-        </div>
+    </div>
         <div class="drop_img_popup">
             <h2>Are you sure you want to cancel this picture?</h2>
             <form action="deleteimg.php" method="POST">

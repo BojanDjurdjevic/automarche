@@ -70,7 +70,7 @@ class Database {
                     $result = $this->db->query($query2);
                     if(mysqli_num_rows($result) > 0) {
                         while($r = $result->fetch_object()) {
-                            echo "<img src='images/{$r->pic_name}' alt='CarImage' id='carImg'>";
+                            echo "<img src='images/{$r->pic_name}' alt='CarImage'>";
                         }  
                     } else
                     echo "<img src='images/nocar.jpg' alt='CarImage'>";
