@@ -141,6 +141,7 @@ require_once "required/_required.php";
             <button id="no_del">NO</button>
         </div>
     </main>
+    <?php require_once "components/_careditmenu.php"; ?>
     <?php require_once "components/_footer.php"; ?>
 
     <script src="./js/index.js"></script>

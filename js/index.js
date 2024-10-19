@@ -212,7 +212,7 @@ if(smallLeft) {
     }) 
 }
 // EDIT CAR Button and Form
-let carBtn = document.querySelector(".car_title i:last-of-type")
+let carBtn = document.querySelector("#edit_car") //.car_title i:last-of-type
 let editCarForm = document.querySelector(".edit_car_form")
 let cancelForm = document.querySelector(".edit_car_form i")
 let submitForm = document.querySelector(".edit_car_form button")
@@ -242,7 +242,7 @@ if(resBtn) {
     })
 }
 //Cancel CAR
-let cancelCar = document.querySelector(".manage_car i:first-of-type")
+let cancelCar = document.querySelector("#remove_car") // .manage_car i:first-of-type
 let yesDel = document.querySelector("#yes_del")
 let noDel = document.querySelector("#no_del")
 let popup = document.querySelector(".popup")
