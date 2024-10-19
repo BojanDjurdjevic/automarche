@@ -212,6 +212,27 @@ if(smallLeft) {
     }) 
 }
 // EDIT CAR Button and Form
+let carMenuOpen = document.querySelector(".car_title i:last-of-type")
+let carEdtMenu = document.querySelector(".car_aside")
+let clsMenu = document.querySelector("#close")
+
+if(carMenuOpen) {
+    carMenuOpen.addEventListener("click", () => {
+        if(carEdtMenu.classList.contains("edit_menu_out")) {
+            carEdtMenu.classList.remove("edit_menu_out")
+        }
+        carEdtMenu.classList.add("edit_menu_in")
+    })
+}
+if(clsMenu) {
+    clsMenu.addEventListener("click", () => {
+        if(carEdtMenu.classList.contains("edit_menu_in")) {
+            carEdtMenu.classList.remove("edit_menu_in")
+        }
+        carEdtMenu.classList.add("edit_menu_out")
+    })
+}
+
 let carBtn = document.querySelector("#edit_car") //.car_title i:last-of-type
 let editCarForm = document.querySelector(".edit_car_form")
 let cancelForm = document.querySelector(".edit_car_form i")
@@ -221,6 +242,10 @@ let resBtn = document.querySelector("#res_btn")
 if(carBtn) {
     carBtn.addEventListener("click", () => {
         editCarForm.style.display = 'flex'
+        if(carEdtMenu.classList.contains("edit_menu_in")) {
+            carEdtMenu.classList.remove("edit_menu_in")
+        }
+        carEdtMenu.classList.add("edit_menu_out")
     })
 }
 if(cancelForm) {
@@ -230,14 +255,12 @@ if(cancelForm) {
 }
 if(submitForm) {
     submitForm.addEventListener("click", () => {
-        console.log("form dugme radi")
         editCarForm.style.display = 'none'
         resDiv.style.display = 'flex'
     })
 }
 if(resBtn) {
     resBtn.addEventListener("click", () => {
-        console.log("OK dugme radi")
         resDiv.style.display = 'none'
     })
 }
@@ -250,6 +273,10 @@ let popup = document.querySelector(".popup")
 if(cancelCar) {
     cancelCar.addEventListener("click", () => {
         popup.style.display = 'flex'
+        if(carEdtMenu.classList.contains("edit_menu_in")) {
+            carEdtMenu.classList.remove("edit_menu_in")
+        }
+        carEdtMenu.classList.add("edit_menu_out")
     })
 }
 if(yesDel) {
@@ -263,4 +290,12 @@ if(noDel) {
     })
 }
 //Cancel car img
-let dropImg = document.querySelector("#dropImg")
+let removePhotoBtn = document.querySelector("#remove_photo")
+if(removePhotoBtn) {
+    removePhotoBtn.addEventListener("click", () => {
+        if(carEdtMenu.classList.contains("edit_menu_in")) {
+            carEdtMenu.classList.remove("edit_menu_in")
+        }
+        carEdtMenu.classList.add("edit_menu_out")
+    })
+}

@@ -382,7 +382,7 @@ main {
     right: -20vw;
     top: 0;
     z-index: 28;
-    background-color: #020202;
+    background-color: #231F20;
     width: 18vw;
     height: 99vh;
     padding: 1rem;
@@ -391,7 +391,7 @@ main {
     align-items: center;
 }
 .car_menu {
-    background-color: #020202;
+    background-color: #231F20;
     color: white;
     width: 100%;
     height: 85%;
@@ -407,6 +407,20 @@ main {
 }
 .car_menu a:hover, .car_menu i:hover {
     color: rgb(203, 7, 7);
+}
+.edit_menu_in {
+    animation-name: menuIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: inherit;
+    animation-fill-mode: forwards;
+}
+.edit_menu_out {
+    animation-name: menuOut;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: inherit;
+    animation-fill-mode: forwards;
 }
 .edit_car_form {
     position: absolute;
