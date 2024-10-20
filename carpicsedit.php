@@ -35,7 +35,20 @@ require_once "required/_required.php";
                 if(isset($_POST['picarr']) && $_POST['picarr'] != "") {
                     $str = $_POST['picarr'];
                     $arr = explode(",", $str);
-                    var_dump($arr);
+                    $prepare = "UPDATE pics SET pics.deleted = 1 WHERE ";
+                    for($i = 0; $i < count($arr); $i++) {
+                        $prepare = $prepare."pic_name = '{$arr[$i]}' AND ";
+                    }
+                    $prepare = substr($prepare, 0, -5);
+                    $prepare = trim($prepare);
+                    /*
+                    var_dump($prepare); // No rows afected
+                    exit();
+                    */
+                    $db->db->query($prepare);
+                    if($db->db->query($prepare)) {
+                        echo Msg::success("Car images successfully removed!");
+                    }
                 } else
                 echo Msg::success("There is no selected images to remove");
             ?>
