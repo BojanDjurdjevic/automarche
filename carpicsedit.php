@@ -33,7 +33,9 @@ require_once "required/_required.php";
                 else echo Msg::info("There is no selected carID");
 
                 if(isset($_POST['picarr']) && $_POST['picarr'] != "") {
-                    var_dump($_POST['picarr']);
+                    $str = $_POST['picarr'];
+                    $arr = explode(",", $str);
+                    var_dump($arr);
                 } else
                 echo Msg::success("There is no selected images to remove");
             ?>

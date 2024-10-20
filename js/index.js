@@ -300,9 +300,72 @@ if(removePhotoBtn) {
     })
 }
 let carImages = document.querySelectorAll(".one_img img")
+let imgCont = document.querySelectorAll(".one_img")
 let picInput = document.querySelector("#picarr")
 let imgToRemove = []
-console.log(carImages)
+if(imgCont) {
+    imgCont.forEach(cont => {
+        cont.addEventListener("click", (e) => {
+            console.log(e.target.firstChild)
+            if(e.target.classList.contains("clickedImg")) {
+                e.target.classList.remove("clickedImg")
+                e.target.classList.add("unclickedImg")
+            } else if(e.target.classList.contains("unclickedImg")) {
+                e.target.classList.remove("unclickedImg")
+                e.target.classList.add("clickedImg")
+            } else {
+                e.target.classList.add("clickedImg")
+            }
+
+            let picStr = e.target.firstChild.getAttribute("src")
+            let ind = picStr.indexOf("/")
+            let picName = picStr.slice(ind+1)
+            if(!imgToRemove.includes(picName)) {
+                imgToRemove.push(picName)
+                console.log(imgToRemove)
+                picInput.value = imgToRemove
+            } else {
+                let picInd = imgToRemove.indexOf(picName)
+                imgToRemove.splice(picInd, 1)
+                console.log(imgToRemove)
+                picInput.value = imgToRemove
+            }
+            
+        })
+    })
+    
+}
+if(carImages) {
+    carImages.forEach(img => {
+        img.addEventListener("click", (e) => {
+            console.log(e.target.parentNode)
+            if(e.target.parentNode.classList.contains("clickedImg")) {
+                e.target.parentNode.classList.remove("clickedImg")
+                e.target.parentNode.classList.add("unclickedImg")
+            } else if(e.target.parentNode.classList.contains("unclickedImg")) {
+                e.target.parentNode.classList.remove("unclickedImg")
+                e.target.parentNode.classList.add("clickedImg")
+            } else {
+                e.target.parentNode.classList.add("clickedImg")
+            }
+            let picStr = e.target.getAttribute("src")
+            let ind = picStr.indexOf("/")
+            let picName = picStr.slice(ind+1)
+            if(!imgToRemove.includes(picName)) {
+                imgToRemove.push(picName)
+                console.log(imgToRemove)
+                picInput.value = imgToRemove
+            } else {
+                let picInd = imgToRemove.indexOf(picName)
+                imgToRemove.splice(picInd, 1)
+                console.log(imgToRemove)
+                picInput.value = imgToRemove
+            }
+            e.stopPropagation()
+        })
+    })
+}
+/* 
 carImages.addEventListener("click", (e) => {
     console.log(e.target)
     let picStr = e.target.getAttribute("src")
@@ -318,4 +381,5 @@ carImages.addEventListener("click", (e) => {
         console.log(imgToRemove)
         picInput.value = imgToRemove
     }
-})
+}) 
+*/

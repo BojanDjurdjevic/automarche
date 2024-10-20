@@ -492,11 +492,11 @@ main {
 /*-----------REMOVE CAR IMAGES-------------*/
 .car_img_view {
     display: grid; 
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 .one_img {
     padding: 0.9rem;
-    border: 0.0625rem solid rgb(203, 7, 7);
+    border: 0.0625rem solid black;
     margin: 0.3rem;
     border-radius: 1rem;
     display: flex;
@@ -509,6 +509,12 @@ main {
 .one_img img {
     border: 0.0625rem solid #020202;
     border-radius: 1rem;
+}
+.clickedImg {
+    background-color: rgb(45, 174, 255);
+}
+.unclickedImg {
+    background-color: none;
 }
 /*-----------Background DIV - galery Divs------------------*/
 .bckDiv {
