@@ -4,27 +4,27 @@ let search = document.querySelector("#find")
 let searchDiv = document.querySelector(".searchForm")
 let searchBtn = document.querySelector(".searchForm form button")
 
-search.addEventListener("click", () => {
-    console.log("searchListen")
-    if(!searchDiv.classList.contains("show")) {
-        if(searchDiv.classList.contains("hide")) {
-            searchDiv.classList.remove("hide")
+if(search) {
+    search.addEventListener("click", () => {
+        if(!searchDiv.classList.contains("show")) {
+            if(searchDiv.classList.contains("hide")) {
+                searchDiv.classList.remove("hide")
+            }
+            searchDiv.classList.add("show")
+        } else {
+            searchDiv.classList.remove("show")
+            searchDiv.classList.add("hide")
         }
-        searchDiv.classList.add("show")
-    } else {
+    })
+}
+if(searchBtn) {
+    searchBtn.addEventListener("click", () => {
+        console.log("btnListen")
         searchDiv.classList.remove("show")
         searchDiv.classList.add("hide")
-    }
-})
-
-searchBtn.addEventListener("click", () => {
-    console.log("btnListen")
-    searchDiv.classList.remove("show")
-    searchDiv.classList.add("hide")
-})
-
+    }) 
+}
 //HEADER
-
 let goDiv = document.querySelector(".small")
 let manage = document.querySelector(".manage")
 

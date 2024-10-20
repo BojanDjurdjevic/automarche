@@ -423,13 +423,17 @@ main {
     animation-fill-mode: forwards;
 }
 .edit_car_form {
-    position: absolute;
-    right: 1vw;
-    top: 21vh;
+    position: fixed;
+    right: 0;
+    top: 0;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    z-index: 35;
+    width: 100vw;
+    height: 100vh;
+    background-color: #020202;
 }
 .edit_car_form i {
     margin-bottom: 1.3rem;
@@ -484,6 +488,27 @@ main {
     animation-iteration-count: 1;
     animation-timing-function: inherit;
     animation-fill-mode: forwards;
+}
+/*-----------REMOVE CAR IMAGES-------------*/
+.car_img_view {
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr);
+}
+.one_img {
+    padding: 0.9rem;
+    border: 0.0625rem solid rgb(203, 7, 7);
+    margin: 0.3rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.one_img:hover {
+    width: 13,5rem;
+}
+.one_img img {
+    border: 0.0625rem solid #020202;
+    border-radius: 1rem;
 }
 /*-----------Background DIV - galery Divs------------------*/
 .bckDiv {

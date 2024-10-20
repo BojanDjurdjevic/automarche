@@ -16,7 +16,7 @@ class Database {
         while($row = $result->fetch_object()) {
             echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
                     <div class='img_div'>";
-                        $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
+                        $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND pics.deleted = 0";
                         $res = $this->db->query($query2);
                         if(mysqli_num_rows($res) > 0) {
                             $r = $res->fetch_assoc();
@@ -66,7 +66,7 @@ class Database {
                     </div>
                     <div class='galery_in'>
                     <i class='fa-solid fa-magnifying-glass fa-2xl' id='magnify'></i>";
-                    $query2 = "SELECT * FROM pics WHERE car_id = {$id}";
+                    $query2 = "SELECT * FROM pics WHERE car_id = {$id} AND deleted = 0";
                     $result = $this->db->query($query2);
                     if(mysqli_num_rows($result) > 0) {
                         while($r = $result->fetch_object()) {

@@ -25,9 +25,9 @@ require_once "required/_required.php";
             if(isset($_GET['id'])) {
                 if(filter_var($_GET['id'], FILTER_VALIDATE_INT)!==false)
                 $db->oneCar($_GET['id']);
-                else echo Msg::err("Nevalidan ID");
+                else echo Msg::err("Invalid ID");
             }
-            else echo Msg::info("Setuj ID");
+            else echo Msg::info("There is no selected car");
             
             ?>
             
