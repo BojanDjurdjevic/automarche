@@ -299,3 +299,23 @@ if(removePhotoBtn) {
         carEdtMenu.classList.add("edit_menu_out")
     })
 }
+let carImages = document.querySelectorAll(".one_img img")
+let picInput = document.querySelector("#picarr")
+let imgToRemove = []
+console.log(carImages)
+carImages.addEventListener("click", (e) => {
+    console.log(e.target)
+    let picStr = e.target.getAttribute("src")
+    let ind = picStr.indexOf("/")
+    let picName = picStr.slice(ind+1)
+    if(!imgToRemove.includes(picName)) {
+        imgToRemove.push(picName)
+        console.log(imgToRemove)
+        picInput.value = imgToRemove
+    } else {
+        let picInd = imgToRemove.indexOf(picName)
+        imgToRemove.splice(picInd, 1)
+        console.log(imgToRemove)
+        picInput.value = imgToRemove
+    }
+})

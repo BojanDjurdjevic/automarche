@@ -31,7 +31,16 @@ require_once "required/_required.php";
                     else echo Msg::err("Invalid ID");
                 }
                 else echo Msg::info("There is no selected carID");
+
+                if(isset($_POST['picarr']) && $_POST['picarr'] != "") {
+                    var_dump($_POST['picarr']);
+                } else
+                echo Msg::success("There is no selected images to remove");
             ?>
+            <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
+                <input type="hidden" name="picarr" id="picarr" />
+                <button>REMOVE</button>
+            </form>
             </div>
         </div>
     </main>
