@@ -316,16 +316,18 @@ if(imgCont) {
             } else {
                 e.target.classList.add("clickedImg")
             }
-
+            /*
             let picStr = e.target.firstChild.getAttribute("src")
             let ind = picStr.indexOf("/")
             let picName = picStr.slice(ind+1)
-            if(!imgToRemove.includes(picName)) {
-                imgToRemove.push(picName)
+            */
+            let picID = e.target.firstChild.getAttribute("id")
+            if(!imgToRemove.includes(picID)) { // Here was a picName - look at the logic above
+                imgToRemove.push(picID)
                 console.log(imgToRemove)
                 picInput.value = imgToRemove
             } else {
-                let picInd = imgToRemove.indexOf(picName)
+                let picInd = imgToRemove.indexOf(picID)
                 imgToRemove.splice(picInd, 1)
                 console.log(imgToRemove)
                 picInput.value = imgToRemove
@@ -348,15 +350,18 @@ if(carImages) {
             } else {
                 e.target.parentNode.classList.add("clickedImg")
             }
+            /*
             let picStr = e.target.getAttribute("src")
             let ind = picStr.indexOf("/")
             let picName = picStr.slice(ind+1)
-            if(!imgToRemove.includes(picName)) {
-                imgToRemove.push(picName)
+            */
+            let picID = e.target.getAttribute("id")
+            if(!imgToRemove.includes(picID)) {
+                imgToRemove.push(picID)
                 console.log(imgToRemove)
                 picInput.value = imgToRemove
             } else {
-                let picInd = imgToRemove.indexOf(picName)
+                let picInd = imgToRemove.indexOf(picID)
                 imgToRemove.splice(picInd, 1)
                 console.log(imgToRemove)
                 picInput.value = imgToRemove

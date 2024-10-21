@@ -15,6 +15,7 @@ require_once "required/_required.php";
     <main>
         <?php require_once "components/_searchcar.php" ?>
         <div class="main">
+            <h2>Please select the car images to remove</h2>
             <div class="car_img_view">
             <?php
                 if(isset($_GET['id'])) {
@@ -23,7 +24,7 @@ require_once "required/_required.php";
                         $res = $db->db->query($query);
                         if(mysqli_num_rows($res) > 0) {
                             while($row = $res->fetch_object()) {
-                                echo "<div class='one_img'><img src='images/{$row->pic_name}' alt='CarImage' width='210px'></div>";
+                                echo "<div class='one_img'><img src='images/{$row->pic_name}' alt='CarImage' id='{$row->pic_id}' width='210px'></div>";
                             }
                         } else 
                         echo Msg::success("There is no pictures posted for this car");
@@ -37,9 +38,9 @@ require_once "required/_required.php";
                     $arr = explode(",", $str);
                     $prepare = "UPDATE pics SET pics.deleted = 1 WHERE ";
                     for($i = 0; $i < count($arr); $i++) {
-                        $prepare = $prepare."pic_name = '{$arr[$i]}' AND ";
+                        $prepare = $prepare."pic_id = {$arr[$i]} OR ";
                     }
-                    $prepare = substr($prepare, 0, -5);
+                    $prepare = substr($prepare, 0, -4);
                     $prepare = trim($prepare);
                     /*
                     var_dump($prepare); // No rows afected
@@ -48,14 +49,30 @@ require_once "required/_required.php";
                     $db->db->query($prepare);
                     if($db->db->query($prepare)) {
                         echo Msg::success("Car images successfully removed!");
+                        echo "<button id='confirm'><a href='carprofile.php?id={$_GET['id']}'>OK</a></button>";
                     }
-                } else
-                echo Msg::success("There is no selected images to remove");
+                }
+
+                if(isset($_POST['restore']) && $_POST['restore'] != "") {
+                    $restore = "UPDATE pics SET pics.deleted = 0 WHERE pics.car_id = {$_POST['restore']}";
+                    $db->db->query($restore);
+                    if($db->db->query($restore)) {
+                        echo Msg::success("Car images are successfully restored!");
+                        echo "<button id='confirm'><a href='carprofile.php?id={$_GET['id']}'>OK</a></button>";
+                    }
+                }
             ?>
             <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
                 <input type="hidden" name="picarr" id="picarr" />
                 <button>REMOVE</button>
             </form>
+            </div>
+            <div class="restore">
+                <p>Restore all images of this car</p>
+                <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
+                    <input type="hidden" name="restore" value="<?= $_GET['id'] ?>" />
+                    <button>RESTORE</button>
+                </form>
             </div>
         </div>
     </main>
