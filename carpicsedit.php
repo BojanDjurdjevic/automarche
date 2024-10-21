@@ -63,11 +63,11 @@ require_once "required/_required.php";
                     }
                 }
 
-                if(isset($_FILES['photos']) && $_FILES['photos']['name'][0] != "") {
+                if(isset($_FILES['files']) && $_FILES['files']['name'][0] != "") {
                     $msg = "";
-                    for($i = 0; $i < count($_FILES['photos']['name']); $i++) {
-                        $name = microtime(true)."_".$_FILES['photos']['name'][$i];
-                        if(@move_uploaded_file($_FILES['photos']['tmp_name'][$i], "images/".$name)) {
+                    for($i = 0; $i < count($_FILES['files']['name']); $i++) {
+                        $name = microtime(true)."_".$_FILES['files']['name'][$i];
+                        if(@move_uploaded_file($_FILES['files']['tmp_name'][$i], "images/".$name)) {
                             $queryPic = "INSERT INTO pics (car_id, pic_name) VALUES ({$_GET['id']}, '{$name}')";
                             $db->db->query($queryPic);
                             if($db->db->query($queryPic)) {
@@ -99,7 +99,7 @@ require_once "required/_required.php";
             <div class="addNewImg">
                 <p><b>Add new images of this car</b></p>
                 <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="photos[]" id="ph" accept="image/*" multiple>
+                    <input type="file" name="files[]" id="ph" accept="image/*" multiple>
                     <button>ADD </button>
                 </form>
                 

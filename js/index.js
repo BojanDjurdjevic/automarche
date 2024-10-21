@@ -370,24 +370,7 @@ if(carImages) {
         })
     })
 }
-/* 
-carImages.addEventListener("click", (e) => {
-    console.log(e.target)
-    let picStr = e.target.getAttribute("src")
-    let ind = picStr.indexOf("/")
-    let picName = picStr.slice(ind+1)
-    if(!imgToRemove.includes(picName)) {
-        imgToRemove.push(picName)
-        console.log(imgToRemove)
-        picInput.value = imgToRemove
-    } else {
-        let picInd = imgToRemove.indexOf(picName)
-        imgToRemove.splice(picInd, 1)
-        console.log(imgToRemove)
-        picInput.value = imgToRemove
-    }
-}) 
-*/
+
 let confirmBtn = document.querySelector("#confirm")
 let myMsg = document.querySelector(".mymsg")
 if(confirmBtn) {
