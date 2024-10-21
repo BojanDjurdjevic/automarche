@@ -80,45 +80,30 @@ class Database {
                     </div>
                     </div>
                     <div class='properties'>
-                        <h4>Make:</h4>
-                        <h4>{$row->make}</h4>
-                        <h4>Model:</h4>
-                        <h4>{$row->model}</h4>
-                        <h4>Year:</h4>
-                        <h4>{$row->year}</h4>
-                        <h4>Kilometers:</h4>
-                        <h4>{$row->km}km</h4>
-                        <h4>Engine size:</h4>
-                        <h4>{$row->engine}cm3</h4>
-                        <h4>Power:</h4>
-                        <h4>{$row->power}ks</h4>
-                        <h4>Fuel:</h4>
-                        <h4>{$row->fuel}</h4>
-                        <h4>Body type:</h4>
-                        <h4>{$row->body}</h4>
-
-                        <h4>Gear:</h6>
-                        <h4>{$row->gear}</h4>
-                        <h4>Number of seats:</h4>
-                        <h4>{$row->seats}</h4>
-                        <h4>Number of doors:</h4>
-                        <h4>{$row->doors}</h4>
-                        <h4>Color:</h4>
-                        <h4>{$row->color}</h4>
-                        <h4>Wheel:</h4>
-                        <h4>{$row->wheel}</h4>
-                        <h4>Registration expiry:</h4>
-                        <h4>{$row->regdate}</h4>
-                        <h4>Posted on:</h4>
-                        <h4>{$row->created}</h4>
+                        <div><p>Make: </p><h4>{$row->make}</h4></div>
+                        <div><p>Model: </p><h4>{$row->model}</h4></div>
+                        <div><p>Year: </p><h4>{$row->year}</h4></div>
+                        <div><p>Kilometers: </p><h4>{$row->km}</h4></div>
+                        <div><p>Engine size: </p><h4>{$row->engine}cm3</h4></div>
+                        <div><p>Power: </p><h4>{$row->power}ks</h4></div>
+                        <div><p>Fuel: </p><h4>{$row->fuel}</h4></div>
+                        <div><p>Body type: </p><h4>{$row->body}</h4></div>
+                        <div><p>Gear: </p><h4>{$row->gear}</h4></div>
+                        <div><p>Number of seats: </p><h4>{$row->seats}</h4></div>
+                        <div><p>Number of doors: </p><h4>{$row->doors}</h4></div>
+                        <div><p>Color: </p><h4>{$row->color}</h4></div>
+                        <div><p>Wheel: </p><h4>{$row->wheel}</h4></div>
+                        <div><p>Registration expiry: </p><h4>{$row->regdate}</h4></div>
+                        <div><p>Posted on: </p></div>
+                        <div><p></p><h4>{$row->created}</h4></div>
                     </div>
                     <hr/>
                     <div class='desc'>
                         <p>{$row->description}</p>
-                        <div>
-                            <h6>Owner: {$row->name}</h6>
-                            <h6>City: {$row->city}</h6>
-                            <h6>Tel: {$row->usr_tel}</h6>
+                        <div class='owner'>
+                            <h4>Owner: {$row->name}</h4>
+                            <h4>City: {$row->city}</h4>
+                            <h4>Tel: {$row->usr_tel}</h4>
                             <a href='usrprofile.php?id={$row->users_usr_id}'>See the owners profile</a>
                         </div>
                     </div>

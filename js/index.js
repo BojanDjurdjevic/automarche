@@ -241,7 +241,7 @@ let resDiv = document.querySelector(".res_form")
 let resBtn = document.querySelector("#res_btn")
 if(carBtn) {
     carBtn.addEventListener("click", () => {
-        editCarForm.style.display = 'grid'
+        editCarForm.style.display = 'flex'
         if(carEdtMenu.classList.contains("edit_menu_in")) {
             carEdtMenu.classList.remove("edit_menu_in")
         }

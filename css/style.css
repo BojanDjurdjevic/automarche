@@ -55,6 +55,23 @@
 body {
     margin: 0;
 }
+a {
+    text-decoration: none;
+}
+button a {
+    text-decoration: none;
+}
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(203, 7, 7);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.6rem;
+    min-width: 9rem;
+}
 /*---------------------HEADER----------------------*/
 h2 {
     text-align: center;
@@ -97,7 +114,7 @@ header {
     align-items: center;
     width: 66vw;
     min-height: 6.6vh;
-    background-color: #D7D7D7;
+    background-color: #f3f3f3;
     border-bottom: 0.0625rem solid rgb(31, 28, 32);
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -124,8 +141,8 @@ header {
     width: 12vw;
     min-height: 9vh;
     padding: 0.1rem;
-    background-color: #D7D7D7;
-    border: 0.0625rem solid #D7D7D7;
+    background-color: #f3f3f3;
+    border: 0.0625rem solid #f3f3f3;
     position: absolute;
     right: 18vw;
     z-index: 1;
@@ -154,7 +171,7 @@ header {
 /*----------------------SEARCH FORM----------------------*/
 .searchForm {
     border: 0.12rem solid #D7D7D7;
-    background-color: #D7D7D7;
+    background-color: #f3f3f3;
     width: 66vw;
     height: 0;
     display: flex;
@@ -317,14 +334,15 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 33vw;
-    height: 24vh;
+    min-width: 33vw;
+    min-height: 24vh;
     border-radius: 2rem;
     position: fixed;
     top: 18vh;
     left: 33.5vw;
     z-index: 10;
-    background-color: #D7D7D7;
+    padding: 1rem;
+    background-color: #f3f3f3;
     animation-name: popupIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -382,7 +400,7 @@ main {
     right: -20vw;
     top: 0;
     z-index: 28;
-    background-color: #231F20;
+    background-color: rgb(31, 28, 32);
     width: 18vw;
     height: 99vh;
     padding: 1rem;
@@ -391,7 +409,7 @@ main {
     align-items: center;
 }
 .car_menu {
-    background-color: #231F20;
+    background-color: rgb(31, 28, 32);
     color: white;
     width: 100%;
     height: 85%;
@@ -427,12 +445,14 @@ main {
     right: 0;
     top: 0;
     display: none;
-    grid-template-columns: repeat(4, 1fr);
+    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     z-index: 35;
     width: 100vw;
     height: 100vh;
-    background-color: #020202;
+    background-color: rgb(31, 28, 32);
+    padding: 0.6rem;
 }
 .edit_car_form i {
     margin-bottom: 1.3rem;
@@ -441,6 +461,31 @@ main {
 .edit_car_form i:hover {
     cursor: pointer;   
     color: rgb(203, 7, 7);
+}
+#edt_form div:first-of-type {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+}
+#edt_form div:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+}
+#edt_form .last {
+    display: flex;
+    justify-content: center;
+    align-items: center; /*
+    border: 0.0625rem solid white;
+    border-radius: 1rem; */
+}
+#edt_form .last input {
+    background-color: rgb(203, 7, 7);
+    color: white;
+    min-width: 18rem;
+}
+.edit_car_form form label {
+    color: white;
 }
 .res_form {
     position: absolute;
@@ -456,14 +501,15 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 33vw;
-    height: 24vh;
+    min-width: 33vw;
+    min-height: 24vh;
     border-radius: 2rem;
     position: fixed;
     top: 18vh;
     left: 33.5vw;
     z-index: 10;
-    background-color: #D7D7D7;
+    padding: 1rem;
+    background-color: #f3f3f3;
     animation-name: popupIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -475,14 +521,15 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 33vw;
-    height: 24vh;
+    min-width: 33vw;
+    min-height: 24vh;
     border-radius: 2rem;
     position: fixed;
     top: 18vh;
     left: 33.5vw;
     z-index: 10;
-    background-color: #D7D7D7;
+    background-color: #f3f3f3;
+    padding: 1rem;
     animation-name: popupIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -614,14 +661,31 @@ main {
 .properties {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    width: 100%;
-}
-.properties h6, h5, h4, h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 86%;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    /* background-color: #f3f3f3; */
     padding: 0.6rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+.properties h4 {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 0.4rem;
+}
+.properties p {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0.4rem;
+}
+.properties div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 0.0625rem solid #d7d7d7;
+    margin: 0.1rem;
 }
 .prop {
     display: grid;
@@ -629,10 +693,15 @@ main {
     justify-content: space-between;
 }
 .desc {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
-    justify-content: space-around;
     gap: 3rem;
+    width: 86%;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    /* background-color: #f3f3f3; */
+    padding: 0.6rem;
+    border-radius: 2rem;
 }
 .desc p {
     text-align: start;
@@ -640,22 +709,56 @@ main {
 .desc h6, a {
     text-align: end;
 }
+desc a {
+    color: white;
+}
 /*--------------------------ADD CAR---------------------*/
 form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#form div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
     align-items: center;
+    margin-top: 1rem;
 }
 input, select, button {
     font-size: 1.2rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     margin: 0.9rem;
     text-align: center;
+    padding: 0.6rem;
+    min-width: 12rem;
 }
 textarea{
     height: 9rem;
     font-size: 0.9rem;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    min-width: 12rem;
+}
+#form textarea {
+    width: 96%;
+    margin: 2rem;
+}
+#edt_form [type="file"] {
+    color: white;
+}
+[type="file"] {
+    color: black;
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    border-radius: 1rem;
 }
 .photo_add {
     display: flex;
@@ -682,7 +785,7 @@ textarea{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #D7D7D7;
+    background-color: #f3f3f3;
     min-width: 18vw;
     min-height: 15vh;
     position: absolute;

@@ -51,7 +51,8 @@ require_once "required/_required.php";
         </div>
         <div class="edit_car_form">
             <i class='fa-solid fa-circle-xmark fa-2xl'></i>
-            <form action="carprofile.php?id=<?= $row->car_id ?>" method="post" id="form" enctype="multipart/form-data">
+            <form action="carprofile.php?id=<?= $row->car_id ?>" method="post" id="edt_form" enctype="multipart/form-data">
+                <div>
                     <input type="text" name="make" value="<?= $row->make ?>">
                     <input type="text" name="model" value="<?= $row->model ?>">
                     <input type="number" name="price" value="<?= $row->price ?>">
@@ -99,9 +100,14 @@ require_once "required/_required.php";
                         <option value="Rear">Rear</option>
                     </select>
                     <input type="date" name="regdate" value="<?= $row->regdate ?>">
+                </div>
+                <div>
                     <textarea name="description" id="description" ><?= $row->description ?></textarea>
-                    <label for="ph">Add car photos:</label>
-                    <input type="file" name="photos[]" id="ph" accept="image/*" multiple>
+                    <div class="last">
+                        <label for="ph">ADD CAR PHOTOS</label>
+                        <input type="file" name="photos[]" id="ph" accept="image/*" multiple>    
+                    </div>
+                </div>
                     <button>Update</button>
             </form>    
         </div>

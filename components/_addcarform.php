@@ -7,6 +7,7 @@
 </head>
 <body>
             <form action="addcar.php" method="post" id="form" enctype="multipart/form-data">
+                <div>
                 <input type="text" name="make" placeholder="Make">
                 <input type="text" name="model" placeholder="Model">
                 <input type="number" name="price" placeholder="Price">
@@ -54,8 +55,9 @@
                     <option value="Rear">Rear</option>
                 </select>
                 <input type="date" name="regdate" placeholder="Registration expiry">
+                </div>
                 <textarea name="description" id="description" placeholder="Add a description of your car"></textarea>
-                <label for="ph">Add car photos:</label>
+                <label for="ph"><b>Add car photos:</b></label>
                 <input type="file" name="photos[]" id="ph" accept="image/*" multiple>
                 <button>Add</button>
             </form>

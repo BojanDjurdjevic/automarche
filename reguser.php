@@ -37,8 +37,8 @@ require_once "required/_required.php";
                 <input type="text" name="city" placeholder="City">
                 <input type="text" name="address" placeholder="Address">
                 <div class="photo_add">
-                    <label for="ph">Add your avatar</label>
-                    <input type="file" name="avatar" id="ph" accept="image/*">
+                    <label for="pht"><b>Add your avatar:</b></label>
+                    <input type="file" name="avatar" id="pht" accept="image/*">
                 </div>
                 <button>Add new user</button>
             </form>
