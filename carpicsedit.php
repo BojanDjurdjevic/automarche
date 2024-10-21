@@ -15,6 +15,7 @@ require_once "required/_required.php";
     <main>
         <?php require_once "components/_searchcar.php" ?>
         <div class="main">
+            <button><a href="carprofile.php?id=<?= $_GET['id'] ?>"><< BACK</a></button>
             <h2>Please select the car images to remove</h2>
             <div class="car_img_view">
             <?php
@@ -49,7 +50,7 @@ require_once "required/_required.php";
                     $db->db->query($prepare);
                     if($db->db->query($prepare)) {
                         echo Msg::success("Car images successfully removed!");
-                        echo "<button id='confirm'><a href='carprofile.php?id={$_GET['id']}'>OK</a></button>";
+                        echo "<a href='carprofile.php?id={$_GET['id']}'><button id='confirm'>OK</button></a>";
                     }
                 }
 
@@ -58,21 +59,50 @@ require_once "required/_required.php";
                     $db->db->query($restore);
                     if($db->db->query($restore)) {
                         echo Msg::success("Car images are successfully restored!");
-                        echo "<button id='confirm'><a href='carprofile.php?id={$_GET['id']}'>OK</a></button>";
+                        echo "<a href='carprofile.php?id={$_GET['id']}'><button id='confirm'>OK</button></a>";
                     }
                 }
+
+                if(isset($_FILES['photos']) && $_FILES['photos']['name'][0] != "") {
+                    $msg = "";
+                    for($i = 0; $i < count($_FILES['photos']['name']); $i++) {
+                        $name = microtime(true)."_".$_FILES['photos']['name'][$i];
+                        if(@move_uploaded_file($_FILES['photos']['tmp_name'][$i], "images/".$name)) {
+                            $queryPic = "INSERT INTO pics (car_id, pic_name) VALUES ({$_GET['id']}, '{$name}')";
+                            $db->db->query($queryPic);
+                            if($db->db->query($queryPic)) {
+                                $msg = "The new car images are successfully added!";
+                            } else {
+                                $msg = "The new car images couldn't be added!";
+                            }
+                        }
+                    }
+                    echo Msg::success($msg);
+                    echo "<button id='confirm'>OK</button>";
+                } 
             ?>
-            <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
-                <input type="hidden" name="picarr" id="picarr" />
-                <button>REMOVE</button>
-            </form>
+            
+            </div>
+            <div class="remove">
+                <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
+                    <input type="hidden" name="picarr" id="picarr" />
+                    <button>REMOVE</button>
+                </form>
             </div>
             <div class="restore">
-                <p>Restore all images of this car</p>
+                <p><b>Restore all images of this car</b></p>
                 <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" >
                     <input type="hidden" name="restore" value="<?= $_GET['id'] ?>" />
                     <button>RESTORE</button>
                 </form>
+            </div>
+            <div class="addNewImg">
+                <p><b>Add new images of this car</b></p>
+                <form action="carpicsedit.php?id= <?= $_GET['id'] ?>" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="photos[]" id="ph" accept="image/*" multiple>
+                    <button>ADD </button>
+                </form>
+                
             </div>
         </div>
     </main>

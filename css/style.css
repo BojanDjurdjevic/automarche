@@ -427,8 +427,7 @@ main {
     right: 0;
     top: 0;
     display: none;
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-evenly;
     z-index: 35;
     width: 100vw;
@@ -437,6 +436,7 @@ main {
 }
 .edit_car_form i {
     margin-bottom: 1.3rem;
+    color: white;
 }
 .edit_car_form i:hover {
     cursor: pointer;   

@@ -241,7 +241,7 @@ let resDiv = document.querySelector(".res_form")
 let resBtn = document.querySelector("#res_btn")
 if(carBtn) {
     carBtn.addEventListener("click", () => {
-        editCarForm.style.display = 'flex'
+        editCarForm.style.display = 'grid'
         if(carEdtMenu.classList.contains("edit_menu_in")) {
             carEdtMenu.classList.remove("edit_menu_in")
         }
@@ -388,3 +388,10 @@ carImages.addEventListener("click", (e) => {
     }
 }) 
 */
+let confirmBtn = document.querySelector("#confirm")
+let myMsg = document.querySelector(".mymsg")
+if(confirmBtn) {
+    confirmBtn.addEventListener("click", () => {
+        myMsg.style.display = 'block';
+    })
+}
