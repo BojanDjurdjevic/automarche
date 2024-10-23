@@ -48,7 +48,7 @@ require_once "required/_required.php";
                     extract($_POST);
                     if(validateString($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && validateString($pass) //
                     && validateString($tel) && validateString($country) && validateString($city)
-                    && validateString($address)) {
+                    && validateString($address)) { // password_hash($pass, PASSWORD_DEFAULT)
                         $db->createUser($name, $email, $pass, $tel, $status, $country, $city, $address);
                     } else
                     echo Msg::err("All user data should be correctly set!");
