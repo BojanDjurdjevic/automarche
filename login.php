@@ -36,7 +36,7 @@ require_once "required/_required.php";
                         $res = $db->db->query($query);
                         if($res->num_rows == 1) {
                             $row = $res->fetch_object();
-                            if($pass == $row->usr_pas) { // password_verify($pass, $row->usr_pas)
+                            if($pass == $row->usr_pas) { // password_verify($pass, $row->usr_pas) 
                                 $_SESSION['id'] = $row->usr_id;
                                 $_SESSION['name'] = $row->usr_name;
                                 $_SESSION['email'] = $row->usr_mail;
@@ -51,6 +51,7 @@ require_once "required/_required.php";
                                 exit();
                             } else
                             //echo $pass."<br>".$row->usr_pas;
+                            //echo Msg::success(password_verify($pass, $row->usr_pas));
                             echo Msg::err("The password you have put is incorect for the user: {$email}");
                             //header("location: login.php");
                         } else

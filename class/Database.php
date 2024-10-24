@@ -269,6 +269,7 @@ class Database {
                 else echo Msg::err("Avatar upload FAILED!");
             }
             header("location: login.php");
+            exit();
         } else {
             while($row = $res->fetch_object()) {
                 if($row->name == $name) {

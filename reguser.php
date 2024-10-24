@@ -46,6 +46,8 @@ require_once "required/_required.php";
                 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['tel'])
                 && isset($_POST['status']) && isset($_POST['country']) && isset($_POST['city'])) {
                     extract($_POST);
+                    //$hashed = password_hash($pass, PASSWORD_DEFAULT);
+                    //echo Msg::success(password_verify($pass, $hashed));
                     if(validateString($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && validateString($pass) //
                     && validateString($tel) && validateString($country) && validateString($city)
                     && validateString($address)) { // password_hash($pass, PASSWORD_DEFAULT)
