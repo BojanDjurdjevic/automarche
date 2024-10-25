@@ -6,14 +6,16 @@ let searchBtn = document.querySelector(".searchForm form button")
 
 if(search) {
     search.addEventListener("click", () => {
-        if(!searchDiv.classList.contains("show")) {
-            if(searchDiv.classList.contains("hide")) {
-                searchDiv.classList.remove("hide")
+        if(searchDiv) {
+            if(!searchDiv.classList.contains("show")) {
+                if(searchDiv.classList.contains("hide")) {
+                    searchDiv.classList.remove("hide")
+                }
+                searchDiv.classList.add("show")
+            } else {
+                searchDiv.classList.remove("show")
+                searchDiv.classList.add("hide")
             }
-            searchDiv.classList.add("show")
-        } else {
-            searchDiv.classList.remove("show")
-            searchDiv.classList.add("hide")
         }
     })
 }
@@ -388,3 +390,4 @@ if(brSelect) {
         console.log(brSelect.value + "\n", brSelect.getAttribute("data-id"))
     })
 }
+console.log("Pozdrav iz JavaScript-a")
