@@ -378,3 +378,13 @@ if(confirmBtn) {
         myMsg.style.display = 'block';
     })
 }
+
+// AJAX Form
+let brSelect = document.querySelector("#brands")
+console.log(brSelect)
+if(brSelect) {
+    brSelect.addEventListener("change", () => {
+        console.log("triggers")
+        console.log(brSelect.value + "\n", brSelect.getAttribute("data-id"))
+    })
+}

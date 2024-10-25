@@ -1,3 +1,6 @@
+<?php
+require_once "required/_required.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,21 @@
 <body>
             <form action="addcar.php" method="post" id="form" enctype="multipart/form-data">
                 <div>
-                <input type="text" name="make" placeholder="Make">
+                <select name="make" id="brands">
+                <option value="">--Choose the make--</option>
+                <?php 
+                    $query = "SELECT * FROM brands";
+                    $res = $db->db->query($query);
+                    if(mysqli_num_rows($res) > 0) {
+                        while($row = $res->fetch_object()) {
+                            echo "<option data-id='{$row->id}' value='{$row->brand_name}'>{$row->brand_name}</option>";
+                        }
+                    } else
+                    echo "<input type='text' name='make' placeholder='Make'>";
+                ?>
+                </select>
+                
+                <!--<input type="text" name="make" placeholder="Make">-->
                 <input type="text" name="model" placeholder="Model">
                 <input type="number" name="price" placeholder="Price">
                 <select name="year" id="year">
