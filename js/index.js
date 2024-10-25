@@ -382,12 +382,24 @@ if(confirmBtn) {
 }
 
 // AJAX Form
+console.log("Pozdrav iz JavaScript-a")
 let brSelect = document.querySelector("#brands")
 console.log(brSelect)
 if(brSelect) {
     brSelect.addEventListener("change", () => {
         console.log("triggers")
         console.log(brSelect.value + "\n", brSelect.getAttribute("data-id"))
+        let brandID = brSelect.getAttribute("data-id")
+
+        if(brSelect.value != "") {
+            const xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = () => {
+                if(this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                }
+            }
+            xhttp.open("GET", "_addcarform.php?brandID=" + brandID, true)
+            xhttp.send()
+        }
     })
 }
-console.log("Pozdrav iz JavaScript-a")
