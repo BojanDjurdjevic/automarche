@@ -382,23 +382,27 @@ if(confirmBtn) {
 }
 
 // AJAX Form
-console.log("Pozdrav iz JavaScript-a")
-let brSelect = document.querySelector("#brands")
-console.log(brSelect)
+let brSelect = document.querySelector("#brands") 
+let models = document.querySelector("#models")
 if(brSelect) {
     brSelect.addEventListener("change", () => {
-        console.log("triggers")
-        console.log(brSelect.value + "\n", brSelect.getAttribute("data-id"))
-        let brandID = brSelect.getAttribute("data-id")
-
+        models.innerHTML = ""
+        let str = brSelect.value
+        let arr = str.split(" ")
+        let brandID = arr[0]
+        arr.splice(0, 1)
         if(brSelect.value != "") {
             const xhttp = new XMLHttpRequest()
             xhttp.onreadystatechange = () => {
-                if(this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
+                if(xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log(JSON.parse(xhttp.responseText))
+                    let result = JSON.parse(xhttp.responseText)
+                    for(let r of result.models) {
+                        models.innerHTML += `<option value='${r}'>${r}</option>`
+                    } 
                 }
             }
-            xhttp.open("GET", "_addcarform.php?brandID=" + brandID, true)
+            xhttp.open("GET", "./getmodels.php?brandID=" + brandID, true)
             xhttp.send()
         }
     })

@@ -17,8 +17,8 @@ require_once "required/_required.php";
                     $query = "SELECT * FROM brands";
                     $res = $db->db->query($query);
                     if(mysqli_num_rows($res) > 0) {
-                        while($row = $res->fetch_object()) {
-                            echo "<option data-id='{$row->id}' value='{$row->brand_name}'>{$row->brand_name}</option>";
+                        while($row = $res->fetch_object()) { //data-id=''
+                            echo "<option value='{$row->id} {$row->brand_name}'>{$row->brand_name}</option>";
                         }
                     } else
                     echo "<input type='text' name='make' placeholder='Make'>";
@@ -26,7 +26,7 @@ require_once "required/_required.php";
                 </select>
                 <select name="model" id="models">
                     <option value="">--Choose the model--</option>
-                    <?php
+                    <?php /*
                     if(isset($_GET['brandID']) && $_GET['brandID'] != "" 
                     && filter_var($_GET['brandID'], FILTER_VALIDATE_INT)) {
                         $id = $_GET['brandID'];
@@ -38,7 +38,7 @@ require_once "required/_required.php";
                             }
                         } else
                         echo "<input type='text' name='model' placeholder='Model'>";
-                    }
+                    } */
                     ?>
                 </select>
                 <!--<input type="text" name="make" placeholder="Make">-->
