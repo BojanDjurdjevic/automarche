@@ -11,8 +11,24 @@
 <body>
     <div class="searchForm">
         <form action="search.php" method="GET">
-            <input type="text" name="make" placeholder="Choose Make">
-            <input type="text" name="model" placeholder="Choose Model">
+            <select name="make" id="brands">
+                <option value="">--Choose the make--</option>
+                <?php 
+                    $query = "SELECT * FROM brands";
+                    $res = $db->db->query($query);
+                    if(mysqli_num_rows($res) > 0) {
+                        while($row = $res->fetch_object()) {
+                            echo "<option value='{$row->id} {$row->brand_name}'>{$row->brand_name}</option>";
+                        }
+                    } else
+                    echo "<input type='text' name='make' placeholder='Make'>";
+                ?>
+            </select>
+            <select name="model" id="models">
+                <option value="">--Choose the model--</option>
+            </select>
+            <!--<input type="text" name="make" placeholder="Choose Make">
+            <input type="text" name="model" placeholder="Choose Model">-->
             <input type="number" name="price" placeholder="Price up to">
             <input type="number" name="km" placeholder="Km up to">
             <select name="year" id="year">

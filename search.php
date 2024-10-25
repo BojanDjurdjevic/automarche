@@ -25,7 +25,8 @@ require_once "required/_required.php";
             $fuel = "";
 
             if(isset($_GET['make'])) {
-                $make = $_GET['make'];
+                $str = $_GET['make'];
+                $make = trim(substr($str, 2));
             }
             if(isset($_GET['model'])) {
                 $model = $_GET['model']; 
@@ -123,8 +124,9 @@ require_once "required/_required.php";
                     $query = "SELECT * FROM viewcars WHERE fuel = '{$fuel}'";
                 }
             } else 
-            echo Msg::err("At least one parameter should be set!");
-
+            echo Msg::err("At least one parameter should be set!"); /*
+            var_dump($query);
+            exit(); */
             if($query != "") {
                 $res = $db->db->query($query); 
                 if($res->num_rows > 0) {

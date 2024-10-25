@@ -6,8 +6,9 @@ if(isset($_GET['brandID']) && $_GET['brandID'] != ""
         $id = $_GET['brandID'];
         $query2 = "SELECT * FROM models WHERE brand_id = {$id}";
         $res = $db->db->query($query2);
-        if(mysqli_num_rows($res) > 0) {
         $arr = [];
+        if(mysqli_num_rows($res) > 0) {
+        
         while($row = $res->fetch_object()) {
                 array_push($arr, $row->model_name);
             }

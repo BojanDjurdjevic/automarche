@@ -33,13 +33,13 @@ require_once "required/_required.php";
             
         </div>
         <?php 
-    if(login()) {
-        $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
-        $res = $db->db->query($query);
-        if($res->num_rows == 1)
-        $row = $res->fetch_object();
-    }
-    ?>
+        if(login()) {
+            $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
+            $res = $db->db->query($query);
+            if($res->num_rows == 1)
+            $row = $res->fetch_object();
+        }
+        ?>
     
         <div class="drop_img_popup">
             <h2>Are you sure you want to cancel this picture?</h2>
@@ -53,8 +53,24 @@ require_once "required/_required.php";
             <i class='fa-solid fa-circle-xmark fa-2xl'></i>
             <form action="carprofile.php?id=<?= $row->car_id ?>" method="post" id="edt_form" enctype="multipart/form-data">
                 <div>
-                    <input type="text" name="make" value="<?= $row->make ?>">
-                    <input type="text" name="model" value="<?= $row->model ?>">
+                    <!--<input type="text" name="make" value="<?= $row->make ?>">
+                    <input type="text" name="model" value="<?= $row->model ?>">-->
+                    <select name="make" id="brand">
+                        <option value="<?= $row->make ?>"><?= $row->make ?></option>
+                        <?php 
+                            $query3 = "SELECT * FROM brands";
+                            $res3 = $db->db->query($query3);
+                            if(mysqli_num_rows($res3) > 0) {
+                                while($row3 = $res3->fetch_object()) {
+                                    echo "<option value='{$row3->id} {$row3->brand_name}'>{$row3->brand_name}</option>";
+                                }
+                            } else
+                            echo "<input type='text' name='make' placeholder='Make'>";
+                        ?>
+                    </select>
+                    <select name="model" id="model">
+                        <option value="<?= $row->model ?>"><?= $row->model ?></option>
+                    </select>
                     <input type="number" name="price" value="<?= $row->price ?>">
                     <select name="year" id="year">
                         <option value="<?= $row->year ?>">Year: <?= $row->year ?></option>
@@ -126,11 +142,13 @@ require_once "required/_required.php";
                 } 
                 if(isset($_POST['make'])) {
                     extract($_POST);
+                    $str = $make;
+                    $make = substr($str, 2);
                     if($make != "" && $model != "" && $price != "" && $year != "" && $body != "" && $fuel != "" && $power != ""
                     && $engine != "" && $km != "" && $gear != "" && $doors != "" && $seats != "" && $color != "" && $wheel != ""
                     && $description != "" && $regdate != "") {
                         $db->updateCar($row->car_id, $_SESSION['id'], $make, $model, $price, $year, $body, $fuel, $power,
-                                       $engine, $km, $gear, $doors, $seats, $color, $wheel, $description, $regdate);
+                                       $engine, $km, $gear, $doors, $seats, trim($color), $wheel, trim($description), $regdate);
                     } else
                     echo Msg::err("All fields must be filled!");
                 }

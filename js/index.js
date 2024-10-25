@@ -386,7 +386,7 @@ let brSelect = document.querySelector("#brands")
 let models = document.querySelector("#models")
 if(brSelect) {
     brSelect.addEventListener("change", () => {
-        models.innerHTML = ""
+        models.innerHTML = `<option value="">--Choose the model--</option>`
         let str = brSelect.value
         let arr = str.split(" ")
         let brandID = arr[0]
@@ -399,6 +399,32 @@ if(brSelect) {
                     let result = JSON.parse(xhttp.responseText)
                     for(let r of result.models) {
                         models.innerHTML += `<option value='${r}'>${r}</option>`
+                    } 
+                }
+            }
+            xhttp.open("GET", "./getmodels.php?brandID=" + brandID, true)
+            xhttp.send()
+        }
+    })
+}
+// AJAX - edit
+let brSelect2 = document.querySelector("#brand") 
+let models2 = document.querySelector("#model")
+if(brSelect2) {
+    brSelect2.addEventListener("change", () => {
+        models2.innerHTML = `<option value="">--Choose the model--</option>`
+        let str = brSelect2.value
+        let arr = str.split(" ")
+        let brandID = arr[0]
+        arr.splice(0, 1)
+        if(brSelect2.value != "") {
+            const xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = () => {
+                if(xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log(JSON.parse(xhttp.responseText))
+                    let result = JSON.parse(xhttp.responseText)
+                    for(let r of result.models) {
+                        models2.innerHTML += `<option value='${r}'>${r}</option>`
                     } 
                 }
             }
