@@ -26,23 +26,45 @@ require_once "required/_required.php";
                 echo Msg::success($_SESSION['carupdate']);
                 unset($_SESSION['carupdate']);
             }
+            if(isset($_SESSION['msg'])) {
+                echo Msg::success($_SESSION['msg']);
+                unset($_SESSION['msg']);
+            }
             if(isset($_GET['id'])) {
                 if(filter_var($_GET['id'], FILTER_VALIDATE_INT)!==false)
                 $db->oneCar($_GET['id']);
                 else echo Msg::err("Invalid ID");
             }
             else echo Msg::info("There is no selected car");
-            
+            if(login()) {
+                $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
+                $res = $db->db->query($query);
+                if($res->num_rows == 1)
+                $row = $res->fetch_object();
+            }
+            if(login() && $_SESSION['id'] != $row->users_usr_id) {
+                echo "<div id='sendMsg'>
+                        <i class='fa-solid fa-envelope fa-2xl' id='msg_box'></i>
+                        <p>Write a message to the owner</p>
+                    </div>";
+            }
             ?>
-            
+            <div id="writeMsg">
+                <form action="msgsend.php" method="post">
+                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                    <input type="hidden" name="sender" value="<?= $_SESSION['id'] ?>">
+                    <textarea name="txt" id="" placeholder="Write your message"></textarea>
+                    <div class="send_btn">
+                        <button id="send_btn">SEND</button>
+                    </div>
+                </form>
+                <div class="cancel_msg_btn">
+                    <button id="cancel_msg_btn">CANCEL</button>
+                </div>
+            </div>
         </div>
         <?php 
-        if(login()) {
-            $query = "SELECT * FROM viewcars WHERE car_id = {$_GET['id']} and deleted = 0";
-            $res = $db->db->query($query);
-            if($res->num_rows == 1)
-            $row = $res->fetch_object();
-        }
+        
         ?>
     
         <div class="drop_img_popup">
@@ -131,13 +153,6 @@ require_once "required/_required.php";
                 </div>
                     <button>Update</button>
             </form>    
-        </div>
-        <div class="res_form">
-            <?php
-                
-                
-                ?>
-                <button id="res-btn">OK</button>
         </div>
         <div class="popup">
             <h2>Are you sure you want to cancel this car?</h2>

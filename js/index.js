@@ -386,7 +386,26 @@ if(confirmBtn) {
         myMsg.style.display = 'block';
     })
 }
-
+// SEND THE MSG TO THE OWNER
+let msgBox = document.querySelector("#msg_box")
+let writeMsg = document.querySelector("#writeMsg")
+let noMsgBtn = document.querySelector("#cancel_msg_btn")
+let sendMsgBtn = document.querySelector("#send_btn")
+if(msgBox) {
+    msgBox.addEventListener("click", () => {
+        writeMsg.style.display = 'flex'
+    })
+}
+if(noMsgBtn) {
+    noMsgBtn.addEventListener("click", () => {
+        writeMsg.style.display = 'none'
+    })
+}
+if(sendMsgBtn) {
+    sendMsgBtn.addEventListener("click", () => {
+        writeMsg.style.display = 'none'
+    })
+}
 // AJAX Form
 let brSelect = document.querySelector("#brands") 
 let models = document.querySelector("#models")

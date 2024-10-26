@@ -255,6 +255,40 @@ main {
     justify-content: center;
     align-items: center;
 }
+.mymsg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 9vh;
+}
+#sendMsg {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 86%;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    border-radius: 2rem;
+    padding: 0.6rem;
+}
+#writeMsg {
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 86%;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    border-radius: 2rem;
+    padding: 0.6rem;
+    animation-name: searchIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+#writeMsg textarea {
+    width: 86%;
+}
 /*--------------------USER PROFILE----------------*/
 .usr_div {
     display: flex;
