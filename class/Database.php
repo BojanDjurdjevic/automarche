@@ -183,7 +183,7 @@ class Database {
         fuel, power, engine, km, gear, doors, seats, color, wheel, description,
         regdate) VALUES ({$usrID}, '{$make}', '{$model}', {$price}, {$year}, '{$body}',
         '{$fuel}', {$power}, {$engine}, {$km}, '{$gear}', {$doors}, {$seats}, '{$color}', 
-        '{$wheel}', '{$desc}', {$reg})";
+        '{$wheel}', '{$desc}', '{$reg}')";
         $this->db->query($query);
         echo Msg::success("The new car {$make} {$model} is succesfully added in database");
         $carID = mysqli_insert_id($this->db);
@@ -203,7 +203,7 @@ class Database {
         $query = "UPDATE cars SET users_usr_id = {$usrID}, make = '{$make}', model = '{$model}', 
         price = {$price}, year = {$year}, body = '{$body}', fuel = '{$fuel}', power = {$power}, engine = {$engine}, 
         km = {$km}, gear = '{$gear}', doors = {$doors}, seats = {$seats}, color = '{$color}', 
-        wheel = '{$wheel}', description = '{$desc}', regdate = {$reg} WHERE car_id = {$id}";
+        wheel = '{$wheel}', description = '{$desc}', regdate = '{$reg}' WHERE car_id = {$id}";
         $this->db->query($query);
         if($this->db && $this->db->query($query)) {
             echo Msg::success("The car {$make} {$model} is succesfully updated");

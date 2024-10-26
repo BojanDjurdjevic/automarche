@@ -22,6 +22,10 @@ require_once "required/_required.php";
         </div>
         <div class="main">
             <?php
+            if(isset($_SESSION['carupdate'])) {
+                echo Msg::success($_SESSION['carupdate']);
+                unset($_SESSION['carupdate']);
+            }
             if(isset($_GET['id'])) {
                 if(filter_var($_GET['id'], FILTER_VALIDATE_INT)!==false)
                 $db->oneCar($_GET['id']);
@@ -55,6 +59,7 @@ require_once "required/_required.php";
                 <div>
                     <!--<input type="text" name="make" value="<?= $row->make ?>">
                     <input type="text" name="model" value="<?= $row->model ?>">-->
+                    <input type="hidden" name="oldmake" value="<?= $row->make ?>" />
                     <select name="make" id="brand">
                         <option value="<?= $row->make ?>"><?= $row->make ?></option>
                         <?php 
@@ -142,17 +147,24 @@ require_once "required/_required.php";
                 } 
                 if(isset($_POST['make'])) {
                     extract($_POST);
-                    $str = $make;
-                    $make = substr($str, 2);
+                    if($make != $oldmake) {
+                        $str = $make;
+                        $make = substr($str, 2); 
+                    }
+                    
                     if($make != "" && $model != "" && $price != "" && $year != "" && $body != "" && $fuel != "" && $power != ""
                     && $engine != "" && $km != "" && $gear != "" && $doors != "" && $seats != "" && $color != "" && $wheel != ""
                     && $description != "" && $regdate != "") {
                         $db->updateCar($row->car_id, $_SESSION['id'], $make, $model, $price, $year, $body, $fuel, $power,
                                        $engine, $km, $gear, $doors, $seats, trim($color), $wheel, trim($description), $regdate);
-                    } else
-                    echo Msg::err("All fields must be filled!");
+                    $_SESSION['carupdate'] = "The car {$row->make} {$row->model} has been successfully updated by user {$_SESSION['name']}!";
+                    header("Location: carprofile.php?id={$_GET['id']}"); //
+                    //exit(); 
+                    } else {
+                        echo Msg::err("All fields must be filled!"); 
+                    } 
                 }
-                Msg::success("The car {$row->model} {$row->make} has been successfully updated by user {$_SESSION['name']}!")
+                
                 ?>
                 <button id="res-btn">OK</button>
         </div>

@@ -24,6 +24,7 @@ require_once "required/_required.php";
                     extract($_POST);
                     $str = $make;
                     $make = substr($str, 2);
+                    $regdate = date("Y-m-d", strtotime($regdate));
                     $usr_id = $_SESSION['id'];
                     if(validateString($make) && validateString($model) && filter_var((int)$price, FILTER_VALIDATE_INT) && validateString($year)
                     && validateString($body) && validateString($fuel) && filter_var((int)$power, FILTER_VALIDATE_INT) && filter_var((int)$engine, FILTER_VALIDATE_INT)
