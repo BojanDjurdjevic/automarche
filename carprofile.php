@@ -55,7 +55,7 @@ require_once "required/_required.php";
         </div>
         <div class="edit_car_form">
             <i class='fa-solid fa-circle-xmark fa-2xl'></i>
-            <form action="carprofile.php?id=<?= $row->car_id ?>" method="post" id="edt_form" enctype="multipart/form-data">
+            <form action="updatecar.php?id=<?= $row->car_id ?>" method="post" id="edt_form" enctype="multipart/form-data">
                 <div>
                     <!--<input type="text" name="make" value="<?= $row->make ?>">
                     <input type="text" name="model" value="<?= $row->model ?>">-->
@@ -134,36 +134,7 @@ require_once "required/_required.php";
         </div>
         <div class="res_form">
             <?php
-                if(isset($_FILES['photos']) && $_FILES['photos']['name'][0] != "") {
-                    //echo Msg::success("{$row->car_id} and ID of USER is {$_SESSION['id']}");
-                    //exit();
-                    for($i = 0; $i < count($_FILES['photos']['name']); $i++) {
-                        $name = microtime(true)."_".$_FILES['photos']['name'][$i];
-                        if(@move_uploaded_file($_FILES['photos']['tmp_name'][$i], "images/".$name)) {
-                            $queryPic = "INSERT INTO pics (car_id, pic_name) VALUES ({$row->car_id}, '{$name}')";
-                            $db->db->query($queryPic);
-                        }
-                    }
-                } 
-                if(isset($_POST['make'])) {
-                    extract($_POST);
-                    if($make != $oldmake) {
-                        $str = $make;
-                        $make = substr($str, 2); 
-                    }
-                    
-                    if($make != "" && $model != "" && $price != "" && $year != "" && $body != "" && $fuel != "" && $power != ""
-                    && $engine != "" && $km != "" && $gear != "" && $doors != "" && $seats != "" && $color != "" && $wheel != ""
-                    && $description != "" && $regdate != "") {
-                        $db->updateCar($row->car_id, $_SESSION['id'], $make, $model, $price, $year, $body, $fuel, $power,
-                                       $engine, $km, $gear, $doors, $seats, trim($color), $wheel, trim($description), $regdate);
-                    $_SESSION['carupdate'] = "The car {$row->make} {$row->model} has been successfully updated by user {$_SESSION['name']}!";
-                    header("Location: carprofile.php?id={$_GET['id']}"); //
-                    //exit(); 
-                    } else {
-                        echo Msg::err("All fields must be filled!"); 
-                    } 
-                }
+                
                 
                 ?>
                 <button id="res-btn">OK</button>

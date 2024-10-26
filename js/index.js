@@ -241,6 +241,7 @@ let cancelForm = document.querySelector(".edit_car_form i")
 let submitForm = document.querySelector(".edit_car_form button")
 let resDiv = document.querySelector(".res_form")
 let resBtn = document.querySelector("#res_btn")
+let msg = document.querySelector(".mymsg")
 if(carBtn) {
     carBtn.addEventListener("click", () => {
         editCarForm.style.display = 'flex'
@@ -263,7 +264,12 @@ if(submitForm) {
 }
 if(resBtn) {
     resBtn.addEventListener("click", () => {
+        console.log("error_btn_works")
         resDiv.style.display = 'none'
+        if(msg) {
+            console.log("msg-div")
+            msg.style.display = 'none';
+        }
     })
 }
 //Cancel CAR
