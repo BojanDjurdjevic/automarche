@@ -9,6 +9,7 @@
 <body>
     <header>
         <div class="manage">
+            <a href="inbox.php?recID=<?= $_SESSION['id'] ?>">Inbox</a>
             <a href="myprofile.php">My profile</a>
             <a href="logout.php">Log out</a>
         </div>
