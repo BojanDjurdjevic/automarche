@@ -264,8 +264,9 @@ if(submitForm) {
 }
 if(resBtn) {
     resBtn.addEventListener("click", () => {
-        console.log("error_btn_works")
-        resDiv.style.display = 'none'
+        if(resDiv) {
+            resDiv.style.display = 'none'   
+        }
         if(msg) {
             console.log("msg-div")
             msg.style.display = 'none';
@@ -404,6 +405,194 @@ if(noMsgBtn) {
 if(sendMsgBtn) {
     sendMsgBtn.addEventListener("click", () => {
         writeMsg.style.display = 'none'
+    })
+}
+// INBOX Page
+let recTab = document.querySelector(".received_tab")
+let sentTab = document.querySelector(".sent_tab")
+let delTab = document.querySelector(".del_tab")
+
+let recMsg = document.querySelectorAll(".rec_msg")
+let recSucc = document.querySelectorAll(".rec_succ")
+let sentMsg = document.querySelectorAll(".sent_msg")
+let sentSucc = document.querySelectorAll(".sent_succ")
+let delMsg = document.querySelectorAll(".del_msg")
+let delSucc = document.querySelectorAll(".del_succ")
+
+function recTabOn() {
+    recTab.style.backgroundColor = 'white'
+    sentTab.style.backgroundColor = '#D7D7D7'
+    delTab.style.backgroundColor = '#D7D7D7'
+    if(recMsg) {
+        recMsg.forEach(msg => {
+            msg.style.display = 'flex'
+        })
+        if(sentMsg) {
+            sentMsg.forEach(msg => {
+                msg.style.display = 'none'
+            })
+            
+        }
+        if(sentSucc) {
+            sentSucc.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+        if(delMsg) {
+            delMsg.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+        if(delSucc) {
+            delSucc.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+    } else if(recSucc) {
+        recSucc.forEach(msg => {
+            msg.style.display = 'flex'
+        })
+        if(sentMsg) {
+            sentMsg.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+        if(sentSucc) {
+            sentSucc.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+        if(delMsg) {
+            delMsg.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+        if(delSucc) {
+            delSucc.forEach(msg => {
+                msg.style.display = 'none'
+            })
+        }
+    }
+}
+
+if(recTab) {
+    recTab.addEventListener("click", recTabOn)
+}
+window.addEventListener("load", () => {
+    if(recTab) {
+        recTabOn()
+    }
+})
+if(sentTab) {
+    sentTab.addEventListener("click", () => {
+        sentTab.style.backgroundColor = 'white'
+        recTab.style.backgroundColor = '#D7D7D7'
+        delTab.style.backgroundColor = '#D7D7D7'
+        if(sentMsg) {
+            sentMsg.forEach(msg => {
+                msg.style.display = 'flex'
+            })
+            if(recMsg) {
+                recMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(recSucc) {
+                recSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(delMsg) {
+                delMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(delSucc) {
+                delSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+        } else if(sentSucc) {
+            sentSucc.forEach(msg => {
+                msg.style.display = 'flex'
+            })
+            if(recMsg) {
+                recMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(recSucc) {
+                recSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(delMsg) {
+                delMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(delSucc) {
+                delSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+        }
+    })
+}
+if(delTab) {
+    delTab.addEventListener("click", () => {
+        delTab.style.backgroundColor = 'white'
+        sentTab.style.backgroundColor = '#D7D7D7'
+        recTab.style.backgroundColor = '#D7D7D7'
+        if(delMsg) {
+            delMsg.forEach(msg => {
+                msg.style.display = 'flex'
+            })
+            if(recMsg) {
+                recMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(recSucc) {
+                recSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(sentMsg) {
+                sentMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(sentSucc) {
+                sentSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+        } else if(delSucc) {
+            delSucc.forEach(msg => {
+                msg.style.display = 'flex'
+            })
+            if(recMsg) {
+                recMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(recSucc) {
+                recSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(sentMsg) {
+                sentMsg.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+            if(sentSucc) {
+                sentSucc.forEach(msg => {
+                    msg.style.display = 'none'
+                })
+            }
+        }
     })
 }
 // AJAX Form

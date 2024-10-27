@@ -50,7 +50,7 @@ require_once "required/_required.php";
             }
             ?>
             <div id="writeMsg">
-                <form action="msgsend.php" method="post">
+                <form action="msgsend.php" id="msg_form" method="post">
                     <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
                     <input type="hidden" name="sender" value="<?= $_SESSION['id'] ?>">
                     <textarea name="txt" id="" placeholder="Write your message"></textarea>

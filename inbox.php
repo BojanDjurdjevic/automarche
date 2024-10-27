@@ -13,7 +13,7 @@ require_once "required/_required.php";
 <body>
     <?php require_once "components/_header.php"; ?>
     <main>
-        <?php require_once "components/_searchcar.php" ?>
+    <?php //require_once "components/_searchcar.php" ?>
         <div class="main">
             <div class="tab">
                 <div class="received_tab">
@@ -33,25 +33,113 @@ require_once "required/_required.php";
                 $res = $db->db->query($query);
                 if(mysqli_num_rows($res) > 0) {
                     while($row = $res->fetch_object()) {
+                        $qry_usr = "SELECT usr_name AS name FROM users WHERE usr_id = {$row->sent_id}";
+                        $user = $db->db->query($qry_usr);
+                        $usrrow = $user->fetch_object();
                         echo "<div class='rec_msg'>
                                 <div class='msg_title'>
                                     <p><b>{$row->msg_title}</b></p>
-                                    <p><b>{$row->sent_id} {$row->msg_time}</b></p>
+                                    <p><b>From: {$usrrow->name} | {$row->msg_time}</b></p>
                                 </div>
                                 <div class='msg_txt'>
                                     <p>{$row->msg_txt}</p>
                                 </div>
                                 <div class='msg_foot'>
                                     <button id='rep'>REPLAY</button>
-                                    <button id='no_rep'>CANCEL</button>
+                                    <form action='deletemsg.php' method='post'>
+                                        <input type='hidden' value='{$row->msg_id}' />
+                                        <button id='no_rep'>CANCEL</button>
+                                    </form>
                                 </div>
                             </div>";
                     }
-                } else
-                echo Msg::success("There is no received messages");
-            } else
-            header("location: index.php");
-            exit();
+                } else {
+                    echo "<div class='rec_succ'>".
+                    Msg::success("There is no received messages")
+                    . "</div>";
+                }
+                $query2 = "SELECT * FROM messages WHERE sent_id = {$_GET['recID']} AND msg_deleted = 0";
+                $res2 = $db->db->query($query2);
+                if(mysqli_num_rows($res2) > 0) {
+                    while($row = $res2->fetch_object()) {
+                        $qry_usr2 = "SELECT usr_name AS name FROM users WHERE usr_id = {$row->rec_id}";
+                        $user2 = $db->db->query($qry_usr2);
+                        $usrrow2 = $user2->fetch_object();
+                        echo "<div class='sent_msg'>
+                                <div class='msg_title'>
+                                    <p><b>{$row->msg_title}</b></p>
+                                    <p><b>To: {$usrrow2->name} | {$row->msg_time}</b></p>
+                                </div>
+                                <div class='msg_txt'>
+                                    <p>{$row->msg_txt}</p>
+                                </div>
+                                <div class='msg_foot'>
+                                    <form action='deletemsg.php' method='post'>
+                                        <input type='hidden' value='{$row->msg_id}' />
+                                        <button id='no_rep'>CANCEL</button>
+                                    </form>
+                                </div>
+                            </div>";
+                    }
+                } else {
+                    echo "<div class='sent_succ'>".
+                    Msg::success("There is no sent messages")
+                    . "</div>";
+                }
+                $query3 = "SELECT * FROM messages WHERE msg_deleted = 1 AND rec_id = {$_GET['recID']} OR sent_id = {$_GET['recID']} AND msg_deleted = 1";
+                $res3 = $db->db->query($query3);
+                if(mysqli_num_rows($res3) > 0) {
+                    while($row = $res3->fetch_object()) {
+                        if($row->sent_id == $_SESSION['id']) {
+                            $qry_usr = "SELECT usr_name AS name FROM users WHERE usr_id = {$row->rec_id}";
+                            $user = $db->db->query($qry_usr);
+                            $usrrow = $user->fetch_object();
+                            echo "<div class='del_msg'>
+                                    <div class='msg_title'>
+                                        <p><b>{$row->msg_title}</b></p>
+                                        <p><b>To: {$usrrow->name} | {$row->msg_time}</b></p>
+                                    </div>
+                                    <div class='msg_txt'>
+                                        <p>{$row->msg_txt}</p>
+                                    </div>
+                                    <div class='msg_foot'>
+                                        <form action='deletemsg.php' method='post'>
+                                            <input type='hidden' value='{$row->msg_id}' />
+                                            <button id='no_rep'>DELETE</button>
+                                        </form>
+                                    </div>
+                                </div>";
+                        } else {
+                            $qry_usr2 = "SELECT usr_name AS name FROM users WHERE usr_id = {$row->sent_id}";
+                            $user2 = $db->db->query($qry_usr2);
+                            $usrrow2 = $user2->fetch_object();
+                            echo "<div class='del_msg'>
+                                <div class='msg_title'>
+                                    <p><b>{$row->msg_title}</b></p>
+                                    <p><b>From: {$usrrow2->name} | {$row->msg_time}</b></p>
+                                </div>
+                                <div class='msg_txt'>
+                                    <p>{$row->msg_txt}</p>
+                                </div>
+                                <div class='msg_foot'>
+                                    <form action='deletemsg.php' method='post'>
+                                        <input type='hidden' value='{$row->msg_id}' />
+                                        <button id='no_rep'>DELETE</button>
+                                    </form>
+                                </div>
+                            </div>";
+                        }
+                    }
+                } else {
+                    echo "<div class='del_succ'>".
+                    Msg::success("There is no deleted messages")
+                    . "</div>";
+                }
+            } else {
+                header("location: index.php");
+                exit(); 
+            }
+            
             ?>
             </div>
         </div>

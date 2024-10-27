@@ -256,6 +256,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+/*--------------------------MESAGGES--------------------------*/
 .mymsg {
     display: flex;
     flex-direction: column;
@@ -287,11 +288,76 @@ main {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
+#msg_form {
+    min-width: 100%;
+    min-height: 70%;
+}
 #writeMsg textarea {
     width: 100%;
 }
 #msg_box {
     color: black;
+}
+/*-----------------------INBOX----------------------*/
+.tab {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    border: 0.0625rem solid black;
+}
+.tab:hover {
+    cursor: pointer;
+}
+.received_tab, .sent_tab, .del_tab {
+    /*border: 0.0625rem solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 33.33%;
+    padding: 0.3rem;
+    background-color: #D7D7D7;
+}
+.received_tab {
+    border-right: 0.0625rem solid black;
+}
+.sent_tab {
+    border-right: 0.0625rem solid black;
+}
+#msg_view {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-width: 100%;
+}
+.rec_msg, .sent_msg, .del_msg, .rec_succ, .sent_succ, .del_succ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    border: 0.1325rem solid #020202;
+    border-top: none;
+}
+.msg_title {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #D7D7D7;
+    min-width: 100%;
+    padding: 0.3rem;
+}
+.msg_txt {
+    min-width: 100%;
+    background-color: #f3f3f3;
+    padding: 0.3rem;
+}
+.msg_foot {
+    background-color: #D7D7D7;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*--------------------USER PROFILE----------------*/
 .usr_div {
