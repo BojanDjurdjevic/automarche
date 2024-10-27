@@ -32,7 +32,7 @@ require_once "required/_required.php";
                 extract($_POST);
                 if($email != "" && $pass != "") {
                     if(validateString($email) && validateString($pass)) {
-                        $query = "SELECT * FROM users WHERE usr_mail = '{$email}'";
+                        $query = "SELECT * FROM users WHERE usr_mail = '{$email}' AND usr_deleted = 0";
                         $res = $db->db->query($query);
                         if($res->num_rows == 1) {
                             $row = $res->fetch_object();

@@ -20,10 +20,16 @@ if(isset($_POST['id']) and filter_var($_POST['id'], FILTER_VALIDATE_INT)) {
         header("location: carprofile.php?id={$id}");
         exit();   
     }
-    } else
-    echo Msg::err("The text you sent contains forbiden characters!");
+    } else {
+        $_SESSION['msg'] = "The text you sent contains forbiden characters!";
+        header("location: carprofile.php?id={$id}");
+        exit();   
+    }
     
-} else $_SESSION['msg'] = "The message couldn't be sent, please try later!";
-header("location: carprofile.php?id={$id}");
-exit();   
+} else {
+    $_SESSION['msg'] = "The message couldn't be sent, please try later!";
+    header("location: carprofile.php?id={$id}");
+    exit();   
+} 
+
 ?>

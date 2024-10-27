@@ -2,12 +2,12 @@
     from {
         top: 6vh;
     } to {
-        top: 16.3vh;
+        top: 18vh;
     }
 }
 @keyframes fadeOut {
     from {
-        top: 16.3vh;
+        top: 18vh;
     } to {
         top: 0;
     }
@@ -114,7 +114,7 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 66vw;
-    min-height: 6.6vh;
+    min-height: 9vh;
     background-color: #f3f3f3;
     border-bottom: 0.0625rem solid rgb(31, 28, 32);
     border-bottom-left-radius: 1rem;
@@ -140,12 +140,13 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 12vw;
-    min-height: 9vh;
+    min-height: 12vh;
     padding: 0.1rem;
     background-color: #f3f3f3;
     border: 0.0625rem solid #f3f3f3;
     position: absolute;
     right: 18vw;
+    top: -9vh;
     z-index: 1;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -216,7 +217,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     background-image: url("../images/bck.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -226,7 +227,7 @@ main {
     display: flex;
     flex-direction: column;  
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     width: 66vw;
     min-height: 100%;
     border: 3rem;
@@ -273,7 +274,7 @@ main {
     border-radius: 2rem;
     padding: 0.6rem;
 }
-#writeMsg {
+#writeMsg, .writeMsg {
     display: none;
     flex-direction: column;
     justify-content: space-evenly;
@@ -292,11 +293,14 @@ main {
     min-width: 100%;
     min-height: 70%;
 }
-#writeMsg textarea {
+#writeMsg textarea, .writeMsg textarea {
     width: 100%;
 }
 #msg_box {
     color: black;
+}
+#msg_box:hover {
+    cursor: pointer;
 }
 /*-----------------------INBOX----------------------*/
 .tab {

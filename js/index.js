@@ -407,6 +407,58 @@ if(sendMsgBtn) {
         writeMsg.style.display = 'none'
     })
 }
+let reply = document.querySelectorAll(".rep")
+let noRep = document.querySelectorAll(".no_rep")
+let sendRep = document.querySelectorAll(".send_rep")
+let repMsg = document.querySelectorAll(".writeMsg")
+if(reply) {
+    reply.forEach(r => {
+        r.addEventListener("click", (e) => {
+            let btnID = e.target.getAttribute("data-id")
+            repMsg.forEach(rep => {
+                if(rep.getAttribute("id") == btnID) {
+                    console.log("good")
+                    rep.style.display = 'flex'
+                } else {
+                    console.log(btnID)
+                    console.log(rep.getAttribute("id"))
+                }
+            }) 
+        })
+    })
+    
+}
+if(noRep) {
+    noRep.forEach(n => {
+        n.addEventListener("click", (e) => {
+            let btnID = e.target.getAttribute("data-id")
+            repMsg.forEach(rep => {
+                if(rep.getAttribute("id") == btnID) {
+                    rep.style.display = 'none'
+                } else {
+                    console.log(btnID)
+                    console.log(rep.getAttribute("id"))
+                }
+            }) 
+        })
+    })
+}
+if(sendRep) {
+    sendRep.forEach(s => {
+        s.addEventListener("click", (e) => {
+            let btnID = e.target.getAttribute("data-id")
+            repMsg.forEach(rep => {
+                if(rep.getAttribute("id") == btnID) {
+                    console.log("good")
+                    rep.style.display = 'none'
+                } else {
+                    console.log(btnID)
+                    console.log(rep.getAttribute("id"))
+                }
+            }) 
+        })
+    })
+}
 // INBOX Page
 let recTab = document.querySelector(".received_tab")
 let sentTab = document.querySelector(".sent_tab")

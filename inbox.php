@@ -11,9 +11,23 @@ require_once "required/_required.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php require_once "components/_header.php"; ?>
+    <?php require_once "components/_header.php"; 
+        if(!login()) {
+            header("location: index.php");
+            exit();
+        }
+    ?>
     <main>
-    <?php //require_once "components/_searchcar.php" ?>
+    <?php //require_once "components/_searchcar.php";
+        if(isset($_SESSION['delmsg'])) {
+            echo Msg::err($_SESSION['delmsg']);
+            unset($_SESSION['delmsg']);
+        }
+        if(isset($_SESSION['msg_rep'])) {
+            echo Msg::success($_SESSION['msg_rep']);
+            unset($_SESSION['msg_rep']);
+        }
+    ?>
         <div class="main">
             <div class="tab">
                 <div class="received_tab">
@@ -28,7 +42,7 @@ require_once "required/_required.php";
             </div>
             <div id="msg_view">
             <?php
-            if(isset($_GET['recID']) && filter_var($_GET['recID'], FILTER_VALIDATE_INT)) {
+            if(isset($_GET['recID']) && filter_var($_GET['recID'], FILTER_VALIDATE_INT) && login()) {
                 $query = "SELECT * FROM messages WHERE rec_id = {$_GET['recID']} AND msg_deleted = 0";
                 $res = $db->db->query($query);
                 if(mysqli_num_rows($res) > 0) {
@@ -42,14 +56,25 @@ require_once "required/_required.php";
                                     <p><b>From: {$usrrow->name} | {$row->msg_time}</b></p>
                                 </div>
                                 <div class='msg_txt'>
-                                    <p>{$row->msg_txt}</p>
+                                    <p>"; echo nl2br($row->msg_txt);
+                                    echo "</p>
                                 </div>
                                 <div class='msg_foot'>
-                                    <button id='rep'>REPLAY</button>
+                                    <button class='rep' data-id='{$row->msg_id}'>REPLAY</button>
                                     <form action='deletemsg.php' method='post'>
-                                        <input type='hidden' value='{$row->msg_id}' />
-                                        <button id='no_rep'>CANCEL</button>
+                                        <input type='hidden' name='msgID' value='{$row->msg_id}' />
+                                        <button id='no_clr'>CANCEL</button>
                                     </form>
+                                </div>
+                                <div class='writeMsg' id='{$row->msg_id}'>
+                                <form action='reply.php' method='post'>
+                                        <input type='hidden' name='msgSub' value='Replay to: {$row->msg_title}' />
+                                        <textarea name='txt' placeholder='Write replay'></textarea>
+                                        <input type='hidden' name='receiver' value='{$row->sent_id}' />
+                                        <input type='hidden' name='sender' value='{$_SESSION['id']}' />
+                                        <button class='send_rep' data-id='{$row->msg_id}'>SEND REPLY</button>
+                                </form>
+                                <button class='no_rep' data-id='{$row->msg_id}'>CANCEL</button>
                                 </div>
                             </div>";
                     }
@@ -71,11 +96,12 @@ require_once "required/_required.php";
                                     <p><b>To: {$usrrow2->name} | {$row->msg_time}</b></p>
                                 </div>
                                 <div class='msg_txt'>
-                                    <p>{$row->msg_txt}</p>
+                                    <p>"; echo nl2br($row->msg_txt);
+                                    echo "</p>
                                 </div>
                                 <div class='msg_foot'>
                                     <form action='deletemsg.php' method='post'>
-                                        <input type='hidden' value='{$row->msg_id}' />
+                                        <input type='hidden' name='msgID' value='{$row->msg_id}' />
                                         <button id='no_rep'>CANCEL</button>
                                     </form>
                                 </div>
@@ -100,11 +126,12 @@ require_once "required/_required.php";
                                         <p><b>To: {$usrrow->name} | {$row->msg_time}</b></p>
                                     </div>
                                     <div class='msg_txt'>
-                                        <p>{$row->msg_txt}</p>
+                                        <p>"; echo nl2br($row->msg_txt);
+                                        echo "</p>
                                     </div>
                                     <div class='msg_foot'>
-                                        <form action='deletemsg.php' method='post'>
-                                            <input type='hidden' value='{$row->msg_id}' />
+                                        <form action='dropmsg.php' method='post'>
+                                            <input type='hidden' name='msgID' value='{$row->msg_id}' />
                                             <button id='no_rep'>DELETE</button>
                                         </form>
                                     </div>
@@ -119,11 +146,12 @@ require_once "required/_required.php";
                                     <p><b>From: {$usrrow2->name} | {$row->msg_time}</b></p>
                                 </div>
                                 <div class='msg_txt'>
-                                    <p>{$row->msg_txt}</p>
+                                    <p>"; echo nl2br($row->msg_txt);
+                                    echo "</p>
                                 </div>
                                 <div class='msg_foot'>
-                                    <form action='deletemsg.php' method='post'>
-                                        <input type='hidden' value='{$row->msg_id}' />
+                                    <form action='dropmsg.php' method='post'>
+                                        <input type='hidden' name='msgID' value='{$row->msg_id}' />
                                         <button id='no_rep'>DELETE</button>
                                     </form>
                                 </div>
