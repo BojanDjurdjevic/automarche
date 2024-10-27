@@ -11,35 +11,28 @@ class Database {
 
     }
     public function all() {
-        $query = "SELECT * FROM viewcars WHERE deleted = 0";
+        $query = "SELECT * FROM viewcars WHERE deleted = 0 ORDER BY car_id DESC";
         $result = $this->db->query($query);    
         while($row = $result->fetch_object()) {
-            echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
+            echo "<a href='carprofile.php?id={$row->car_id}' class='card'>
+                    <div class='title_div'>
+                       <h4>{$row->make} {$row->model}</h4> 
+                       <p>{$row->price} EUR</p>
+                    </div>
                     <div class='img_div'>";
-                        $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND pics.deleted = 0";
-                        $res = $this->db->query($query2);
-                        if(mysqli_num_rows($res) > 0) {
-                            $r = $res->fetch_assoc();
-                                echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='420px' height='280px'>"; 
-                        } else
-                        echo "<img src='images/nocar.jpg' width='360'>";
-                        echo
+                    $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND deleted = 0";
+                    $res2 = $this->db->query($query2);
+                    if(mysqli_num_rows($res2) > 0) {
+                        $r = $res2->fetch_assoc();
+                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='280px' height='160px'>"; 
+                    } else
+                    echo "<img src='images/nocar.jpg' width='360'>";
+                    echo
                     "</div>
-                    <div class='txt_div'>
-                        <h4>{$row->make} {$row->model}</h4>
-                        <p>Year: {$row->year}</p>
-                        <p>Fuel: {$row->fuel}</p>
-                        <p>{$row->price} EUR</p>
+                    <div class='text_div'>
+                        <p>Year: {$row->year} </p>
                     </div>
-                    <div class='txt_div'>
-                        <h4>Saler: {$row->name}</h4>
-                        <p>Country: {$row->country}</p>
-                        <p>City: {$row->city}</p>
-                        <p>Address: {$row->address} </p>
-                        <p>Tel: {$row->usr_tel}</p>
-
-                    </div>
-                </div></a>";
+                </a>";
         }
     }
     public function oneCar($id) {

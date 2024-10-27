@@ -228,7 +228,7 @@ main {
     flex-direction: column;  
     align-items: center;
     justify-content: start;
-    width: 66vw;
+    width: 68vw;
     min-height: 100%;
     border: 3rem;
     overflow: hidden;
@@ -256,6 +256,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#all_cars {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 /*--------------------------MESAGGES--------------------------*/
 .mymsg {
@@ -429,6 +434,9 @@ main {
 .card {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    max-height: 17rem;
     padding: 0.3rem;
     margin: 0.9rem;
     border: 0.1325rem solid #D7D7D7;
@@ -492,11 +500,20 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
+    top: 3rem;
+    color: white;
+    background-color: #3e393a;
+    width: 100%;
+    opacity: 0.5;
 }
 .text_div {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
+    bottom: 3rem;
+    color: white;
 }
 .edit_div {
     display: flex;

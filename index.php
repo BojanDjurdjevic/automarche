@@ -18,6 +18,7 @@ require_once "required/_required.php";
     <main>
         <?php require_once "components/_searchcar.php" ?>
         <div class="main">
+            <div id="all_cars">
             <?php
             if(isset($_SESSION['deletedUser']) && $_SESSION['deletedUser'] != "") {
                 echo
@@ -30,6 +31,7 @@ require_once "required/_required.php";
             }
             $db->all();
             ?>
+            </div>
         </div>
     </main>
     <?php  require_once "components/_footer.php"; ?>
