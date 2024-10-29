@@ -35,12 +35,13 @@ require_once "required/_required.php";
                         $query = "SELECT * FROM users WHERE usr_mail = '{$email}' AND usr_deleted = 0";
                         $res = $db->db->query($query);
                         if($res->num_rows == 1) {
-                            $row = $res->fetch_object();
-                            if($pass == $row->usr_pas) { //password_verify($pass, $row->usr_pas)
-                                $_SESSION['id'] = $row->usr_id;
-                                $_SESSION['name'] = $row->usr_name;
-                                $_SESSION['email'] = $row->usr_mail;
-                                $_SESSION['status'] = $row->usr_status;
+                            $row = $res->fetch_assoc();
+                            //$myhashed = $row['usr_pas'];
+                            if($pass == $row['usr_pas']) { // password_verify($pass, $myhashed)
+                                $_SESSION['id'] = $row['usr_id'];
+                                $_SESSION['name'] = $row['usr_name'];
+                                $_SESSION['email'] = $row['usr_mail'];
+                                $_SESSION['status'] = $row['usr_status'];
                                 if(isset($check)) {
                                     setcookie("id", $_SESSION['id'], time()+10800, "/");
                                     setcookie("name", $_SESSION['name'], time()+10800, "/");
@@ -50,8 +51,8 @@ require_once "required/_required.php";
                                 header("location: index.php");
                                 exit();
                             } else
-                            //echo $pass."<br>".$row->usr_pas;
-                            //echo Msg::success(password_verify($pass, $row->usr_pas));
+                            echo $pass."<br>".$row['usr_pas'];
+                            echo Msg::success(password_verify($pass, $myhashed));
                             echo Msg::err("The password you have put is incorect for the user: {$email}");
                             //header("location: login.php");
                         } else

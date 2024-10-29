@@ -46,15 +46,19 @@ require_once "required/_required.php";
                 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['tel'])
                 && isset($_POST['status']) && isset($_POST['country']) && isset($_POST['city'])) {
                     extract($_POST);
-                    //$hashed = password_hash($pass, PASSWORD_DEFAULT);
-                    //echo Msg::success(password_verify($pass, $hashed));
+                    //$hashed = password_hash($pass, PASSWORD_BCRYPT);
+                    //if(password_verify($pass, $hashed)) {
                     if(validateString($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && validateString($pass) //
                     && validateString($tel) && validateString($country) && validateString($city)
                     && validateString($address)) { // password_hash($pass, PASSWORD_DEFAULT)
                         //$hashed = password_hash($pass, PASSWORD_DEFAULT);
+                        //echo $pass."<br>".$hashed;
+                        //echo Msg::success(password_verify($pass, $hashed));
+                        //exit();
                         $db->createUser($name, $email, $pass, $tel, $status, $country, $city, $address);
                     } else
                     echo Msg::err("All user data should be correctly set!");
+                    //} else echo Msg::err("Problem with password");
                 }
             ?>
         </div>
