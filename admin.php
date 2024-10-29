@@ -23,6 +23,18 @@ if(login() && $_SESSION['status'] == "Admin") {
         }
         ?>
         <div class="main">
+            <div class="srcUser">
+                <form action="admin.php" method="POST">
+                    <input type="text" name="name" placeholder="Type Username or Email">
+                    <button>Search</button>
+                </form>
+            </div>
+            <?php
+            if(isset($_POST['name'])) {
+                echo "<h3>Your search</h3>";
+                $db->searchUser($_POST['name']);
+            } else
+            ?>
             <div class="all_users">
                 <h3>Active users</h3>
                 <?php

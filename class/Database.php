@@ -320,6 +320,36 @@ class Database {
                 </div>";
         }
     }
+    public function searchUser($name) {
+        $query = "SELECT usr_id as id, usr_name as name, usr_mail as email,
+        usr_tel as tel, usr_status as status FROM users WHERE (usr_name or usr_mail LIKE '%{$name}%')";
+        $res = $this->db->query($query);
+        if(mysqli_num_rows($res)) {
+            while($row = $res->fetch_object()) {
+                $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
+                echo "<div class='usr'>
+                        <div class='manage_usr'>
+                            <form action='block.php' method='post'>
+                                <input type='hidden' name='id' value='{$row->id}' />
+                                <button >Block</button>
+                            </form>
+                        </div>
+                        <div class='small'>
+                            <img src='avatars/{$avatar}' id='av_page' />
+                        </div>
+                        <div>
+                            <h3>{$row->name} - {$row->status}</h3>
+                        </div>
+                        <div>
+                            <p>Email: {$row->email}</p>
+                            <p>Phone: {$row->tel}</p>
+                            <a href='usrprofile.php?id={$row->id}'>See profile</a>
+                        </div>
+                    </div>";
+            }
+        } else 
+        echo Msg::success("There is no user with name/email containing '{$name}'");
+    }
     public function findUser($id) {
         $query = "SELECT usr_id as id, usr_name as name, usr_mail as email,
         usr_tel as tel, usr_status as status FROM users WHERE usr_deleted = 0 and usr_id = $id";
