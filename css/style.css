@@ -71,7 +71,7 @@ button {
     border: none;
     border-radius: 1rem;
     padding: 0.6rem;
-    min-width: 9rem;
+    min-width: 6rem;
 }
 /*---------------------HEADER----------------------*/
 h2 {
@@ -1000,14 +1000,19 @@ textarea{
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 .usr div:last-of-type {
-    width: 60%;
+    width: 50%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .usr div:first-of-type {
     max-width: 8%;
+}
+
+.manage_usr button {
+    width: 4rem;
 }
 /*--------------------------FOOTER----------------------*/
 footer {

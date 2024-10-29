@@ -16,7 +16,12 @@ if(login() && $_SESSION['status'] == "Admin") {
 <body>
     <?php require_once "components/_header.php" ?>
     <main>
-        <?php require_once "components/_searchcar.php" ?>
+        <?php require_once "components/_searchcar.php"; 
+        if(isset($_SESSION["admin_msg"])) {
+            echo Msg::success($_SESSION['admin_msg']);
+            unset($_SESSION["admin_msg"]);
+        }
+        ?>
         <div class="main">
             <div class="all_users">
                 <h3>Active users</h3>

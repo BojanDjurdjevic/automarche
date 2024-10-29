@@ -245,6 +245,12 @@ class Database {
         while($row = $res->fetch_object()) {
             $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
             echo "<div class='usr'>
+                    <div class='manage_usr'>
+                        <form action='block.php' method='post'>
+                            <input type='hidden' name='id' value='{$row->id}' />
+                            <button >Block</button>
+                        </form>
+                    </div>
                     <div class='small'>
                         <img src='avatars/{$avatar}' id='av_page' />
                     </div>
@@ -266,12 +272,19 @@ class Database {
         while($row = $res->fetch_object()) {
             $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
             echo "<div class='usr'>
+                    <div class='manage_usr'>
+                        <form action='unblock.php' method='post'>
+                            <input type='hidden' name='id' value='{$row->id}' />
+                            <button >Unblock</button>
+                        </form>
+                    </div>
                     <div class='small'>
                         <img src='avatars/{$avatar}' id='av_page' />
                     </div>
                     <div>
-                        <h3>{$row->name} - {$row->status}</h3>
+                        <p><b>{$row->name} - {$row->status}</b></p>
                     </div>
+                    
                     <div>
                         <p>Email: {$row->email}</p>
                         <p>Phone: {$row->tel}</p>
@@ -287,6 +300,12 @@ class Database {
         while($row = $res->fetch_object()) {
             $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
             echo "<div class='usr'>
+                    <div class='manage_usr'>
+                        <form action='restore.php' method='post'>
+                            <input type='hidden' name='id' value='{$row->id}' />
+                            <button >Restore</button>
+                        </form>
+                    </div>
                     <div class='small'>
                         <img src='avatars/{$avatar}' id='av_page' />
                     </div>
