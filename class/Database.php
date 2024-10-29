@@ -10,11 +10,10 @@ class Database {
         }
 
     }
-    public function all() {
-        $query = "SELECT * FROM viewcars WHERE deleted = 0 ORDER BY car_id DESC";
-        $result = $this->db->query($query);    
-        while($row = $result->fetch_object()) {
-            echo "<a href='carprofile.php?id={$row->car_id}' class='card'>
+
+    // Backup of fnc all:
+    /*
+    echo "<a href='carprofile.php?id={$row->car_id}' class='card'>
                     <div class='title_div'>
                        <h4>{$row->make} {$row->model}</h4> 
                        <p>{$row->price} EUR</p>
@@ -29,6 +28,33 @@ class Database {
                     echo "<img src='images/nocar.jpg' width='360'>";
                     echo
                     "</div>
+                    <div class='text_div'>
+                        <p>Year: {$row->year} </p>
+                    </div>
+                </a>";
+     */
+
+    public function all() {
+        $query = "SELECT * FROM viewcars WHERE deleted = 0 ORDER BY car_id DESC";
+        $result = $this->db->query($query);    
+        while($row = $result->fetch_object()) {
+            $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND deleted = 0";
+            $res2 = $this->db->query($query2);
+            if(mysqli_num_rows($res2) > 0) {
+                $r = $res2->fetch_assoc();
+                echo "
+                <a href='carprofile.php?id={$row->car_id}' class='card' style='background-image: url(./images/{$r['pic_name']});
+                background-position: center; background-repeat: no-repeat; background-size: cover;'>"; 
+            } else
+            echo "
+            <a href='carprofile.php?id={$row->car_id}' class='card' style='background-image: url(./images/nocar.jpg);
+            background-position: center; background-repeat: no-repeat; background-size: cover;'>";
+            echo "
+                    <div class='holder_div'></div>
+                    <div class='title_div'>
+                       <h4>{$row->make} {$row->model}</h4> 
+                       <p>{$row->price} EUR</p>
+                    </div>
                     <div class='text_div'>
                         <p>Year: {$row->year} </p>
                     </div>
@@ -140,32 +166,31 @@ class Database {
     }
     public function myCarsView($id) {
         $query = "SELECT * FROM viewcars WHERE users_usr_id = {$id} and deleted = 0";
-        $res = $this->db->query($query);
-        if($res->num_rows > 0)
-        while($row = $res->fetch_object()) {
-            echo "<a href='carprofile.php?id={$row->car_id}' class='card'>
+        $result = $this->db->query($query); 
+        if($result->num_rows > 0) {  
+        while($row = $result->fetch_object()) {
+            $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND deleted = 0";
+            $res2 = $this->db->query($query2);
+            if(mysqli_num_rows($res2) > 0) {
+                $r = $res2->fetch_assoc();
+                echo "
+                <a href='carprofile.php?id={$row->car_id}' class='card' style='background-image: url(./images/{$r['pic_name']});
+                background-position: center; background-repeat: no-repeat; background-size: cover;'>"; 
+            } else
+            echo "
+            <a href='carprofile.php?id={$row->car_id}' class='card' style='background-image: url(./images/nocar.jpg);
+            background-position: center; background-repeat: no-repeat; background-size: cover;'>";
+            echo "
+                    <div class='holder_div'></div>
                     <div class='title_div'>
                        <h4>{$row->make} {$row->model}</h4> 
                        <p>{$row->price} EUR</p>
                     </div>
-                    <div class='img_div'>";
-                    $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id} AND deleted = 0";
-                    $res2 = $this->db->query($query2);
-                    if(mysqli_num_rows($res2) > 0) {
-                        $r = $res2->fetch_assoc();
-                            echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='350px' height='210px'>"; 
-                    } else
-                    echo "<img src='images/nocar.jpg' width='360'>";
-                    echo
-                    "</div>
                     <div class='text_div'>
-                        <p> {$row->fuel} |</p>
-                        <p> {$row->km} |</p>
-                        <p> {$row->year} |</p>
-                        <p> {$row->city}</p>
+                        <p>Year: {$row->year} </p>
                     </div>
                 </a>";
-
+        }
         }
         else echo Msg::success("There is no cars posted by you!");
     }
