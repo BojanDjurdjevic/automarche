@@ -36,7 +36,7 @@ require_once "required/_required.php";
                         $res = $db->db->query($query);
                         if($res->num_rows == 1) {
                             $row = $res->fetch_object();
-                            if($pass == $row->usr_pas) { // password_verify($pass, $row->usr_pas) 
+                            if($pass == $row->usr_pas) { //password_verify($pass, $row->usr_pas)
                                 $_SESSION['id'] = $row->usr_id;
                                 $_SESSION['name'] = $row->usr_name;
                                 $_SESSION['email'] = $row->usr_mail;
