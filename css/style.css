@@ -266,6 +266,11 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
+@media screen and (max-width: 790px) {
+    #all_cars {
+        grid-template-columns: 1fr;
+    }
+}
 /*--------------------------MESAGGES--------------------------*/
 .mymsg {
     display: flex;
