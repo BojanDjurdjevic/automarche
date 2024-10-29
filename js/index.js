@@ -62,21 +62,27 @@ let errMsgBtn = document.querySelector(".errmsg_btn")
 if(editBtn) {
     editBtn.addEventListener("click", () => {
     editBtn.style.display = 'none'
-    cslBtn.style.display = 'none'
+    if(cslBtn) {
+       cslBtn.style.display = 'none' 
+    }
     editForm.style.display = 'flex'
 })
 }
 if(noEdit) {
     noEdit.addEventListener("click", () => {
     editBtn.style.display = 'flex'
-    cslBtn.style.display = 'flex'
+    if(cslBtn) {
+        cslBtn.style.display = 'flex' 
+    }
     editForm.style.display = 'none'
 })
 }
 if(subBtn) {
     subBtn.addEventListener("click", () => {
     editBtn.style.display = 'flex'
-    cslBtn.style.display = 'flex'
+    if(cslBtn) {
+        cslBtn.style.display = 'flex' 
+    }
     editForm.style.display = 'none'
 })  
 }

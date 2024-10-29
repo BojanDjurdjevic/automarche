@@ -318,5 +318,16 @@ class Database {
         } else
         echo Msg::err("The user removing is FAILED!");
     }
+    public function usrBlocked() {
+        $query = "SELECT usr_blocked FROM users WHERE usr_id = {$_SESSION['id']}";
+        $res = $this->db->query($query);
+        if($res) {
+            $row = $res->fetch_object();
+            if($row->usr_blocked != 0) {
+                return true;
+            } else
+            return false;
+        }
+    }
 }
 ?>

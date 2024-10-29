@@ -31,10 +31,14 @@ require_once "required/_required.php";
                         echo "  <div class='edit_usr'>
                                     <div class='editBtn'>
                                         <i class='fa-solid fa-user-pen fa-2xl'></i>
-                                    </div>
-                                    <div class='clsBtn'>
-                                        <i class='fa-solid fa-trash-can fa-2xl'></i>
-                                    </div>
+                                    </div>";
+                                    if($_SESSION['status'] != 'Admin') {
+                                        echo "
+                                            <div class='clsBtn'>
+                                                <i class='fa-solid fa-trash-can fa-2xl'></i>
+                                            </div>";
+                                    }
+                                    echo "
                                     <div class='edit_form'>
                                         <i class='fa-solid fa-circle-xmark fa-2xl'></i>
                                         <form action='myprofile.php' method='POST'>
