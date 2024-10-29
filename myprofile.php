@@ -50,7 +50,14 @@ require_once "required/_required.php";
                                             <input type='text' name='address' value='{$row->address}'>
                                             <button>Edit</button>
                                         </form>
-                                    </div>
+                                    </div>";
+                                    if($db->usrBlocked()) {
+                                        echo "
+                                            <div class='unblock'>
+                                                <button>Unblock Me</button>
+                                            </div>";
+                                    }
+                                echo "
                                 </div>
                                 <div class='usr_data'>
                                     <h4>Name: {$row->name}</h4>

@@ -56,8 +56,9 @@ class Database {
                        <p>{$row->price} EUR</p>
                     </div>
                     <div class='text_div'>
-                        <p>Year: {$row->year} </p>
+                        <p><b>Year: {$row->year}</b></p>
                     </div>
+                    
                 </a>";
         }
     }
@@ -239,10 +240,56 @@ class Database {
     // USERS
     public function allUsers() {
         $query = "SELECT usr_id as id, usr_name as name, usr_mail as email,
-        usr_tel as tel, usr_status as status FROM users WHERE usr_deleted = 0";
+        usr_tel as tel, usr_status as status FROM users WHERE usr_deleted = 0 AND usr_blocked = 0";
         $res = $this->db->query($query);
         while($row = $res->fetch_object()) {
+            $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
             echo "<div class='usr'>
+                    <div class='small'>
+                        <img src='avatars/{$avatar}' id='av_page' />
+                    </div>
+                    <div>
+                        <h3>{$row->name} - {$row->status}</h3>
+                    </div>
+                    <div>
+                        <p>Email: {$row->email}</p>
+                        <p>Phone: {$row->tel}</p>
+                        <a href='usrprofile.php?id={$row->id}'>See profile</a>
+                    </div>
+                </div>";
+        }
+    }
+    public function allBlockedUsers() {
+        $query = "SELECT usr_id as id, usr_name as name, usr_mail as email,
+        usr_tel as tel, usr_status as status FROM users WHERE usr_deleted = 0 AND usr_blocked != 0";
+        $res = $this->db->query($query);
+        while($row = $res->fetch_object()) {
+            $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
+            echo "<div class='usr'>
+                    <div class='small'>
+                        <img src='avatars/{$avatar}' id='av_page' />
+                    </div>
+                    <div>
+                        <h3>{$row->name} - {$row->status}</h3>
+                    </div>
+                    <div>
+                        <p>Email: {$row->email}</p>
+                        <p>Phone: {$row->tel}</p>
+                        <a href='usrprofile.php?id={$row->id}'>See profile</a>
+                    </div>
+                </div>";
+        }
+    }
+    public function allDelUsers() {
+        $query = "SELECT usr_id as id, usr_name as name, usr_mail as email,
+        usr_tel as tel, usr_status as status FROM users WHERE usr_deleted != 0";
+        $res = $this->db->query($query);
+        while($row = $res->fetch_object()) {
+            $avatar= (file_exists("avatars/".$row->id.".jpg"))? $row->id.".jpg" : "noavatar.jpg";
+            echo "<div class='usr'>
+                    <div class='small'>
+                        <img src='avatars/{$avatar}' id='av_page' />
+                    </div>
                     <div>
                         <h3>{$row->name} - {$row->status}</h3>
                     </div>

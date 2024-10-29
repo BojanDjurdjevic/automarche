@@ -2,8 +2,8 @@
 session_start();
 require_once "required/_required.php";
 
+if(login() && $_SESSION['status'] == "Admin") {
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,18 +18,23 @@ require_once "required/_required.php";
     <main>
         <?php require_once "components/_searchcar.php" ?>
         <div class="main">
-            <div id="all_cars">
-            <?php
-            if(isset($_SESSION['deletedUser'])) {
-                echo
-                "<div class='cardel_msg'>";
-                    echo Msg::success("{$_SESSION['deletedUser']}");
-                echo "
-                </div>";
-                unset($_SESSION['deletedUser']);
-            }
-            $db->all();
-            ?>
+            <div class="all_users">
+                <h3>Active users</h3>
+                <?php
+                $db->allUsers();
+                ?>
+            </div>
+            <div class="blocked_users">
+                <h3>Blocked users</h3>
+                <?php
+                $db->allBlockedUsers();
+                ?>
+            </div>
+            <div class="del_users">
+                <h3>Deleted users</h3>
+                <?php
+                $db->allDelUsers();
+                ?>
             </div>
         </div>
     </main>
@@ -37,3 +42,9 @@ require_once "required/_required.php";
     <script src="./js/index.js"></script>
 </body>
 </html>
+<?php
+} else {
+    header("location: index.php");
+    exit();
+}
+?>
