@@ -146,7 +146,7 @@ header {
     border: 0.0625rem solid #f3f3f3;
     position: absolute;
     right: 18vw;
-    top: -18vh;
+    top: -21vh;
     z-index: 1;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -238,6 +238,10 @@ main {
     color: black;
     display: flex;
     width: 66vw;
+    background-image: linear-gradient(to right,#F8F8F8, #f3f3f3,  #d7d7d7);
+    border-radius: 2rem;
+    padding: 0.6rem;
+    margin: 0.6rem;
 }
 .img_div {
     border-radius: 2rem;

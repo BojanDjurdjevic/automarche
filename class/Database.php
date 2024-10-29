@@ -137,14 +137,18 @@ class Database {
         if($res->num_rows > 0)
         while($row = $res->fetch_object()) {
             echo "<a href='carprofile.php?id={$row->car_id}' id='link'><div class='car_div'>
-                    <div class='img_div'>";
+                    ";
                     $query2 = "SELECT * FROM pics WHERE car_id = {$row->car_id}";
                     $res2 = $this->db->query($query2);
                     if(mysqli_num_rows($res2) > 0) {
                         $r = $res2->fetch_assoc();
-                        echo "<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
+                        echo "<div class='img_div' class='card' style='background-image: url(./images/{$r['pic_name']});
+                        background-position: center; background-repeat: no-repeat; background-size: cover;'>";
+                        //"<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
                     } else
-                    echo "<img src='images/nocar.jpg' width='360'>";
+                    echo "<div class='img_div' class='card' style='background-image: url(./images/nocar.jpg);
+                    background-position: center; background-repeat: no-repeat; background-size: cover;'>";
+                    //"<img src='images/nocar.jpg' width='360'>";
                     echo
                     "</div>
                     <div class='txt_div'>
