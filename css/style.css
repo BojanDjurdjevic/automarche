@@ -270,6 +270,10 @@ main {
     #all_cars {
         grid-template-columns: 1fr;
     }
+    .searchForm form {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 /*--------------------------MESAGGES--------------------------*/
 .mymsg {
