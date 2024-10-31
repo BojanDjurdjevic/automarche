@@ -19,9 +19,10 @@
             <a href="logout.php">Log out</a>
         </div>
         <div class="header">
-            <img src="images/left-logo.jpg" alt="logo" class="logo">
+            <img src="images/left-logo.jpg" alt="logo" class="logo" id="logo_left">
+            <i class="fa-solid fa-bars fa-2xl" id="menu_btn"></i>
             <h2>AUTOMARKET</h2>
-            <img src="images/auto_car-14.jpg" alt="logo" class="logo">
+            <img src="images/auto_car-14.jpg" alt="logo" class="logo" id="logo_right">
         </div>
         <div class="barcont">
             <div class="bar">
@@ -36,7 +37,7 @@
                             <img src='avatars/{$avatar}' id='av_page' />
                             </div>";
                 } else
-                echo "<a href='login.php'>Log in</a>"
+                echo "<a href='login.php' id='loglink'>Log in</a>";
                 ?>
                 
             </div>

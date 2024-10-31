@@ -128,11 +128,15 @@ header {
     min-width: 20%;
     text-align: center;
 }
-.logo {
+#logo_left, #logo_right {
     width: 4.5rem;
 }
 #find {
     cursor: pointer;
+}
+#menu_btn {
+    color: white;
+    display: none;
 }
 .manage {
     display: flex;
@@ -267,12 +271,42 @@ main {
     grid-template-columns: repeat(4, 1fr);
 }
 @media screen and (max-width: 790px) {
+    @keyframes searchIn {
+        from {
+            height: 0;
+        } to {
+            height: 90vh;
+        }
+    }
+    @keyframes searchOut {
+        from {
+            height: 90vh;
+        } to {
+            height: 0;
+        }
+    }
+    #logo_left {
+        display: block;
+        width: 0;
+    }
     #all_cars {
         grid-template-columns: 1fr;
     }
     .searchForm form {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+    #menu_btn {
+        display: block;
+    }
+    .bar a {
+        display: none;
+    }
+    .bar #loglink {
+        display: block;
+    }
+    .manage {
+        width: 66vw;
     }
 }
 /*--------------------------MESAGGES--------------------------*/
