@@ -379,9 +379,9 @@ class Database {
         } else {
             while($row = $res->fetch_object()) {
                 if($row->name == $name) {
-                    echo Msg::err("The user with name: {$name} already exists!");
+                    echo Msg::err("The user with name: {$name} already exists, please go to <a href='login.php'>Log in</a>");
                 } elseif($row->email == $mail) {
-                    echo Msg::err("The user with email: {$mail} already exists!");
+                    echo Msg::err("The user with email: {$mail} already exists, please go to <a href='login.php'>Log in</a>");
                 }
             }
         }
