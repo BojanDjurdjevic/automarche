@@ -127,11 +127,11 @@ class Database {
                     $res2 = $this->db->query($query2);
                     if(mysqli_num_rows($res2) > 0) {
                         $r = $res2->fetch_assoc();
-                        echo "<div class='img_div' class='card' style='background-image: url(./images/{$r['pic_name']});
+                        echo "<div class='img_div' style='background-image: url(./images/{$r['pic_name']});
                         background-position: center; background-repeat: no-repeat; background-size: cover;'>";
                         //"<img src='images/{$r['pic_name']}' alt='CarImage' width='360px'>"; 
                     } else
-                    echo "<div class='img_div' class='card' style='background-image: url(./images/nocar.jpg);
+                    echo "<div class='img_div' style='background-image: url(./images/nocar.jpg);
                     background-position: center; background-repeat: no-repeat; background-size: cover;'>";
                     //"<img src='images/nocar.jpg' width='360'>";
                     echo

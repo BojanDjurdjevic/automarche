@@ -36,7 +36,6 @@ if(search) {
 }
 if(searchBtn) {
     searchBtn.addEventListener("click", () => {
-        console.log("btnListen")
         searchDiv.classList.remove("show")
         searchDiv.classList.add("hide")
     }) 
@@ -750,5 +749,14 @@ if(menuLinks) {
             }
             smallMenu.classList.add("smallOut")
         })
+    })
+}
+// PART II
+let closeSearch = document.querySelector("#closeSearch")
+if(closeSearch) {
+    closeSearch.addEventListener("click", () => {
+        console.log("small btn works")
+        searchDiv.classList.remove("show")
+        searchDiv.classList.add("hide")
     })
 }

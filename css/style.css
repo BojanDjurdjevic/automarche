@@ -202,6 +202,9 @@ header {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
+#closeSearch {
+    display: none;
+}
 .searchForm form button {
     justify-self: center;
     background-color: rgb(203, 7, 7);
@@ -246,6 +249,8 @@ main {
 .img_div {
     border-radius: 2rem;
     overflow: hidden;
+    min-width: 30%;
+    height: 100%;
 }
 .car_div {
     display: grid; 
@@ -543,7 +548,7 @@ main {
     z-index: 28;
     background-color: rgb(31, 28, 32);
     width: 18vw;
-    height: 99vh;
+    height: 100vh;
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -1130,5 +1135,57 @@ footer {
     .bar_small_menu {
         display: flex;
         
+    }
+
+    /*---------------PART II-----------------*/
+    @keyframes menuIn {
+        from {
+            right: -101vw;
+        } to {
+            right: 0;
+        }
+    }
+    @keyframes menuOut {
+        from {
+            right: 0;   
+        } to {
+            right: -101vw;
+        }
+    }
+    .main{
+        overflow: visible;
+    }
+    .car_aside {
+        width: 100vw;
+        right: -101vw;
+    }
+    .galery {
+        height: 40vh;
+        width: 90vw;
+    }
+    .galery_in {
+        width: 100vw;
+    }
+    #magnify {
+        top: 33%;
+    }
+    .properties {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    .car_div {
+        grid-template-columns: 1fr;
+        min-height: 50%;
+    }
+    .img_div {
+        min-height: 33vh;
+    }
+    .car_div .txt_div:last-of-type {
+        display: none;
+    }
+    #closeSearch {
+        display: block;
+        align-self: center;
+        justify-self: center;
     }
 }

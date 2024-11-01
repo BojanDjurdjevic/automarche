@@ -9,8 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="searchForm">
+    <div class="searchForm">   
         <form action="search.php" method="GET">
+            <i class='fa-solid fa-circle-xmark fa-2xl' id="closeSearch"></i>
             <select name="make" id="brands">
                 <option value="">--Choose the make--</option>
                 <?php 
