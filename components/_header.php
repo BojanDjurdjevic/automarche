@@ -42,7 +42,19 @@
                 
             </div>
         </div>
-        
+        <div class="bar_small_menu">
+            <i class='fa-solid fa-circle-xmark fa-2xl' id="close_small_menu"></i>
+            <a href="index.php">HOME</a>
+            <a id="findCar">SEARCH</a>
+            <a href="addcar.php">ADD CAR</a>
+            <?php
+            if(login()) {
+                echo "<a href='logout.php' id='loglink'>LOG OUT</a>";
+            } else
+            echo "<a href='login.php' id='loglink'>LOG IN</a>";
+            ?>
+                
+        </div>
     </header>
 </body>
 </html>

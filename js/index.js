@@ -1,9 +1,24 @@
 //SEARCH
-
+let smallSearch = document.querySelector("#findCar")
 let search = document.querySelector("#find")
 let searchDiv = document.querySelector(".searchForm")
 let searchBtn = document.querySelector(".searchForm form button")
 
+if(smallSearch) {
+    smallSearch.addEventListener("click", () => {
+        if(searchDiv) {
+            if(!searchDiv.classList.contains("show")) {
+                if(searchDiv.classList.contains("hide")) {
+                    searchDiv.classList.remove("hide")
+                }
+                searchDiv.classList.add("show")
+            } else {
+                searchDiv.classList.remove("show")
+                searchDiv.classList.add("hide")
+            }
+        }
+    })
+}
 if(search) {
     search.addEventListener("click", () => {
         if(searchDiv) {
@@ -703,5 +718,37 @@ if(brSelect2) {
             xhttp.open("GET", "./getmodels.php?brandID=" + brandID, true)
             xhttp.send()
         }
+    })
+}
+// MEDIA small screen elements
+let menuBtn = document.querySelector("#menu_btn")
+let smallMenu = document.querySelector(".bar_small_menu")
+let closeSmall = document.querySelector("#close_small_menu")
+let menuLinks = document.querySelectorAll(".bar_small_menu a")
+
+if(menuBtn) {
+    menuBtn.addEventListener("click", () => {
+        if(smallMenu.classList.contains("smallOut")) {
+            smallMenu.classList.remove("smallOut")
+        }
+        smallMenu.classList.add("smallIn")
+    })
+}
+if(closeSmall) {
+    closeSmall.addEventListener("click", () => {
+        if(smallMenu.classList.contains("smallIn")) {
+            smallMenu.classList.remove("smallIn")
+        }
+        smallMenu.classList.add("smallOut")
+    })
+}
+if(menuLinks) {
+    menuLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if(smallMenu.classList.contains("smallIn")) {
+                smallMenu.classList.remove("smallIn")
+            }
+            smallMenu.classList.add("smallOut")
+        })
     })
 }
