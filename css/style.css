@@ -1262,5 +1262,90 @@ footer {
     .usr .small #av_page {
         width: 100%;
         height: 100%;
+        border-radius: 100%;
+    }
+}
+
+/*------------------MEDIA FROM 791px---------------*/
+@media screen and (min-width: 791px) and (max-width: 1240px) {
+    @keyframes menuIn {
+        from {
+            right: -101vw;
+        } to {
+            right: 0;
+        }
+    }
+    @keyframes menuOut {
+        from {
+            right: 0;   
+        } to {
+            right: -101vw;
+        }
+    }
+    .car_aside {
+        width: 100vw;
+        right: -101vw;
+    }
+    #all_cars {
+        grid-template-columns: 1fr 1fr;
+    }
+    .manage {
+        width: 33vw;
+    }
+    #form div {
+        grid-template-columns: 1fr 1fr;
+    }
+    #edt_form div:first-of-type {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #edt_form div:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+    .car_img_view {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .usr_div {
+        flex-direction: column;
+    }
+    .card_view {
+        grid-template-columns: 1fr;
+    }
+    .usr {
+        flex-direction: column;
+    }
+    .usr div:first-of-type {
+        width: 100%;
+    }
+    .manage_usr {
+        width: 100%;
+    }
+    .manage_usr button {
+        width: 6rem;
+    }
+    .usr div {
+        overflow: visible;
+    }
+    .usr div:last-of-type {
+        flex-direction: column;
+    }
+    .usr .small {
+        width: 6rem;
+        height: 6rem;
+    }
+    .usr .small #av_page {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+}
+/*------------------MEDIA FROM 1241px---------------*/
+@media screen and (min-width: 1241px) and (max-width: 1440px) {
+
+    #all_cars {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .manage {
+        width: 30vw;
     }
 }

@@ -142,7 +142,8 @@ require_once "required/_required.php";
                         <option value="Front">Front</option>
                         <option value="Rear">Rear</option>
                     </select>
-                    <input type="date" name="regdate" value="<?= $row->regdate ?>">
+                    <label for="regdate">Registration expire:</label>
+                    <input type="date" name="regdate" id="regdate" value="<?= $row->regdate ?>">
                 </div>
                 <div>
                     <textarea name="description" id="description" ><?= $row->description ?></textarea>

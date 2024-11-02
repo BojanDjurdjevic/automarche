@@ -87,6 +87,7 @@ require_once "required/_required.php";
                     <option value="Front">Front</option>
                     <option value="Rear">Rear</option>
                 </select>
+                <label for="regdate">Registration expire</label>
                 <input type="date" name="regdate" placeholder="Registration expiry">
                 </div>
                 <textarea name="description" id="description" placeholder="Add a description of your car"></textarea>
