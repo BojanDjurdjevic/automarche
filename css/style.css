@@ -1080,6 +1080,20 @@ footer {
 }
 
 @media screen and (max-width: 790px) {
+    @keyframes fadeIn {
+        from {
+            top: -6vh;
+        } to {
+            top: 21vh;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            top: 21vh;
+        } to {
+            top: -12vh;
+        }
+    }
     @keyframes barIn {
         from {
             left: -101vw;
@@ -1268,6 +1282,20 @@ footer {
 
 /*------------------MEDIA FROM 791px---------------*/
 @media screen and (min-width: 791px) and (max-width: 1240px) {
+    @keyframes fadeIn {
+        from {
+            top: -6vh;
+        } to {
+            top: 21vh;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            top: 21vh;
+        } to {
+            top: -12vh;
+        }
+    }
     @keyframes menuIn {
         from {
             right: -101vw;
@@ -1295,6 +1323,9 @@ footer {
         } to {
             height: 0;
         }
+    }
+    #closeSearch { 
+        display: none;
     }
     .car_aside {
         width: 100vw;
