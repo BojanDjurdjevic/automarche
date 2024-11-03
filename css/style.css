@@ -1282,6 +1282,20 @@ footer {
             right: -101vw;
         }
     }
+    @keyframes searchIn {
+        from {
+            height: 0;
+        } to {
+            height: 90vh;
+        }
+    }
+    @keyframes searchOut {
+        from {
+            height: 90vh;
+        } to {
+            height: 0;
+        }
+    }
     .car_aside {
         width: 100vw;
         right: -101vw;
